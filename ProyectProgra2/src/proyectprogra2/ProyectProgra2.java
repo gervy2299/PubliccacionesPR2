@@ -5,6 +5,8 @@
  */
 package proyectprogra2;
 
+import Login.login;
+
 /**
  *
  * @author HP
@@ -16,6 +18,7 @@ public class ProyectProgra2 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        new login().setVisible(true);
     }
     
 }
