@@ -69,13 +69,8 @@
                   </Group>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-<<<<<<< HEAD
                       <Component id="lbluser" max="32767" attributes="0"/>
                       <Component id="lbldocente" min="-2" pref="166" max="-2" attributes="0"/>
-=======
-                      <Component id="jLabel4" max="32767" attributes="0"/>
-                      <Component id="jLabel3" min="-2" pref="166" max="-2" attributes="0"/>
->>>>>>> 05d9e0d71e0474f0ac1e503cd25c8299de0e69d0
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
@@ -101,22 +96,14 @@
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-<<<<<<< HEAD
                           <Component id="lbldocente" alignment="3" max="32767" attributes="0"/>
-=======
-                          <Component id="jLabel3" alignment="3" max="32767" attributes="0"/>
->>>>>>> 05d9e0d71e0474f0ac1e503cd25c8299de0e69d0
                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-<<<<<<< HEAD
                       <Component id="lbluser" alignment="3" min="-2" max="-2" attributes="0"/>
-=======
-                      <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
->>>>>>> 05d9e0d71e0474f0ac1e503cd25c8299de0e69d0
                       <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -134,15 +121,9 @@
             <Property name="text" type="java.lang.String" value="TIPO DE USUARIO:"/>
           </Properties>
         </Component>
-<<<<<<< HEAD
         <Component class="javax.swing.JLabel" name="lbldocente">
           <Properties>
             <Property name="text" type="java.lang.String" value="NOMBRE"/>
-=======
-        <Component class="javax.swing.JLabel" name="jLabel3">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jLabel3"/>
->>>>>>> 05d9e0d71e0474f0ac1e503cd25c8299de0e69d0
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
@@ -155,15 +136,9 @@
             <Property name="text" type="java.lang.String" value="LOGOUT"/>
           </Properties>
         </Component>
-<<<<<<< HEAD
         <Component class="javax.swing.JLabel" name="lbluser">
           <Properties>
             <Property name="text" type="java.lang.String" value="DOCENTE"/>
-=======
-        <Component class="javax.swing.JLabel" name="jLabel4">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jLabel4"/>
->>>>>>> 05d9e0d71e0474f0ac1e503cd25c8299de0e69d0
           </Properties>
         </Component>
       </SubComponents>
@@ -217,12 +192,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="VALIDAR"/>
           </Properties>
-<<<<<<< HEAD
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
           </Events>
-=======
->>>>>>> 05d9e0d71e0474f0ac1e503cd25c8299de0e69d0
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>

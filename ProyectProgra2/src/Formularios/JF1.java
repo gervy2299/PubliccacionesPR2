@@ -12,10 +12,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import proyectprogra2.Conexion;
+import CLASES.clases;
 
 public class JF1 extends javax.swing.JFrame {
     Conexion cn = new Conexion();
-    login lg = new login();
+    login lg = new login();        
+    clases cls = new clases();
+    
     /**
      * Creates new form JF1
      */
@@ -39,6 +42,15 @@ public class JF1 extends javax.swing.JFrame {
             cbxEscuela.addItem(lista2.get(i));
         }
         
+        txtUsuario.setEnabled(false);
+        
+        llamandoClases();
+    }
+    
+    public void llamandoClases(){
+        cls.soloMayuscula(txtNombres, txtApPaterno);
+        cls.soloMayuscula(txtApPaterno, txtApMaterno);        
+        cls.soloMayuscula(txtApMaterno, txtDireccion);
     }
     
     public void limpiar(){
@@ -115,18 +127,18 @@ public class JF1 extends javax.swing.JFrame {
         txtApMaterno = new javax.swing.JTextField();
         txtTelefono = new javax.swing.JFormattedTextField();
         txtUsuario = new javax.swing.JTextField();
-        txtContrasenia = new javax.swing.JFormattedTextField();
-        txtRepeatContrasenia = new javax.swing.JFormattedTextField();
         jLabel11 = new javax.swing.JLabel();
         txtFechaNacimiento = new javax.swing.JFormattedTextField();
         txtDireccion = new javax.swing.JTextField();
+        txtContrasenia = new javax.swing.JPasswordField();
+        txtRepeatContrasenia = new javax.swing.JPasswordField();
         jPanel2 = new javax.swing.JPanel();
         btnRegistrar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "INTERFAS DE REGISTRO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 51, 51))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "INTERFAS DE REGISTRO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 11), new java.awt.Color(255, 51, 51))); // NOI18N
 
         jLabel1.setText("DNI:");
 
@@ -149,6 +161,18 @@ public class JF1 extends javax.swing.JFrame {
         jLabel12.setText("ESCUELA PROFECIONAL:");
 
         jLabel8.setText("CARGO:");
+
+        try {
+            txtDNI.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("########")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        try {
+            txtTelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###-###-###")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
 
         jLabel11.setText("FECHA DE NACIMIENTO:");
 
@@ -189,7 +213,7 @@ public class JF1 extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtDireccion)
                     .addComponent(txtFechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                    .addComponent(txtTelefono)
+                    .addComponent(txtTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
                     .addComponent(txtUsuario)
                     .addComponent(txtContrasenia)
                     .addComponent(txtRepeatContrasenia))
@@ -225,9 +249,9 @@ public class JF1 extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
-                    .addComponent(cbxRoles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbxRoles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -284,7 +308,7 @@ public class JF1 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(194, 194, 194)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(208, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -364,12 +388,12 @@ public class JF1 extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtApMaterno;
     private javax.swing.JTextField txtApPaterno;
-    private javax.swing.JFormattedTextField txtContrasenia;
+    private javax.swing.JPasswordField txtContrasenia;
     private javax.swing.JFormattedTextField txtDNI;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JFormattedTextField txtFechaNacimiento;
     private javax.swing.JTextField txtNombres;
-    private javax.swing.JFormattedTextField txtRepeatContrasenia;
+    private javax.swing.JPasswordField txtRepeatContrasenia;
     private javax.swing.JFormattedTextField txtTelefono;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables

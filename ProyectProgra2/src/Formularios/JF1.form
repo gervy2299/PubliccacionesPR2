@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
   </Properties>
@@ -30,7 +30,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="208" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -100,10 +100,10 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="txtDireccion" alignment="0" max="32767" attributes="0"/>
                       <Component id="txtFechaNacimiento" alignment="0" pref="166" max="32767" attributes="0"/>
-                      <Component id="txtTelefono" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtTelefono" alignment="0" pref="166" max="32767" attributes="0"/>
                       <Component id="txtUsuario" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtContrasenia" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtRepeatContrasenia" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtContrasenia" max="32767" attributes="0"/>
+                      <Component id="txtRepeatContrasenia" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
               </Group>
@@ -143,9 +143,9 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtContrasenia" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cbxRoles" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtContrasenia" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -236,6 +236,11 @@
           </AuxValues>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="txtDNI">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+              <Format format="########" subtype="-1" type="5"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNombres">
         </Component>
@@ -244,12 +249,13 @@
         <Component class="javax.swing.JTextField" name="txtApMaterno">
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="txtTelefono">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+              <Format format="###-###-###" subtype="-1" type="5"/>
+            </Property>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtUsuario">
-        </Component>
-        <Component class="javax.swing.JFormattedTextField" name="txtContrasenia">
-        </Component>
-        <Component class="javax.swing.JFormattedTextField" name="txtRepeatContrasenia">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
@@ -259,6 +265,10 @@
         <Component class="javax.swing.JFormattedTextField" name="txtFechaNacimiento">
         </Component>
         <Component class="javax.swing.JTextField" name="txtDireccion">
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="txtContrasenia">
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="txtRepeatContrasenia">
         </Component>
       </SubComponents>
     </Container>

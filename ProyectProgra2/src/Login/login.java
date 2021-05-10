@@ -8,7 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import proyectprogra2.Conexion;
@@ -115,9 +114,8 @@ public class login extends javax.swing.JFrame {
 
             if (cargo.equals("DOCENTE")) {
                 if (mtds.buscarUsuario(user, pass, cargo)) {
-                    //formulario para docente
-                    JOptionPane.showMessageDialog(null, "INGRESASTE COMO DOCENTE");
-                    limpiar();
+                       new JF2().setVisible(true);
+                       this.dispose();
                 } else {
                     limpiar();
                 }
