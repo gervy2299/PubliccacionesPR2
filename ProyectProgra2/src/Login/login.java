@@ -111,7 +111,12 @@ public class login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ingresar usuario y contraseña", "Aviso", JOptionPane.ERROR_MESSAGE);
 
         } else {
-
+                //Guarda el Dato del usuario y envia al JF2
+                JF2.usu=user;
+                //Metodo para mostrar que formulario seria *falta
+                JF2 jf= new JF2();
+                jf.setVisible(true);
+                //fin J
             if (cargo.equals("DOCENTE")) {
                 if (mtds.buscarUsuario(user, pass, cargo)) {
                        new JF2().setVisible(true);
