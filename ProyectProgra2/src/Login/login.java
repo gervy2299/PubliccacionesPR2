@@ -1,46 +1,45 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Login;
 
-import Formularios.JF1;
+import Formularios.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import proyectprogra2.Conexion;
+import proyectprogra2.sqlMetodos;
 
-/**
- *
- * @author eltu_
- */
 public class login extends javax.swing.JFrame {
+
     Conexion cn = new Conexion();
-    /**
-     * Creates new form login
-     */
+    sqlMetodos mtds = new sqlMetodos();
+
     public login() {
         initComponents();
         this.setLayout(null);
         this.setLocationRelativeTo(null);
-        
+
         cbxRoles.removeAllItems();
-        ArrayList<String> lista =new ArrayList<String>();
+        ArrayList<String> lista = new ArrayList<String>();
         lista = llenarComboBOxRoles();
-        
-        for(int i = 0; i<lista.size(); i++){
+
+        for (int i = 0; i < lista.size(); i++) {
             cbxRoles.addItem(lista.get(i));
         }
+        txtUsuario.requestFocus();
+        
+        enter(txtUsuario, txtContrasenia);
     }
-    
-    public static ArrayList<String> llenarComboBOxRoles(){
+
+    public static ArrayList<String> llenarComboBOxRoles() {
         ArrayList<String> lista = new ArrayList<String>();
         try {
-            
+
             PreparedStatement ps = null;
             ResultSet rs = null;
             Conexion conn = new Conexion();
@@ -48,21 +47,37 @@ public class login extends javax.swing.JFrame {
             String sql = "SELECT * FROM roles";
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
-            
-            while (rs.next()) {                
+
+            while (rs.next()) {
                 lista.add(rs.getString("denominacion"));
             }
-            
+
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
         return lista;
     }
     
-    public static ArrayList<String> llenarComboBOxEscuela(){
+    public void enter(JTextField txt1, JTextField txt2){
+        txt1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                txt2.requestFocus();
+            }
+        });
+        
+        txt2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                notnull();
+            }
+        });
+    }
+
+    public static ArrayList<String> llenarComboBOxEscuela() {
         ArrayList<String> lista2 = new ArrayList<String>();
         try {
-            
+
             PreparedStatement ps = null;
             ResultSet rs = null;
             Conexion conn = new Conexion();
@@ -70,41 +85,82 @@ public class login extends javax.swing.JFrame {
             String sql = "SELECT * FROM escuela";
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
-            
-            while (rs.next()) {                
+
+            while (rs.next()) {
                 lista2.add(rs.getString("nombre_escuela"));
             }
-            
+
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
         return lista2;
     }
-    
-    public void limpiar(){
+
+    public void limpiar() {
         txtContrasenia.setText("");
         txtUsuario.setText("");
         cbxRoles.setSelectedIndex(0);
+        txtUsuario.requestFocus();
     }
-    
-    public void notnull(){        
+
+    public void notnull() {
         String cargo = String.valueOf(cbxRoles.getSelectedItem());
         String user = txtUsuario.getText();
         String pass = txtContrasenia.getText();
-        
-        if(pass.equals("") || user.equals("")){
-            JOptionPane.showMessageDialog(null, "Ingresar usuario y contraseña", "Aviso", JOptionPane.ERROR_MESSAGE );
-            
-        }else{
-            ingresar(cargo, user, pass);
+
+        if (pass.equals("") || user.equals("")) {
+            JOptionPane.showMessageDialog(null, "Ingresar usuario y contraseña", "Aviso", JOptionPane.ERROR_MESSAGE);
+
+        } else {
+
+            if (cargo.equals("DOCENTE")) {
+                if (mtds.buscarUsuario(user, pass, cargo)) {
+                    //formulario para docente
+                    JOptionPane.showMessageDialog(null, "INGRESASTE COMO DOCENTE");
+                    limpiar();
+                } else {
+                    limpiar();
+                }
+            }
+            if (cargo.equals("DIRECTOR DE DEPARTAMENTO")) {
+                if (mtds.buscarUsuario(user, pass, cargo)) {
+                    //formulario para director de escuela
+                    JOptionPane.showMessageDialog(null, "INGRESASTE COMO DIRECTOR DE ESCUELA");
+                    limpiar();
+                } else {
+                    limpiar();
+                }
+            }
+            if (cargo.equals("COMISION-TIPIFICACIÓN")) {
+                if (mtds.buscarUsuario(user, pass, cargo)) {
+                    //formulario para comision-tipificacion
+                    JOptionPane.showMessageDialog(null, "INGRESASTE COMO COMISION DE TIPIFICAICON");
+                    limpiar();
+                } else {
+                    limpiar();
+                }
+            }
+            if (cargo.equals("COMISION-RATIFICACION")) {
+                if (mtds.buscarUsuario(user, pass, cargo)) {
+                    //formulario para comision-ratificacion
+                    JOptionPane.showMessageDialog(null, "INGRESASTE COMO COMISION DE RATIFICACION");
+                    limpiar();
+                } else {
+                    limpiar();
+                }
+            }
+            if (cargo.equals("DECANO")) {
+                if (mtds.buscarUsuario(user, pass, cargo)) {
+                    //formulario para decano
+                    JOptionPane.showMessageDialog(null, "INGRESASTE COMO DECANO");
+                    limpiar();
+                } else {
+                    limpiar();
+                }
+            }
+
         }
-        
-    }
-    
-    public void ingresar(String cargo,String user,String pass){
-        
-        JOptionPane.showMessageDialog(null, pass + user + cargo);
-        limpiar();
+
     }
 
     /**
@@ -118,9 +174,9 @@ public class login extends javax.swing.JFrame {
 
         cbxRoles = new javax.swing.JComboBox<>();
         txtUsuario = new javax.swing.JTextField();
-        txtContrasenia = new javax.swing.JTextField();
         btnIngresar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        txtContrasenia = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -148,10 +204,10 @@ public class login extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
-                        .addComponent(btnIngresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(txtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnIngresar, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE))
                     .addComponent(cbxRoles, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(txtUsuario, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtContrasenia))
                 .addGap(132, 132, 132))
         );
         layout.setVerticalGroup(
@@ -221,7 +277,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JButton btnIngresar;
     private javax.swing.JComboBox<String> cbxRoles;
     private javax.swing.JButton jButton1;
-    private javax.swing.JTextField txtContrasenia;
+    private javax.swing.JPasswordField txtContrasenia;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
