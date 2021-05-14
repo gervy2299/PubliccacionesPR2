@@ -110,7 +110,7 @@ public class login extends javax.swing.JFrame {
         if (pass.equals("") || user.equals("")) {
             JOptionPane.showMessageDialog(null, "Ingresar usuario y contraseña", "Aviso", JOptionPane.ERROR_MESSAGE);
 
-        } else {
+        } else {    
 
             if (cargo.equals("DOCENTE")) {
                 if (mtds.buscarUsuario(user, pass, cargo)) {

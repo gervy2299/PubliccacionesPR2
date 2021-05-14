@@ -42,7 +42,7 @@ public class JF1 extends javax.swing.JFrame {
             cbxEscuela.addItem(lista2.get(i));
         }
         
-        txtUsuario.setEnabled(false);
+        //txtUsuario.setEnabled(false);
         
         llamandoClases();
     }
