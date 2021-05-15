@@ -133,8 +133,7 @@ public class login extends javax.swing.JFrame {
             }
             if (cargo.equals("COMISION-TIPIFICACIÓN")) {
                 if (mtds.buscarUsuario(user, pass, cargo)) {
-                    //formulario para comision-tipificacion
-                    JOptionPane.showMessageDialog(null, "INGRESASTE COMO COMISION DE TIPIFICAICON");
+                    new JF10().setVisible(true);
                     limpiar();
                 } else {
                     limpiar();
