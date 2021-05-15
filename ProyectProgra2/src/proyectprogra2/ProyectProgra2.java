@@ -1,13 +1,13 @@
 
 package proyectprogra2;
 
-import Login.login;
+import Login.LOGIN;
 
 public class ProyectProgra2 {
 
     
     public static void main(String[] args) {
-        new login().setVisible(true);
+        new LOGIN().setVisible(true);
     }
     
 }

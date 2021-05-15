@@ -13,12 +13,12 @@ import javax.swing.JTextField;
 import proyectprogra2.Conexion;
 import proyectprogra2.sqlMetodos;
 
-public class login extends javax.swing.JFrame {
+public class LOGIN extends javax.swing.JFrame {
 
     Conexion cn = new Conexion();
     sqlMetodos mtds = new sqlMetodos();
 
-    public login() {
+    public LOGIN() {
         initComponents();
         this.setLayout(null);
         this.setLocationRelativeTo(null);
@@ -110,61 +110,12 @@ public class login extends javax.swing.JFrame {
         if (pass.equals("") || user.equals("")) {
             JOptionPane.showMessageDialog(null, "Ingresar usuario y contraseña", "Aviso", JOptionPane.ERROR_MESSAGE);
 
-<<<<<<< HEAD
-        } else {    
-
-            if (cargo.equals("DOCENTE")) {
-                if (mtds.buscarUsuario(user, pass, cargo)) {
-                    //Guarda el Dato del usuario y envia al JF2
-                    JF2.usu = user;
-                    new JF2().setVisible(true);
-                    this.dispose();
-                } else {
-                    limpiar();
-                }
-            }
-            if (cargo.equals("DIRECTOR DE DEPARTAMENTO")) {
-                if (mtds.buscarUsuario(user, pass, cargo)) {
-                    //formulario para director de escuela
-                    JOptionPane.showMessageDialog(null, "INGRESASTE COMO DIRECTOR DE ESCUELA");
-                    limpiar();
-                } else {
-                    limpiar();
-                }
-            }
-            if (cargo.equals("COMISION-TIPIFICACIÓN")) {
-                if (mtds.buscarUsuario(user, pass, cargo)) {
-                    new JF10().setVisible(true);
-                    limpiar();
-                } else {
-                    limpiar();
-                }
-            }
-            if (cargo.equals("COMISION-RATIFICACION")) {
-                if (mtds.buscarUsuario(user, pass, cargo)) {
-                    //formulario para comision-ratificacion
-                    JOptionPane.showMessageDialog(null, "INGRESASTE COMO COMISION DE RATIFICACION");
-                    limpiar();
-                } else {
-                    limpiar();
-                }
-            }
-            if (cargo.equals("DECANO")) {
-                if (mtds.buscarUsuario(user, pass, cargo)) {
-                    //formulario para decano
-                    JOptionPane.showMessageDialog(null, "INGRESASTE COMO DECANO");
-                    limpiar();
-                } else {
-                    limpiar();
-                }
-=======
         } else {
             if (mtds.buscarUsuario(user, pass, cargo)) {
-                //Guarda el Dato del usuario y envia al JF2
-                JF2.usu = user;
-                new JF2().setVisible(true);
+                //Guarda el Dato del usuario y envia al MENU
+                MENU.usu = user;
+                new MENU().setVisible(true);
                 this.dispose();
->>>>>>> 49e382104286e8dcec520d0e431172938c074cef
             }
 
         }
@@ -242,7 +193,7 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new JF1().setVisible(true);
+        new REGISTRO_DOCENTE().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -263,20 +214,21 @@ public class login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LOGIN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LOGIN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LOGIN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LOGIN.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new login().setVisible(true);
+                new LOGIN().setVisible(true);
             }
         });
     }
