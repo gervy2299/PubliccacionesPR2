@@ -4,45 +4,54 @@
  * and open the template in the editor.
  */
 package Formularios;
+
 import java.sql.*;
 import javax.swing.JOptionPane;
 import proyectprogra2.Conexion;
+
 /**
  *
  * @author HP
  */
 public class JF9 extends javax.swing.JFrame {
-public static String usu3;
+
+    public static String usu3;
     Conexion co = new Conexion();
     Connection con = co.conexiondb();
-public static String tipo;
-public static String capitulos;
-public static String paginas;
-public static String titulo;
-public static String escuela;
-public static String fecha;
-public static String capitulo;
-public static String pagina;
+    public static String tipo;
+    public static String capitulos;
+    public static String paginas;
+    public static String titulo;
+    public static String escuela;
+    public static String fecha;
+    public static String capitulo;
+    public static String pagina;
+
     /**
      * Creates new form JF9
      */
     public JF9() {
         initComponents();
+        datos();
         datosGen();
+    }
+
+    public void datos() {
         txttipo.setText(tipo);
         txtfecha.setText(fecha);
         txtescuela.setText(escuela);
         txttitulo.setText(titulo);
         txtcap.setText(capitulo);
         txtpag.setText(pagina);
-         txttipo.setEnabled(false);
+        txttipo.setEnabled(false);
         txtcap.setEnabled(false);
         txtescuela.setEnabled(false);
         txtfecha.setEnabled(false);
         txtpag.setEnabled(false);
         txttitulo.setEnabled(false);
     }
-public void datosGen() {
+
+    public void datosGen() {
         String[] registros = new String[4];
         String docente = "";
         String sql = "CALL p_usuario('" + usu3 + "');";
@@ -63,6 +72,23 @@ public void datosGen() {
             JOptionPane.showMessageDialog(null, "Error al obtener datos" + e.getMessage(), "Mensaje", 0);
         }
     }
+
+    public void mEstado() {
+        datos();
+        PreparedStatement ps = null;
+        try {
+            Conexion objC = new Conexion();
+            Connection conn = objC.conexiondb();
+            ps = conn.prepareStatement("UPDATE publicaciones SET fkestado_publicacion=2 WHERE titulo=?");
+            System.err.println("error : " + ps);
+            ps.setString(1, txttitulo.getText());
+            ps.execute();
+            JOptionPane.showMessageDialog(null, "Estado Modificado");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al actualizar Estado: \n" + e);
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -253,6 +279,11 @@ public void datosGen() {
         jButton3.setText("RECHAZAR");
 
         jButton4.setText("ACEPTAR");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -342,6 +373,10 @@ public void datosGen() {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        mEstado();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

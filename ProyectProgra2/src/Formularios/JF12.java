@@ -65,6 +65,20 @@ public static String pagina;
             JOptionPane.showMessageDialog(null, "Error al obtener datos" + e.getMessage(), "Mensaje", 0);
         }
     }
+     
+    public void modificarEst() {
+        PreparedStatement ps = null;
+        try {
+            Conexion objC = new Conexion();
+            Connection conn = objC.conexiondb();
+            ps = conn.prepareStatement("UPDATE publicaciones SET fkestado_publicacion=3 WHERE titulo=?");
+            ps.setString(1, txttitulo.getText());
+            ps.execute();
+            JOptionPane.showMessageDialog(rootPane, "Estado Modificado");
+        } catch ( SQLException e) {
+            JOptionPane.showMessageDialog(rootPane, "Error al actualizar Estado: \n" + e);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -110,7 +124,7 @@ public static String pagina;
         jLabel36 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnAceptar = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         articulo21 = new javax.swing.JCheckBox();
         articulo23 = new javax.swing.JCheckBox();
@@ -286,7 +300,12 @@ public static String pagina;
 
         jButton3.setText("RECHAZAR");
 
-        jButton4.setText("ACEPTAR");
+        btnAceptar.setText("ACEPTAR");
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptarActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("ARTICULOS");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -304,8 +323,8 @@ public static String pagina;
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton2)
-                        .addGap(43, 43, 43)
-                        .addComponent(jButton3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton5))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -330,9 +349,9 @@ public static String pagina;
                         .addComponent(jLabel36)
                         .addGap(18, 18, 18)
                         .addComponent(articulo27, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel30, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel31, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -350,9 +369,10 @@ public static String pagina;
                             .addComponent(articulo32, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(articulo33, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton5)
-                        .addGap(43, 43, 43)
-                        .addComponent(jButton4)))
+                        .addGap(125, 125, 125)
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAceptar)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -419,7 +439,7 @@ public static String pagina;
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton3)
-                    .addComponent(jButton4)
+                    .addComponent(btnAceptar)
                     .addComponent(jButton5))
                 .addContainerGap(12, Short.MAX_VALUE))
         );
@@ -456,6 +476,10 @@ public static String pagina;
         JF6 jf6=new JF6();
         jf6.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
+        modificarEst();
+    }//GEN-LAST:event_btnAceptarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -506,10 +530,10 @@ public static String pagina;
     private javax.swing.JCheckBox articulo31;
     private javax.swing.JCheckBox articulo32;
     private javax.swing.JCheckBox articulo33;
+    private javax.swing.JButton btnAceptar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

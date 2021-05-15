@@ -138,6 +138,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="LOGOUT"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExitActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblTipUsu">
           <Properties>
@@ -197,10 +200,8 @@
                               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="cmbEsc" alignment="0" max="32767" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="txtCantCap" alignment="0" pref="76" max="32767" attributes="0"/>
-                              <Component id="txtCantPag" alignment="0" max="32767" attributes="0"/>
-                          </Group>
+                          <Component id="txtCantCap" alignment="0" pref="76" max="32767" attributes="0"/>
+                          <Component id="txtCantPag" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <Component id="btnEnviar" min="-2" pref="87" max="-2" attributes="0"/>
                   </Group>

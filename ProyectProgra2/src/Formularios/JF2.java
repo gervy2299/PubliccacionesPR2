@@ -5,6 +5,7 @@
  */
 package Formularios;
 
+import Login.login;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,14 +21,26 @@ public class JF2 extends javax.swing.JFrame {
 
     Conexion co = new Conexion();
     Connection con = co.conexiondb();
+    String tipUser="";
     //recibe el dato del Login
-    public static String usu;
+    public static String usu="JUA312";
+
     /**
      * Creates new form JF2
+    */
+    
+    //Eliminar Forms
+    /*
+            JF7
+            JF10
+            JF13
+            JF16
      */
+    
     public JF2() {
         initComponents();
         datosGen();
+        tipoUsuario();
     }
 
     public void datosGen() {
@@ -44,10 +57,68 @@ public class JF2 extends javax.swing.JFrame {
                 registros[3] = rs.getString("r.denominacion");
             }
             docente = registros[1] + " " + registros[2] + " " + registros[0];
+            tipUser=registros[3];
             lblNom.setText(" " + docente.toUpperCase());
             lblTipUsu.setText(" " + registros[3]);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al obtener datos" + e.getMessage(), "Mensaje", 0);
+        }
+    }
+
+    public void tipoUsuario() {
+        switch (tipUser) {
+            case "DOCENTE":
+                btnNewPub.setVisible(true);
+                btnPub.setVisible(true);
+                btnInfArt.setVisible(true);
+                btnValTip.setVisible(false);
+                btnValRat.setVisible(false);
+                btnValDir.setVisible(false);
+                btnValDec.setVisible(false);
+                break;
+            case "COMISION-TIPIFICACIÓN":
+                btnNewPub.setVisible(false);
+                btnPub.setVisible(false);
+                btnInfArt.setVisible(false);
+                //Activo
+                btnValTip.setVisible(true);
+                btnValRat.setVisible(false);
+                btnValDir.setVisible(false);
+                btnValDec.setVisible(false);
+                break;
+            case "COMISION-RATIFICACION":
+                btnNewPub.setVisible(false);
+                btnPub.setVisible(false);
+                btnInfArt.setVisible(false);
+                btnValTip.setVisible(false);
+                //Activo
+                btnValRat.setVisible(true);
+                btnValDir.setVisible(false);
+                btnValDec.setVisible(false);
+                break;
+            case "DIRECTOR DE DEPARTAMENTO":
+                btnNewPub.setVisible(false);
+                btnPub.setVisible(false);
+                btnInfArt.setVisible(false);
+                btnValTip.setVisible(false);
+                btnValRat.setVisible(false);
+                //Activo
+                btnValDir.setVisible(true);
+                btnValDec.setVisible(false);
+                break;
+            case "DECANO":
+                btnNewPub.setVisible(false);
+                btnPub.setVisible(false);
+                btnInfArt.setVisible(false);
+                btnValTip.setVisible(false);
+                btnValRat.setVisible(false);
+                btnValDir.setVisible(false);
+                //Activo
+                btnValDec.setVisible(true);
+                break;
+                
+            default:
+                JOptionPane.showMessageDialog(rootPane, "Error en tipo de usuario","Mensaje",0);
         }
     }
 
@@ -73,6 +144,15 @@ public class JF2 extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         btnInfArt = new javax.swing.JButton();
         btnPro = new javax.swing.JButton();
+        btnValTip = new javax.swing.JButton();
+        btnValRat = new javax.swing.JButton();
+        btnValDir = new javax.swing.JButton();
+        btnValDec = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -138,76 +218,97 @@ public class JF2 extends javax.swing.JFrame {
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnNewPub.setBackground(new java.awt.Color(255, 0, 0));
-        btnNewPub.setText("NEW PUBLICATION");
+        btnNewPub.setText("Nueva Publicación");
         btnNewPub.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNewPubActionPerformed(evt);
             }
         });
+        jPanel2.add(btnNewPub, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 140, 40));
 
         btnPub.setBackground(new java.awt.Color(0, 204, 0));
-        btnPub.setText("PUBLICATIONS");
+        btnPub.setText("Publicaciones");
         btnPub.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPubActionPerformed(evt);
             }
         });
+        jPanel2.add(btnPub, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 130, 40));
 
         jLabel6.setText("INTERFAS DE MENU PRINCIPAL");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 12, -1, -1));
 
         btnInfArt.setBackground(new java.awt.Color(0, 0, 204));
-        btnInfArt.setText("INF. ARTCLES");
+        btnInfArt.setText("Inf. Artículos");
         btnInfArt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInfArtActionPerformed(evt);
             }
         });
+        jPanel2.add(btnInfArt, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, 140, 40));
 
         btnPro.setBackground(new java.awt.Color(255, 255, 0));
-        btnPro.setText("PROFILE");
+        btnPro.setText("Perfil");
         btnPro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProActionPerformed(evt);
             }
         });
+        jPanel2.add(btnPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 260, 160));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnNewPub, javax.swing.GroupLayout.DEFAULT_SIZE, 171, Short.MAX_VALUE)
-                            .addComponent(btnInfArt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(36, 36, 36)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnPro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnPub, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(176, 176, 176)
-                        .addComponent(jLabel6)))
-                .addContainerGap(64, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel6)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNewPub, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPub, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPro, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnInfArt, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 22, Short.MAX_VALUE))
-        );
+        btnValTip.setBackground(new java.awt.Color(153, 0, 153));
+        btnValTip.setText("Validar");
+        btnValTip.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnValTipActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnValTip, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 120, 40));
+
+        btnValRat.setBackground(new java.awt.Color(204, 0, 0));
+        btnValRat.setText("Validar");
+        btnValRat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnValRatActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnValRat, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 120, 40));
+
+        btnValDir.setBackground(new java.awt.Color(0, 204, 255));
+        btnValDir.setText("Validar");
+        btnValDir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnValDirActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnValDir, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 120, 40));
+
+        btnValDec.setBackground(new java.awt.Color(153, 102, 0));
+        btnValDec.setText("Validar");
+        btnValDec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnValDecActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnValDec, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 120, 40));
+
+        jLabel3.setText("comTip");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+
+        jLabel4.setText("comRat");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
+
+        jLabel7.setText("Director");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
+
+        jLabel8.setText("Decano");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
+
+        jLabel9.setText("Docente");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -218,7 +319,7 @@ public class JF2 extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,7 +327,7 @@ public class JF2 extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -234,32 +335,51 @@ public class JF2 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        System.exit(0);
+        login lg = new login();
+        lg.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnNewPubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewPubActionPerformed
-        JF4.usu4=usu;
-        JF4 jf4=new JF4();
+        JF4.usu4 = usu;
+        JF4 jf4 = new JF4();
         jf4.setVisible(true);
     }//GEN-LAST:event_btnNewPubActionPerformed
 
     private void btnPubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPubActionPerformed
-        JF5.usu5=usu;
-        JF5 jf5=new JF5();
+        JF5.usu5 = usu;
+        JF5 jf5 = new JF5();
         jf5.setVisible(true);
     }//GEN-LAST:event_btnPubActionPerformed
 
     private void btnInfArtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfArtActionPerformed
-        JF6.usu6=usu;
-        JF6 jf6=new JF6();
+        JF6.usu6 = usu;
+        JF6 jf6 = new JF6();
         jf6.setVisible(true);
     }//GEN-LAST:event_btnInfArtActionPerformed
 
     private void btnProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProActionPerformed
-        JF3.usu3=usu;
-        JF3 jf3=new JF3();
+        JF3.usu3 = usu;
+        JF3 jf3 = new JF3();
         jf3.setVisible(true);
+
     }//GEN-LAST:event_btnProActionPerformed
+
+    private void btnValTipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValTipActionPerformed
+        new JF8().setVisible(true);
+    }//GEN-LAST:event_btnValTipActionPerformed
+
+    private void btnValRatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValRatActionPerformed
+        new JF11().setVisible(true);
+    }//GEN-LAST:event_btnValRatActionPerformed
+
+    private void btnValDirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValDirActionPerformed
+        new JF14().setVisible(true);
+    }//GEN-LAST:event_btnValDirActionPerformed
+
+    private void btnValDecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValDecActionPerformed
+        new JF17().setVisible(true);
+    }//GEN-LAST:event_btnValDecActionPerformed
 
     /**
      * @param args the command line arguments
@@ -288,6 +408,8 @@ public class JF2 extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -303,10 +425,19 @@ public class JF2 extends javax.swing.JFrame {
     private javax.swing.JButton btnNewPub;
     private javax.swing.JButton btnPro;
     private javax.swing.JButton btnPub;
+    private javax.swing.JButton btnValDec;
+    private javax.swing.JButton btnValDir;
+    private javax.swing.JButton btnValRat;
+    private javax.swing.JButton btnValTip;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblNom;

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Formularios;
+
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -15,10 +16,12 @@ import proyectprogra2.Conexion;
  * @author HP
  */
 public class JF11 extends javax.swing.JFrame {
-DefaultTableModel model = new DefaultTableModel();
+
+    DefaultTableModel model = new DefaultTableModel();
     Conexion co = new Conexion();
     Connection con = co.conexiondb();
     public static String usu5;
+
     /**
      * Creates new form JF11
      */
@@ -28,7 +31,8 @@ DefaultTableModel model = new DefaultTableModel();
         cabecera();
         llenarCategria();
     }
-public void datosGen() {
+
+    public void datosGen() {
         String[] registros = new String[4];
         String docente = "";
         String sql = "CALL p_usuario('" + usu5 + "');";
@@ -48,8 +52,9 @@ public void datosGen() {
             JOptionPane.showMessageDialog(null, "Error al obtener datos" + e.getMessage(), "Mensaje", 0);
         }
     }
-public void cabecera() {
-        String[] tit = {"DNI","Autor", "Titulo", "Paginas", "Capitulos", "Fecha", "Escuela", "tipo publicacion", "Estado"};
+
+    public void cabecera() {
+        String[] tit = {"DNI", "Autor", "Titulo", "Paginas", "Capitulos", "Fecha", "Escuela", "tipo publicacion", "Estado"};
         model.setColumnIdentifiers(tit);
         TablaRati.setModel(model);
     }
@@ -59,7 +64,8 @@ public void cabecera() {
             md.removeRow(0);
         }
     }
-    public void llenarCategria(){
+
+    public void llenarCategria() {
         try {
             limpiarTabla(TablaRati, model);
             PreparedStatement ps = null;
@@ -73,74 +79,71 @@ public void cabecera() {
             int cantidadColumnas = rsMd.getColumnCount();
             int[] anchos = {100, 100, 100, 100, 100, 100, 100, 100, 100};
             for (int i = 0; i < TablaRati.getColumnCount(); i++) {
-                TablaRati.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);                                
+                TablaRati.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
             }
-            while (rs.next()) {                
+            while (rs.next()) {
                 Object[] filas = new Object[cantidadColumnas];
                 for (int i = 0; i < cantidadColumnas; i++) {
-                    filas[i] = rs.getObject(i+1);                    
+                    filas[i] = rs.getObject(i + 1);
                 }
                 model.addRow(filas);
             }
             //int i = TablaRati.getRowCount()+1;
-         //   txtdni.setText(Integer.toString(i));
+            //   txtdni.setText(Integer.toString(i));
         } catch (SQLException ex) {
             System.out.println(ex.toString());
         }
     }
-    public void buscarCat(String campo){
-         campo = txtdni.getText();
+
+    
+    public void buscarCat(String campo) {
 //        String where = "";
-//        if(!"".equals(campo)){
-//            where = " WHERE categoria = '" +campo+"'";
+//        if(!txtdni.getText().equals("")){
+//            where = "WHERE DNI LIKE'%" + campo + "%'";
 //        }
-        
         try {
             TablaRati.setModel(model);
             PreparedStatement ps = null;
             ResultSet rs = null;
-            Conexion objCon = new Conexion();
-            Connection conn = objCon.conexiondb();
-            
-            String  sql = "CALL p_busrati1('"+campo+"')"; //+ where
-            System.out.println(sql);
+            Conexion objC = new Conexion();
+            Connection conn = objC.conexiondb();
+            String sql = "select re.DNI, re.NOMBRE, re.TITULO, re.PAGINAS, re.CAPITULO, re.FECHA, re.ESCUELA, re.TIPO, re.ESTADO from rati_estado1 re WHERE DNI LIKE'%" + campo + "%'";
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
-            
+
             ResultSetMetaData rsMd = (ResultSetMetaData) rs.getMetaData();
             int cantidadColumnas = rsMd.getColumnCount();
-            int[] anchos = {100, 100, 100, 100, 100, 100, 100, 100,100};
-            for(int i = 0 ; i<TablaRati.getColumnCount();i++){
-                TablaRati.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
-            }
+            
             limpiarTabla(TablaRati, model);
-            while(rs.next()){
-                Object[] filas = new Object[cantidadColumnas];
-                for(int i =0; i<cantidadColumnas; i++){
-                    filas[i] = rs.getObject(i+1);
+            while (rs.next()) {
+                Object[] filas= new Object[cantidadColumnas];
+                for (int i = 0; i < cantidadColumnas; i++) {
+                    filas[i]=rs.getObject(i+1);
                 }
                 model.addRow(filas);
             }
-        } catch (SQLException ex) {
-            System.out.println(ex.toString());
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(rootPane, "Error al buscar Articulo: \n" + e);
         }
     }
-    public void pasarDato(){
-            
-           int Fila = TablaRati.getSelectedRow();
-            String tituloT= TablaRati.getValueAt(Fila, 2).toString();
-            String paginaT= TablaRati.getValueAt(Fila, 3).toString();
-            String capituloT= TablaRati.getValueAt(Fila, 4).toString();
-            String fechaT = TablaRati.getValueAt(Fila, 5).toString();
-            String escuelaT = TablaRati.getValueAt(Fila, 6).toString();
-            String tipoT = TablaRati.getValueAt(Fila, 7).toString();
-            JF12.titulo=tituloT;
-            JF12.tipo=tipoT;
-            JF12.escuela=escuelaT;
-            JF12.fecha=fechaT;
-            JF12.pagina=paginaT;
-            JF12.capitulo=capituloT;
+
+    public void pasarDato() {
+
+        int Fila = TablaRati.getSelectedRow();
+        String tituloT = TablaRati.getValueAt(Fila, 2).toString();
+        String paginaT = TablaRati.getValueAt(Fila, 3).toString();
+        String capituloT = TablaRati.getValueAt(Fila, 4).toString();
+        String fechaT = TablaRati.getValueAt(Fila, 5).toString();
+        String escuelaT = TablaRati.getValueAt(Fila, 6).toString();
+        String tipoT = TablaRati.getValueAt(Fila, 7).toString();
+        JF12.titulo = tituloT;
+        JF12.tipo = tipoT;
+        JF12.escuela = escuelaT;
+        JF12.fecha = fechaT;
+        JF12.pagina = paginaT;
+        JF12.capitulo = capituloT;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -161,9 +164,9 @@ public void cabecera() {
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaRati = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnValidar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        txtdni = new javax.swing.JFormattedTextField();
+        txtdni = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -238,20 +241,15 @@ public void cabecera() {
 
         jButton2.setText("ATRAS");
 
-        jButton3.setText("VALIDAR");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnValidar.setText("VALIDAR");
+        btnValidar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnValidarActionPerformed(evt);
             }
         });
 
         jLabel6.setText("TITULO:");
 
-        try {
-            txtdni.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#########")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
         txtdni.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtdniKeyReleased(evt);
@@ -265,16 +263,16 @@ public void cabecera() {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(37, 37, 37)
-                        .addComponent(jButton3))
+                        .addComponent(btnValidar))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addGap(18, 18, 18)
-                        .addComponent(txtdni, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtdni, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -290,7 +288,7 @@ public void cabecera() {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(btnValidar))
                 .addGap(0, 11, Short.MAX_VALUE))
         );
 
@@ -318,14 +316,14 @@ public void cabecera() {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtdniKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtdniKeyReleased
-          buscarCat(txtdni.getText());
-    }//GEN-LAST:event_txtdniKeyReleased
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValidarActionPerformed
         pasarDato();
         new JF12().setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnValidarActionPerformed
+
+    private void txtdniKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtdniKeyReleased
+        buscarCat(txtdni.getText());
+    }//GEN-LAST:event_txtdniKeyReleased
 
     /**
      * @param args the command line arguments
@@ -364,9 +362,9 @@ public void cabecera() {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TablaRati;
+    private javax.swing.JButton btnValidar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -376,6 +374,6 @@ public void cabecera() {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JFormattedTextField txtdni;
+    private javax.swing.JTextField txtdni;
     // End of variables declaration//GEN-END:variables
 }

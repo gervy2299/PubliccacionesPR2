@@ -5,6 +5,7 @@
  */
 package Formularios;
 
+import Login.login;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -31,6 +32,7 @@ public class JF6 extends javax.swing.JFrame {
     /**
      * Creates new form JF6
      */
+    
     public JF6() {
         initComponents();
         datosGen();
@@ -147,7 +149,7 @@ public class JF6 extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         lblNom = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnLog = new javax.swing.JButton();
         lblTipUsu = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -171,7 +173,12 @@ public class JF6 extends javax.swing.JFrame {
 
         jLabel5.setText("DOCENTE");
 
-        jButton1.setText("LOGOUT");
+        btnLog.setText("LOGOUT");
+        btnLog.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogActionPerformed(evt);
+            }
+        });
 
         lblTipUsu.setText("jLabel4");
 
@@ -193,7 +200,7 @@ public class JF6 extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnLog, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48))
         );
         jPanel1Layout.setVerticalGroup(
@@ -213,7 +220,7 @@ public class JF6 extends javax.swing.JFrame {
                     .addComponent(lblTipUsu)))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btnLog)
                 .addContainerGap())
         );
 
@@ -340,6 +347,12 @@ public class JF6 extends javax.swing.JFrame {
         buscarAutor(txtnArt.getText());
     }//GEN-LAST:event_txtnArtKeyReleased
 
+    private void btnLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogActionPerformed
+        login lg=new login();
+        lg.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnLogActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -367,6 +380,8 @@ public class JF6 extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -377,7 +392,7 @@ public class JF6 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnLog;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

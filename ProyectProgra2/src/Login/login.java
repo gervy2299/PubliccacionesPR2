@@ -110,6 +110,7 @@ public class login extends javax.swing.JFrame {
         if (pass.equals("") || user.equals("")) {
             JOptionPane.showMessageDialog(null, "Ingresar usuario y contraseña", "Aviso", JOptionPane.ERROR_MESSAGE);
 
+<<<<<<< HEAD
         } else {    
 
             if (cargo.equals("DOCENTE")) {
@@ -156,6 +157,14 @@ public class login extends javax.swing.JFrame {
                 } else {
                     limpiar();
                 }
+=======
+        } else {
+            if (mtds.buscarUsuario(user, pass, cargo)) {
+                //Guarda el Dato del usuario y envia al JF2
+                JF2.usu = user;
+                new JF2().setVisible(true);
+                this.dispose();
+>>>>>>> 49e382104286e8dcec520d0e431172938c074cef
             }
 
         }
