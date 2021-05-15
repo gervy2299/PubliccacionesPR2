@@ -23,9 +23,9 @@ DefaultTableModel model = new DefaultTableModel();
      */
     public JF8() {
         initComponents();
-        datosGen();
         cabecera();
         llenarCategria();
+        datosGen();
     }
 public void datosGen() {
         String[] registros = new String[4];
@@ -64,7 +64,7 @@ public void llenarCategria(){
             ResultSet rs = null;
             Conexion conn = new Conexion();
             Connection con = conn.conexiondb();
-            String sql = "SELECT * FROM rati_estado";
+            String sql = "SELECT * FROM tipi_estado";
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             ResultSetMetaData rsMd = (ResultSetMetaData) rs.getMetaData();
@@ -100,7 +100,7 @@ public void llenarCategria(){
             Conexion objCon = new Conexion();
             Connection conn = objCon.conexiondb();
             
-            String  sql = "CALL p_busrati('"+campo+"')"; //+ where
+            String  sql = "CALL p_bustipi('"+campo+"')"; //+ where
             System.out.println(sql);
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();

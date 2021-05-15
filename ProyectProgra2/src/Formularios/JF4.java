@@ -5,6 +5,7 @@
  */
 package Formularios;
 
+import Login.login;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -27,6 +28,7 @@ public class JF4 extends javax.swing.JFrame {
     /**
      * Creates new form JF4
      */
+    
     public JF4() {
         initComponents();
         datosGen();
@@ -101,6 +103,7 @@ public class JF4 extends javax.swing.JFrame {
                 break;
             case "MANUAL":
                 txtCantCap.setEnabled(false);
+                txtCantCap.setText("0");
                 txtCantPag.setEnabled(true);
                 txtCantPag.setText("");
                 break;
@@ -154,7 +157,6 @@ public class JF4 extends javax.swing.JFrame {
         cmbTipPub.setEnabled(false);
         txtCantCap.setEnabled(false);
         txtCantPag.setEnabled(false);
-        JOptionPane.showMessageDialog(rootPane, "Publicacion Enviado con éxito", "Informacion", 1);
     }
 
     public void insertarPublicacion() {
@@ -175,6 +177,7 @@ public class JF4 extends javax.swing.JFrame {
             ps.setString(8, "1");
             ps.execute();
             NoModDat();
+            JOptionPane.showMessageDialog(rootPane, "Publicacion Enviado con éxito", "Informacion", 1);
         } catch (HeadlessException | SQLException e) {
             JOptionPane.showMessageDialog(rootPane, "Error al guardar Autor: \n" + e);
         }
@@ -226,6 +229,11 @@ public class JF4 extends javax.swing.JFrame {
         jLabel5.setText("DOCENTE");
 
         btnExit.setText("LOGOUT");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
 
         lblTipUsu.setText("jLabel4");
 
@@ -342,9 +350,8 @@ public class JF4 extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jLabel3))
                         .addComponent(cmbEsc, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtCantCap, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
-                            .addComponent(txtCantPag, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addComponent(txtCantCap, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                        .addComponent(txtCantPag))
                     .addComponent(btnEnviar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
@@ -425,8 +432,8 @@ public class JF4 extends javax.swing.JFrame {
             if (!txtCantPag.getText().equals("")) {
                 if (!txtCantCap.getText().equals("")) {
                     if (!txtFec.getText().equals("")) {
-                        //NoModDat();
-                        //insertarPublicacion();
+                        NoModDat();
+                        insertarPublicacion();
                     } else {
                         JOptionPane.showMessageDialog(rootPane, "Faltan Fecha", "Mensajo de advertencia", 0);
                     }
@@ -440,6 +447,12 @@ public class JF4 extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Faltan Nombre de la publicacion", "Mensajo de advertencia", 0);
         }
     }//GEN-LAST:event_btnEnviarActionPerformed
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        login lg=new login();
+        lg.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnExitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -466,6 +479,8 @@ public class JF4 extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(JF4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

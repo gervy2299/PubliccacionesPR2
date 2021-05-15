@@ -111,52 +111,11 @@ public class login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ingresar usuario y contraseña", "Aviso", JOptionPane.ERROR_MESSAGE);
 
         } else {
-
-            if (cargo.equals("DOCENTE")) {
-                if (mtds.buscarUsuario(user, pass, cargo)) {
-                    //Guarda el Dato del usuario y envia al JF2
-                    JF2.usu = user;
-                    new JF2().setVisible(true);
-                    this.dispose();
-                } else {
-                    limpiar();
-                }
-            }
-            if (cargo.equals("DIRECTOR DE DEPARTAMENTO")) {
-                if (mtds.buscarUsuario(user, pass, cargo)) {
-                    //formulario para director de escuela
-                    JOptionPane.showMessageDialog(null, "INGRESASTE COMO DIRECTOR DE ESCUELA");
-                    limpiar();
-                } else {
-                    limpiar();
-                }
-            }
-            if (cargo.equals("COMISION-TIPIFICACIÓN")) {
-                if (mtds.buscarUsuario(user, pass, cargo)) {
-                    //formulario para comision-tipificacion
-                    JOptionPane.showMessageDialog(null, "INGRESASTE COMO COMISION DE TIPIFICAICON");
-                    limpiar();
-                } else {
-                    limpiar();
-                }
-            }
-            if (cargo.equals("COMISION-RATIFICACION")) {
-                if (mtds.buscarUsuario(user, pass, cargo)) {
-                    //formulario para comision-ratificacion
-                    JOptionPane.showMessageDialog(null, "INGRESASTE COMO COMISION DE RATIFICACION");
-                    limpiar();
-                } else {
-                    limpiar();
-                }
-            }
-            if (cargo.equals("DECANO")) {
-                if (mtds.buscarUsuario(user, pass, cargo)) {
-                    //formulario para decano
-                    JOptionPane.showMessageDialog(null, "INGRESASTE COMO DECANO");
-                    limpiar();
-                } else {
-                    limpiar();
-                }
+            if (mtds.buscarUsuario(user, pass, cargo)) {
+                //Guarda el Dato del usuario y envia al JF2
+                JF2.usu = user;
+                new JF2().setVisible(true);
+                this.dispose();
             }
 
         }
