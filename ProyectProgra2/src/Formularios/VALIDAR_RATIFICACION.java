@@ -79,7 +79,101 @@ public class VALIDAR_RATIFICACION extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Error al actualizar Estado: \n" + e);
         }
     }
-    
+    public void EstadoRechazado() {
+        PreparedStatement ps = null;
+        try {
+            Conexion objC = new Conexion();
+            Connection conn = objC.conexiondb();
+            ps = conn.prepareStatement("UPDATE publicaciones SET fkestado_publicacion=5 WHERE titulo=?");
+            ps.setString(1, txttitulo.getText());
+            ps.execute();
+            JOptionPane.showMessageDialog(rootPane, "Estado Modificado");
+        } catch ( SQLException e) {
+            JOptionPane.showMessageDialog(rootPane, "Error al actualizar Estado: \n" + e);
+        }
+    }
+    public void tipoUsuario() {
+        switch (tipo) {
+            case "LIBRO":
+                articulo21.setVisible(true);
+                articulo22.setVisible(true);
+                articulo23.setVisible(true);
+                articulo24.setVisible(true);
+                articulo25.setVisible(false);
+                articulo26.setVisible(false);
+                articulo27.setVisible(false);
+                articulo28.setVisible(false);
+                articulo29.setVisible(false);
+                articulo30.setVisible(false);
+                articulo31.setVisible(false);
+                articulo32.setVisible(false);
+                articulo33.setVisible(false);
+                break;
+            case "MANUAL":
+                articulo21.setVisible(false);
+                articulo22.setVisible(false);
+                articulo23.setVisible(false);
+                articulo24.setVisible(false);
+                articulo25.setVisible(true);
+                articulo26.setVisible(true);
+                articulo27.setVisible(true);
+                articulo28.setVisible(false);
+                articulo29.setVisible(false);
+                articulo30.setVisible(false);
+                articulo31.setVisible(false);
+                articulo32.setVisible(false);
+                articulo33.setVisible(false);
+                break;
+            case "ENSAYO":
+                articulo21.setVisible(false);
+                articulo22.setVisible(false);
+                articulo23.setVisible(false);
+                articulo24.setVisible(false);
+                articulo25.setVisible(false);
+                articulo26.setVisible(false);
+                articulo27.setVisible(false);
+                articulo28.setVisible(true);
+                articulo29.setVisible(true);
+                articulo30.setVisible(false);
+                articulo31.setVisible(false);
+                articulo32.setVisible(false);
+                articulo33.setVisible(false);
+                break;
+            case "GUIA":
+                articulo21.setVisible(false);
+                articulo22.setVisible(false);
+                articulo23.setVisible(false);
+                articulo24.setVisible(false);
+                articulo25.setVisible(false);
+                articulo26.setVisible(false);
+                articulo27.setVisible(false);
+                articulo28.setVisible(false);
+                articulo29.setVisible(false);
+                articulo30.setVisible(true);
+                articulo31.setVisible(true);
+                articulo32.setVisible(false);
+                articulo33.setVisible(false);
+                break;
+            case "FOLLETOS":
+                articulo21.setVisible(false);
+                articulo22.setVisible(false);
+                articulo23.setVisible(false);
+                articulo24.setVisible(false);
+                articulo25.setVisible(false);
+                articulo26.setVisible(false);
+                articulo27.setVisible(false);
+                articulo28.setVisible(false);
+                articulo29.setVisible(false);
+                articulo30.setVisible(false);
+                articulo31.setVisible(false);
+                articulo32.setVisible(true);
+                articulo33.setVisible(true);
+                break;
+                
+            default:
+                JOptionPane.showMessageDialog(rootPane, "Error en tipo de publicacion");
+        }
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -295,6 +389,11 @@ public class VALIDAR_RATIFICACION extends javax.swing.JFrame {
         jButton2.setText("CANCELAR");
 
         jButton3.setText("RECHAZAR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         btnAceptar.setText("ACEPTAR");
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -473,8 +572,33 @@ public class VALIDAR_RATIFICACION extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        modificarEst();
+        if(articulo21.isSelected() && articulo22.isSelected() && articulo23.isSelected() && articulo24.isSelected() ){
+           JOptionPane.showMessageDialog(null,"Requerimientos cumplidos para libro!!");
+            modificarEst();
+       }
+       if(articulo25.isSelected() && articulo26.isSelected() && articulo27.isSelected()){
+           JOptionPane.showMessageDialog(null,"Requerimientos cumplidos para manual!!");
+            modificarEst();
+       }
+       if(articulo28.isSelected() && articulo29.isSelected()){
+           JOptionPane.showMessageDialog(null,"Requerimientos cumplidos para ensayo!!");
+            modificarEst();
+       }
+       if(articulo30.isSelected() && articulo31.isSelected()){
+           JOptionPane.showMessageDialog(null,"Requerimientos cumplidos para guias!!");
+            modificarEst();
+       }
+       if(articulo32.isSelected() && articulo33.isSelected()){
+           JOptionPane.showMessageDialog(null,"Requerimientos cumplidos para folletos!!");
+            modificarEst();
+       }
+    
+    
     }//GEN-LAST:event_btnAceptarActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        EstadoRechazado();
+    }//GEN-LAST:event_jButton3ActionPerformed
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
