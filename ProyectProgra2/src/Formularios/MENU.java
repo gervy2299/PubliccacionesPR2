@@ -23,7 +23,7 @@ public class MENU extends javax.swing.JFrame {
     Connection con = co.conexiondb();
     String tipUser="";
     //recibe el dato del Login
-    public static String usu="JUA312";
+    public static String usu;
 
     /**
      * Creates new form JF2
@@ -119,6 +119,8 @@ public class MENU extends javax.swing.JFrame {
                 
             default:
                 JOptionPane.showMessageDialog(rootPane, "Error en tipo de usuario","Mensaje",0);
+                this.setVisible(false);
+                new LOGIN().setVisible(true);
         }
     }
 
