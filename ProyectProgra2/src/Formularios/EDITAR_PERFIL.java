@@ -23,7 +23,7 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
     public static String usu3;
     Conexion co = new Conexion();
     Connection con = co.conexiondb();
-    
+
     /**
      * Creates new form JF3
      */
@@ -34,19 +34,19 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
         ocultar(false);
     }
 
-    public void ocultar(boolean estado){
+    public void ocultar(boolean estado) {
         txtjfDni.setEnabled(estado);
-            txtNom.setEnabled(estado);
-            txtApePat.setEnabled(estado);
-            txtApeMat.setEnabled(estado);
-            txtjfFecNac.setEnabled(estado);
-            txtDir.setEnabled(estado);
-            txtjfTel.setEnabled(estado);
-            txtUsu.setEnabled(estado);
-            txtCon.setEnabled(estado);
-            txtCon1.setEnabled(estado);
+        txtNom.setEnabled(estado);
+        txtApePat.setEnabled(estado);
+        txtApeMat.setEnabled(estado);
+        txtjfFecNac.setEnabled(estado);
+        txtDir.setEnabled(estado);
+        txtjfTel.setEnabled(estado);
+        txtUsu.setEnabled(estado);
+        txtCon.setEnabled(estado);
+        txtCon1.setEnabled(estado);
     }
-    
+
     public void datosGen() {
         String[] registros = new String[4];
         String docente = "";
@@ -67,7 +67,7 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error al obtener datos" + e.getMessage(), "Mensaje", 0);
         }
     }
-    
+
     public void comboEstado() {
         try {
             PreparedStatement ps = null;
@@ -84,7 +84,7 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Error al cargar datos: \n" + e);
         }
     }
-    
+
     public void cargarDatos() {
         String[] registros = new String[10];
         String sql = "CALL p_docente('" + usu3 + "');";
@@ -114,20 +114,20 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
             txtCon.setText(registros[8]);
             txtCon1.setText(registros[8]);
             comboEstado();
-            cmbCar.setSelectedIndex(Integer.parseInt(registros[9])-1);
+            cmbCar.setSelectedIndex(Integer.parseInt(registros[9]) - 1);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al obtener datos" + e.getMessage(), "Mensaje", 0);
         }
     }
-    
+
     public void modificarInfo() {
         PreparedStatement ps = null;
         try {
             Conexion objC = new Conexion();
             Connection conn = objC.conexiondb();
             ps = conn.prepareStatement("UPDATE docentes SET DNI=?,nombres=?,apellido_pat=?,apellido_mat=?,"
-                    +"fecha_nacimiento=?,domicilio=?,telefono=?,usuario=?,contrasenia=?"
-                    + " WHERE usuario='"+usu3+"';");
+                    + "fecha_nacimiento=?,domicilio=?,telefono=?,usuario=?,contrasenia=?"
+                    + " WHERE usuario='" + usu3 + "';");
             ps.setString(1, txtjfDni.getText());
             ps.setString(2, txtNom.getText());
             ps.setString(3, txtApePat.getText());
@@ -143,9 +143,7 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Error al actualizar Información: \n" + e);
         }
     }
-    
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -381,7 +379,7 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogActionPerformed
-        LOGIN lg=new LOGIN();
+        LOGIN lg = new LOGIN();
         lg.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnLogActionPerformed
