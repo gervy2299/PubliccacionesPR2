@@ -31,6 +31,7 @@ public class sqlMetodos {
                 cargo = rs.getString("CARGO");
                 
                 hola = true;
+                    System.out.println(usuario+contrasenia+cargo);
 
             } else {
                 JOptionPane.showMessageDialog(null, "ERROR DE CARGO , USUARIO O CONTRASEÑA, \n PORFAVOR VUELVA A INGRESAR LOS CAMPOS.");

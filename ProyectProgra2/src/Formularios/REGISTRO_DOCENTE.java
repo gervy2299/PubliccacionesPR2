@@ -39,7 +39,7 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
         }
 
         //txtUsuario.setEnabled(false);
-        btnRegistrar.setEnabled(false);
+//        btnRegistrar.setEnabled(false);
         
         llamandoClases();
     }
@@ -94,6 +94,27 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
             ps.setString(8, txtUsuario.getText());
             ps.setString(9, txtContrasenia.getText());
             ps.setInt(10, 1);
+            ps.execute();
+            insertAutores();
+            limpiar();
+            this.setVisible(false);
+            new LOGIN().setVisible(true);
+
+        } catch (SQLException ex) {
+            /*Exception e*/
+            JOptionPane.showMessageDialog(null, "ERROR al registrar Docente ");
+            System.out.println(ex);
+        }
+    }
+    
+    public void insertAutores() {
+        PreparedStatement ps = null;
+        try {
+            Conexion objCon = new Conexion();
+            Connection conn = objCon.conexiondb();
+            ps = conn.prepareStatement("INSERT INTO autores(fk_DNI) "
+                    + "VALUES(?)");
+            ps.setInt(1, Integer.parseInt(txtDNI.getText()));
             ps.execute();
             JOptionPane.showMessageDialog(null, "Docente Registrado Exitosamente");
             limpiar();
@@ -168,7 +189,6 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
 
         txtDNI.setBackground(new java.awt.Color(255, 255, 255));
         txtDNI.setForeground(new java.awt.Color(0, 0, 0));
-        txtDNI.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat(""))));
         txtDNI.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtDNIKeyReleased(evt);

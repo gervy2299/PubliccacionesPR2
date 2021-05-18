@@ -119,8 +119,7 @@ public class MENU extends javax.swing.JFrame {
                 
             default:
                 JOptionPane.showMessageDialog(rootPane, "Error en tipo de usuario","Mensaje",0);
-                this.setVisible(false);
-                new LOGIN().setVisible(true);
+                System.out.println(usu);
         }
     }
 
