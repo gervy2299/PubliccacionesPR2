@@ -367,18 +367,22 @@ public class MENU extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProActionPerformed
 
     private void btnValTipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValTipActionPerformed
+        LISTA_TIPIFICACION.usuTip = usu;
         new LISTA_TIPIFICACION().setVisible(true);
     }//GEN-LAST:event_btnValTipActionPerformed
 
     private void btnValRatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValRatActionPerformed
+        LISTA_RATIFICACION.usuRat = usu;
         new LISTA_RATIFICACION().setVisible(true);
     }//GEN-LAST:event_btnValRatActionPerformed
 
     private void btnValDirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValDirActionPerformed
+        LISTA_DIRECTOR.usuDir = usu;
         new LISTA_DIRECTOR().setVisible(true);
     }//GEN-LAST:event_btnValDirActionPerformed
 
     private void btnValDecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValDecActionPerformed
+        LISTA_DECANO.usuDec = usu;
         new LISTA_DECANO().setVisible(true);
     }//GEN-LAST:event_btnValDecActionPerformed
 

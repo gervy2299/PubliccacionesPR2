@@ -31,8 +31,22 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
         initComponents();
         datosGen();
         cargarDatos();
+        ocultar(false);
     }
 
+    public void ocultar(boolean estado){
+        txtjfDni.setEnabled(estado);
+            txtNom.setEnabled(estado);
+            txtApePat.setEnabled(estado);
+            txtApeMat.setEnabled(estado);
+            txtjfFecNac.setEnabled(estado);
+            txtDir.setEnabled(estado);
+            txtjfTel.setEnabled(estado);
+            txtUsu.setEnabled(estado);
+            txtCon.setEnabled(estado);
+            txtCon1.setEnabled(estado);
+    }
+    
     public void datosGen() {
         String[] registros = new String[4];
         String docente = "";
@@ -106,6 +120,32 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
         }
     }
     
+    public void modificarInfo() {
+        PreparedStatement ps = null;
+        try {
+            Conexion objC = new Conexion();
+            Connection conn = objC.conexiondb();
+            ps = conn.prepareStatement("UPDATE docentes SET DNI=?,nombres=?,apellido_pat=?,apellido_mat=?,"
+                    +"fecha_nacimiento=?,domicilio=?,telefono=?,usuario=?,contrasenia=?"
+                    + " WHERE usuario='"+usu3+"';");
+            ps.setString(1, txtjfDni.getText());
+            ps.setString(2, txtNom.getText());
+            ps.setString(3, txtApePat.getText());
+            ps.setString(4, txtApeMat.getText());
+            ps.setString(5, txtjfFecNac.getText());
+            ps.setString(6, txtDir.getText());
+            ps.setString(7, txtjfTel.getText());
+            ps.setString(8, txtUsu.getText());
+            ps.setString(9, txtCon.getText());
+            ps.execute();
+            JOptionPane.showMessageDialog(rootPane, "Información Actualizada");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(rootPane, "Error al actualizar Información: \n" + e);
+        }
+    }
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -142,9 +182,9 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
         txtUsu = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnMenu = new javax.swing.JButton();
         cmbCar = new javax.swing.JComboBox<>();
         txtCon = new javax.swing.JTextField();
         txtCon1 = new javax.swing.JTextField();
@@ -271,19 +311,29 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
         jLabel17.setText("REPETIR CONTRASEÑA:");
         jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 179, -1, -1));
 
-        jButton2.setText("MODIFICAR");
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(259, 327, 111, 32));
-
-        jButton3.setText("GUARDAR");
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(403, 327, 110, 32));
-
-        jButton4.setText("MENU PRINCIPAL");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnModificar.setText("MODIFICAR");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnModificarActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 328, 142, 30));
+        jPanel2.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(259, 327, 111, 32));
+
+        jButton3.setText("GUARDAR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(403, 327, 110, 32));
+
+        btnMenu.setText("MENU PRINCIPAL");
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenuActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 328, 142, 30));
 
         cmbCar.setEditable(true);
         cmbCar.addActionListener(new java.awt.event.ActionListener() {
@@ -323,11 +373,12 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         MENU.usu = usu3;
         MENU jf2 = new MENU();
         jf2.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogActionPerformed
         LOGIN lg=new LOGIN();
@@ -338,6 +389,14 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
     private void cmbCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCarActionPerformed
         lblAdv.setText("Al cambiar de rango, perderá sus privilegios ");
     }//GEN-LAST:event_cmbCarActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        modificarInfo();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        ocultar(true);
+    }//GEN-LAST:event_btnModificarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -391,10 +450,10 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLog;
+    private javax.swing.JButton btnMenu;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JComboBox<String> cmbCar;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

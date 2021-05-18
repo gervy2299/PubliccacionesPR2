@@ -15,7 +15,7 @@ import proyectprogra2.Conexion;
  */
 public class VALIDAR_TIPIFICACION extends javax.swing.JFrame {
 
-    public static String usu3;
+    public static String usuTip1;
     Conexion co = new Conexion();
     Connection con = co.conexiondb();
     public static String tipo;
@@ -54,8 +54,8 @@ public class VALIDAR_TIPIFICACION extends javax.swing.JFrame {
     public void datosGen() {
         String[] registros = new String[4];
         String docente = "";
-        String sql = "CALL p_usuario('" + usu3 + "');";
-        System.err.println("USU : " + usu3);
+        String sql = "CALL p_usuario('" + usuTip1 + "');";
+        System.err.println("USU : " + usuTip1);
         try {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -88,7 +88,8 @@ public class VALIDAR_TIPIFICACION extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error al actualizar Estado: \n" + e);
         }
     }
-         public void mEstadorechaza() {
+
+    public void mEstadorechaza() {
         datos();
         PreparedStatement ps = null;
         try {
@@ -103,6 +104,7 @@ public class VALIDAR_TIPIFICACION extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error al actualizar Estado: \n" + e);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -160,6 +162,11 @@ public class VALIDAR_TIPIFICACION extends javax.swing.JFrame {
         jLabel5.setText("COMISIOM-TIPIFICACION-DOCENTE");
 
         jButton1.setText("LOGOUT");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("jLabel4");
 
@@ -289,6 +296,11 @@ public class VALIDAR_TIPIFICACION extends javax.swing.JFrame {
         jLabel35.setText("ENTREGO CD Y COPIAS:");
 
         jButton2.setText("CANCELAR");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("RECHAZAR");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -394,19 +406,32 @@ public class VALIDAR_TIPIFICACION extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-          String mensaje="datos enviados a ratificacion";
-       if(cbtamañopapel.isSelected() && cbtipoletra.isSelected() && cbtañaletra.isSelected() && cbcd.isSelected() &&cbformato.isSelected()){
-           JOptionPane.showMessageDialog(null, "Su publicacion paso a ratificación");
-           mEstado();
-       }else{
-           JOptionPane.showMessageDialog(null, "Seleccione todos los campos");
-       }  
+        String mensaje = "datos enviados a ratificacion";
+        if (cbtamañopapel.isSelected() && cbtipoletra.isSelected() && cbtañaletra.isSelected() && cbcd.isSelected() && cbformato.isSelected()) {
+            JOptionPane.showMessageDialog(null, "Su publicacion paso a ratificación");
+            mEstado();
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione todos los campos");
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         mEstadorechaza();
-        new LISTA_TIPIFICACION().setVisible(true);       
+        new LISTA_TIPIFICACION().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new Login.LOGIN().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        LISTA_TIPIFICACION.usuTip=usuTip1;
+        new LISTA_TIPIFICACION().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -15,7 +15,7 @@ import proyectprogra2.Conexion;
  */
 public class VALIDAR_RATIFICACION extends javax.swing.JFrame {
 
-    public static String usu3;
+    public static String usuRat1;
     Conexion co = new Conexion();
     Connection con = co.conexiondb();
     public static String tipo;
@@ -42,13 +42,14 @@ public class VALIDAR_RATIFICACION extends javax.swing.JFrame {
         txtfecha.setEnabled(false);
         txtpag.setEnabled(false);
         txttitulo.setEnabled(false);
+        tipoUsuario();
     }
 
     public void datosGen() {
         String[] registros = new String[4];
         String docente = "";
-        String sql = "CALL p_usuario('" + usu3 + "');";
-        System.err.println("USU : " + usu3);
+        String sql = "CALL p_usuario('" + usuRat1 + "');";
+        System.err.println("USU : " + usuRat1);
         try {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -84,7 +85,7 @@ public class VALIDAR_RATIFICACION extends javax.swing.JFrame {
         try {
             Conexion objC = new Conexion();
             Connection conn = objC.conexiondb();
-            ps = conn.prepareStatement("UPDATE publicaciones SET fkestado_publicacion=5 WHERE titulo=?");
+            ps = conn.prepareStatement("UPDATE publicaciones SET fkestado_publicacion=6 WHERE titulo=?");
             ps.setString(1, txttitulo.getText());
             ps.execute();
             JOptionPane.showMessageDialog(rootPane, "Estado Modificado");
