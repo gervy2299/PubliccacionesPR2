@@ -23,7 +23,7 @@ public class MENU extends javax.swing.JFrame {
     Connection con = co.conexiondb();
     String tipUser="";
     //recibe el dato del Login
-    public static String usu;
+    public static String usu="BEN345";
 
     /**
      * Creates new form JF2
@@ -41,6 +41,7 @@ public class MENU extends javax.swing.JFrame {
         initComponents();
         datosGen();
         tipoUsuario();
+        this.setLocationRelativeTo(null);
     }
 
     public void datosGen() {
@@ -136,37 +137,40 @@ public class MENU extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         lblNom = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         btnExit = new javax.swing.JButton();
         lblTipUsu = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnNewPub = new javax.swing.JButton();
         btnPub = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
         btnInfArt = new javax.swing.JButton();
         btnPro = new javax.swing.JButton();
         btnValTip = new javax.swing.JButton();
         btnValRat = new javax.swing.JButton();
         btnValDir = new javax.swing.JButton();
         btnValDec = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(244, 252, 250));
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(55, 221, 193));
         jLabel1.setText("NOMBRE:");
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(55, 221, 193));
         jLabel2.setText("TIPO DE USUARIO:");
 
+        lblNom.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         lblNom.setText("jLabel3");
 
-        jLabel5.setText("DOCENTE");
-
+        btnExit.setBackground(new java.awt.Color(255, 102, 102));
+        btnExit.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnExit.setText("LOGOUT");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -174,6 +178,7 @@ public class MENU extends javax.swing.JFrame {
             }
         });
 
+        lblTipUsu.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         lblTipUsu.setText("jLabel4");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -183,154 +188,125 @@ public class MENU extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(jLabel1))
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblNom, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                     .addComponent(lblTipUsu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(28, 28, 28)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 420, Short.MAX_VALUE)
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblNom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel5)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(lblTipUsu)))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnExit)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(lblNom))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblTipUsu)
+                            .addComponent(jLabel2))))
                 .addContainerGap())
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 830, 70));
+
+        jPanel2.setBackground(new java.awt.Color(244, 252, 250));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "MENU PRINCIPAL", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(55, 221, 193))); // NOI18N
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnNewPub.setBackground(new java.awt.Color(255, 0, 0));
+        btnNewPub.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnNewPub.setText("Nueva Publicación");
         btnNewPub.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNewPubActionPerformed(evt);
             }
         });
-        jPanel2.add(btnNewPub, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 40, 140, 40));
+        jPanel2.add(btnNewPub, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 270, 160));
 
         btnPub.setBackground(new java.awt.Color(0, 204, 0));
+        btnPub.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnPub.setText("Publicaciones");
         btnPub.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPubActionPerformed(evt);
             }
         });
-        jPanel2.add(btnPub, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 130, 40));
-
-        jLabel6.setText("INTERFAS DE MENU PRINCIPAL");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 12, -1, -1));
+        jPanel2.add(btnPub, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 270, 50));
 
         btnInfArt.setBackground(new java.awt.Color(0, 0, 204));
+        btnInfArt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnInfArt.setText("Inf. Artículos");
         btnInfArt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInfArtActionPerformed(evt);
             }
         });
-        jPanel2.add(btnInfArt, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, 140, 40));
+        jPanel2.add(btnInfArt, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 50, 280, 50));
 
         btnPro.setBackground(new java.awt.Color(255, 255, 0));
+        btnPro.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnPro.setText("Perfil");
         btnPro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProActionPerformed(evt);
             }
         });
-        jPanel2.add(btnPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 260, 160));
+        jPanel2.add(btnPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, 280, 160));
 
         btnValTip.setBackground(new java.awt.Color(153, 0, 153));
+        btnValTip.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnValTip.setText("Validar");
         btnValTip.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnValTipActionPerformed(evt);
             }
         });
-        jPanel2.add(btnValTip, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 120, 40));
+        jPanel2.add(btnValTip, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 280, 160));
 
         btnValRat.setBackground(new java.awt.Color(204, 0, 0));
+        btnValRat.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnValRat.setText("Validar");
         btnValRat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnValRatActionPerformed(evt);
             }
         });
-        jPanel2.add(btnValRat, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 120, 40));
+        jPanel2.add(btnValRat, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 290, 160));
 
         btnValDir.setBackground(new java.awt.Color(0, 204, 255));
+        btnValDir.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnValDir.setText("Validar");
         btnValDir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnValDirActionPerformed(evt);
             }
         });
-        jPanel2.add(btnValDir, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 120, 40));
+        jPanel2.add(btnValDir, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 300, 160));
 
         btnValDec.setBackground(new java.awt.Color(153, 102, 0));
+        btnValDec.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnValDec.setText("Validar");
         btnValDec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnValDecActionPerformed(evt);
             }
         });
-        jPanel2.add(btnValDec, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 120, 40));
+        jPanel2.add(btnValDec, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 310, 160));
 
-        jLabel3.setText("comTip");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 109, 830, 410));
 
-        jLabel4.setText("comRat");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
-
-        jLabel7.setText("Director");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
-
-        jLabel8.setText("Decano");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
-
-        jLabel9.setText("Docente");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(118, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        jLabel10.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(244, 252, 250), 300));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -439,14 +415,8 @@ public class MENU extends javax.swing.JFrame {
     private javax.swing.JButton btnValRat;
     private javax.swing.JButton btnValTip;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblNom;
