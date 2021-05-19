@@ -23,7 +23,7 @@ public class MENU extends javax.swing.JFrame {
     Connection con = co.conexiondb();
     String tipUser="";
     //recibe el dato del Login
-    public static String usu="BEN345";
+    public static String usu;
 
     /**
      * Creates new form JF2
