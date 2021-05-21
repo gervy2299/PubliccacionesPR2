@@ -6,6 +6,7 @@
 package Formularios;
 
 import Login.LOGIN;
+import com.lowagie.text.Font;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,6 +17,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import proyectprogra2.Conexion;
+import java.awt.Color;
 
 /**
  *
@@ -38,7 +40,12 @@ public class ARTICULOS extends javax.swing.JFrame {
         datosGen();
         cabecera();
         llenarArti();
+        setBackground(new Color(0,0,0,0));
         this.setLocationRelativeTo(null);
+        tbArt.getTableHeader().setOpaque(false);
+        tbArt.getTableHeader().setBackground(new Color(32,135,203));
+        tbArt.getTableHeader().setForeground(new Color(32,135,203));
+        tbArt.setRowHeight(25);
     }
     
     public void datosGen() {
@@ -169,16 +176,16 @@ public class ARTICULOS extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel1.setForeground(new java.awt.Color(55, 221, 193));
         jLabel1.setText("NOMBRE:");
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel2.setForeground(new java.awt.Color(55, 221, 193));
         jLabel2.setText("TIPO DE USUARIO:");
 
         lblNom.setText("jLabel3");
 
-        btnLog.setBackground(new java.awt.Color(255, 117, 109));
+        btnLog.setBackground(new java.awt.Color(255, 0, 0));
         btnLog.setText("LOGOUT");
         btnLog.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -268,6 +275,13 @@ public class ARTICULOS extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbArt.setFocusable(false);
+        tbArt.setGridColor(new java.awt.Color(255, 255, 102));
+        tbArt.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        tbArt.setRowHeight(25);
+        tbArt.setSelectionBackground(new java.awt.Color(255, 51, 51));
+        tbArt.setShowVerticalLines(false);
+        tbArt.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tbArt);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -284,9 +298,9 @@ public class ARTICULOS extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtArt, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtnArt, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtArt, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
+                    .addComponent(txtnArt))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
@@ -297,10 +311,10 @@ public class ARTICULOS extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtnArt, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6)
+                    .addComponent(txtnArt, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtArt, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
@@ -311,7 +325,7 @@ public class ARTICULOS extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 109, 870, 430));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 870, 430));
 
         jLabel12.setBackground(new java.awt.Color(244, 252, 250));
         jLabel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(211, 238, 255), 300));

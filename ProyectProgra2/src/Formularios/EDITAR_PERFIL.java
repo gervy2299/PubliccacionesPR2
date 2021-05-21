@@ -33,6 +33,7 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
         cargarDatos();
         ocultar(false);
         this.setLocationRelativeTo(null);
+        
     }
 
     public void ocultar(boolean estado) {
@@ -205,6 +206,7 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
 
         lblNom.setText("jLabel3");
 
+        btnLog.setBackground(new java.awt.Color(255, 51, 51));
         btnLog.setText("LOGOUT");
         btnLog.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -238,11 +240,9 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(2, 2, 2)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jLabel1)
                     .addComponent(lblNom))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(lblTipUsu)))
@@ -258,18 +258,23 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "EDITAR PERFIL", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(55, 221, 193))); // NOI18N
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel6.setText("DNI:");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, -1, -1));
 
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel7.setText("NOMBRES:");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, -1, -1));
 
+        jLabel8.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel8.setText("APELLIDO PATERNO:");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
 
+        jLabel9.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel9.setText("APELLIDO MATERNO:");
         jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
 
+        jLabel10.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel10.setText("CARGO:");
         jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, -1, -1));
 
@@ -283,16 +288,19 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
         jPanel2.add(txtApePat, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 190, 30));
         jPanel2.add(txtApeMat, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 190, 30));
 
+        jLabel11.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel11.setText("DIRECCION:");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, -1, -1));
         jPanel2.add(txtDir, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, 200, 30));
 
+        jLabel13.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel13.setText("FECHA DE NACIMIENTO:");
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
         txtjfFecNac.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd"))));
         jPanel2.add(txtjfFecNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 190, 30));
 
+        jLabel14.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel14.setText("TELEFONO:");
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, -1, -1));
 
@@ -303,13 +311,16 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
         }
         jPanel2.add(txtjfTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 100, 200, 30));
 
+        jLabel15.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel15.setText("USUARIO:");
         jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, -1, -1));
         jPanel2.add(txtUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 140, 200, 30));
 
+        jLabel16.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel16.setText("CONTRASEÑA:");
         jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, -1, -1));
 
+        jLabel17.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel17.setText("REPETIR CONTRASEÑA:");
         jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, -1, -1));
 
@@ -341,7 +352,7 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
                 btnMenuActionPerformed(evt);
             }
         });
-        jPanel2.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 200, 40));
+        jPanel2.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 390, 190, 40));
 
         cmbCar.setEditable(true);
         cmbCar.setEnabled(false);

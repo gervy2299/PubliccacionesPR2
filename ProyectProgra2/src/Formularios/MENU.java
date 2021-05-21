@@ -11,6 +11,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import proyectprogra2.Conexion;
 
 /**
@@ -123,6 +129,22 @@ public class MENU extends javax.swing.JFrame {
                 System.out.println(usu);
         }
     }
+    
+    public void reporte(){
+        try {
+            Conexion conn = new Conexion();
+            Connection con = conn.conexiondb();
+            JasperReport reporte = null;
+            String path = "src\\Reportes\\rPrueba.jasper";
+            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
+            JasperPrint jprint = JasperFillManager.fillReport(reporte, null,con);
+            JasperViewer view = new JasperViewer(jprint,false);
+            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            view.setVisible(true);
+            
+        } catch (Exception e) {
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -148,6 +170,7 @@ public class MENU extends javax.swing.JFrame {
         btnValRat = new javax.swing.JButton();
         btnValDir = new javax.swing.JButton();
         btnValDec = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -302,6 +325,14 @@ public class MENU extends javax.swing.JFrame {
         });
         jPanel2.add(btnValDec, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 310, 160));
 
+        jButton1.setText("REPORTE");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, -1, -1));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 109, 830, 410));
 
         jLabel10.setBackground(new java.awt.Color(244, 252, 250));
@@ -362,6 +393,11 @@ public class MENU extends javax.swing.JFrame {
         new LISTA_DECANO().setVisible(true);
     }//GEN-LAST:event_btnValDecActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        reporte();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -414,6 +450,7 @@ public class MENU extends javax.swing.JFrame {
     private javax.swing.JButton btnValDir;
     private javax.swing.JButton btnValRat;
     private javax.swing.JButton btnValTip;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
