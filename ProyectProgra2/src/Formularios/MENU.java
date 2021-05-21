@@ -27,14 +27,13 @@ public class MENU extends javax.swing.JFrame {
 
     Conexion co = new Conexion();
     Connection con = co.conexiondb();
-    String tipUser="";
+    String tipUser = "";
     //recibe el dato del Login
     public static String usu;
 
     /**
      * Creates new form JF2
-    */
-    
+     */
     //Eliminar Forms
     /*
             JF7
@@ -42,7 +41,6 @@ public class MENU extends javax.swing.JFrame {
             JF13
             JF16
      */
-    
     public MENU() {
         initComponents();
         datosGen();
@@ -64,7 +62,7 @@ public class MENU extends javax.swing.JFrame {
                 registros[3] = rs.getString("r.denominacion");
             }
             docente = registros[1] + " " + registros[2] + " " + registros[0];
-            tipUser=registros[3];
+            tipUser = registros[3];
             lblNom.setText(" " + docente.toUpperCase());
             lblTipUsu.setText(" " + registros[3]);
         } catch (SQLException e) {
@@ -123,26 +121,10 @@ public class MENU extends javax.swing.JFrame {
                 //Activo
                 btnValDec.setVisible(true);
                 break;
-                
+
             default:
-                JOptionPane.showMessageDialog(rootPane, "Error en tipo de usuario","Mensaje",0);
+                JOptionPane.showMessageDialog(rootPane, "Error en tipo de usuario", "Mensaje", 0);
                 System.out.println(usu);
-        }
-    }
-    
-    public void reporte(){
-        try {
-            Conexion conn = new Conexion();
-            Connection con = conn.conexiondb();
-            JasperReport reporte = null;
-            String path = "src\\Reportes\\rPrueba.jasper";
-            reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
-            JasperPrint jprint = JasperFillManager.fillReport(reporte, null,con);
-            JasperViewer view = new JasperViewer(jprint,false);
-            view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-            view.setVisible(true);
-            
-        } catch (Exception e) {
         }
     }
 
@@ -170,7 +152,6 @@ public class MENU extends javax.swing.JFrame {
         btnValRat = new javax.swing.JButton();
         btnValDir = new javax.swing.JButton();
         btnValDec = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -193,7 +174,8 @@ public class MENU extends javax.swing.JFrame {
         lblNom.setText("jLabel3");
 
         btnExit.setBackground(new java.awt.Color(255, 102, 102));
-        btnExit.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnExit.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnExit.setForeground(new java.awt.Color(255, 255, 255));
         btnExit.setText("LOGOUT");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -217,7 +199,7 @@ public class MENU extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblNom, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                     .addComponent(lblTipUsu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 420, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 640, Short.MAX_VALUE)
                 .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
@@ -239,13 +221,13 @@ public class MENU extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 830, 70));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 1050, 70));
 
         jPanel2.setBackground(new java.awt.Color(244, 252, 250));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "MENU PRINCIPAL", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(55, 221, 193))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 51)), "MENU PRINCIPAL", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(55, 221, 193))); // NOI18N
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnNewPub.setBackground(new java.awt.Color(255, 0, 0));
+        btnNewPub.setBackground(new java.awt.Color(255, 102, 102));
         btnNewPub.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnNewPub.setText("Nueva Publicación");
         btnNewPub.addActionListener(new java.awt.event.ActionListener() {
@@ -253,9 +235,9 @@ public class MENU extends javax.swing.JFrame {
                 btnNewPubActionPerformed(evt);
             }
         });
-        jPanel2.add(btnNewPub, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 270, 160));
+        jPanel2.add(btnNewPub, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 270, 80));
 
-        btnPub.setBackground(new java.awt.Color(0, 204, 0));
+        btnPub.setBackground(new java.awt.Color(153, 255, 153));
         btnPub.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnPub.setText("Publicaciones");
         btnPub.addActionListener(new java.awt.event.ActionListener() {
@@ -263,9 +245,9 @@ public class MENU extends javax.swing.JFrame {
                 btnPubActionPerformed(evt);
             }
         });
-        jPanel2.add(btnPub, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 270, 50));
+        jPanel2.add(btnPub, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 270, 70));
 
-        btnInfArt.setBackground(new java.awt.Color(0, 0, 204));
+        btnInfArt.setBackground(new java.awt.Color(102, 102, 255));
         btnInfArt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnInfArt.setText("Inf. Artículos");
         btnInfArt.addActionListener(new java.awt.event.ActionListener() {
@@ -273,9 +255,9 @@ public class MENU extends javax.swing.JFrame {
                 btnInfArtActionPerformed(evt);
             }
         });
-        jPanel2.add(btnInfArt, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 50, 280, 50));
+        jPanel2.add(btnInfArt, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 80, 280, 70));
 
-        btnPro.setBackground(new java.awt.Color(255, 255, 0));
+        btnPro.setBackground(new java.awt.Color(255, 255, 102));
         btnPro.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnPro.setText("Perfil");
         btnPro.addActionListener(new java.awt.event.ActionListener() {
@@ -283,9 +265,9 @@ public class MENU extends javax.swing.JFrame {
                 btnProActionPerformed(evt);
             }
         });
-        jPanel2.add(btnPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 130, 280, 160));
+        jPanel2.add(btnPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, 280, 80));
 
-        btnValTip.setBackground(new java.awt.Color(153, 0, 153));
+        btnValTip.setBackground(new java.awt.Color(204, 102, 255));
         btnValTip.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnValTip.setText("Validar");
         btnValTip.addActionListener(new java.awt.event.ActionListener() {
@@ -293,9 +275,9 @@ public class MENU extends javax.swing.JFrame {
                 btnValTipActionPerformed(evt);
             }
         });
-        jPanel2.add(btnValTip, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 130, 280, 160));
+        jPanel2.add(btnValTip, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 280, 80));
 
-        btnValRat.setBackground(new java.awt.Color(204, 0, 0));
+        btnValRat.setBackground(new java.awt.Color(255, 102, 102));
         btnValRat.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnValRat.setText("Validar");
         btnValRat.addActionListener(new java.awt.event.ActionListener() {
@@ -303,7 +285,7 @@ public class MENU extends javax.swing.JFrame {
                 btnValRatActionPerformed(evt);
             }
         });
-        jPanel2.add(btnValRat, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 290, 160));
+        jPanel2.add(btnValRat, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 290, 80));
 
         btnValDir.setBackground(new java.awt.Color(0, 204, 255));
         btnValDir.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -313,9 +295,9 @@ public class MENU extends javax.swing.JFrame {
                 btnValDirActionPerformed(evt);
             }
         });
-        jPanel2.add(btnValDir, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 130, 300, 160));
+        jPanel2.add(btnValDir, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 300, 80));
 
-        btnValDec.setBackground(new java.awt.Color(153, 102, 0));
+        btnValDec.setBackground(new java.awt.Color(255, 153, 102));
         btnValDec.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnValDec.setText("Validar");
         btnValDec.addActionListener(new java.awt.event.ActionListener() {
@@ -323,28 +305,19 @@ public class MENU extends javax.swing.JFrame {
                 btnValDecActionPerformed(evt);
             }
         });
-        jPanel2.add(btnValDec, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 310, 160));
+        jPanel2.add(btnValDec, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 310, 80));
 
-        jButton1.setText("REPORTE");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, -1, -1));
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 109, 830, 410));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 109, 1050, 470));
 
         jLabel10.setBackground(new java.awt.Color(244, 252, 250));
         jLabel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(244, 252, 250), 300));
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 540));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        LOGIN lg = new LOGIN();
-        lg.setVisible(true);
+        new LOGIN().setVisible(true);
         dispose();
     }//GEN-LAST:event_btnExitActionPerformed
 
@@ -352,51 +325,57 @@ public class MENU extends javax.swing.JFrame {
         NUEVA_PUBLICACION.usu4 = usu;
         NUEVA_PUBLICACION jf4 = new NUEVA_PUBLICACION();
         jf4.setVisible(true);
+        this.setVisible(false);
+        dispose();
     }//GEN-LAST:event_btnNewPubActionPerformed
 
     private void btnPubActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPubActionPerformed
         PUBLICACIONES_DOCENTE.usu5 = usu;
         PUBLICACIONES_DOCENTE jf5 = new PUBLICACIONES_DOCENTE();
         jf5.setVisible(true);
+        this.setVisible(false);
+        dispose();
     }//GEN-LAST:event_btnPubActionPerformed
 
     private void btnInfArtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInfArtActionPerformed
         ARTICULOS.usu6 = usu;
         ARTICULOS jf6 = new ARTICULOS();
         jf6.setVisible(true);
+        this.setVisible(false);
+        dispose();
     }//GEN-LAST:event_btnInfArtActionPerformed
 
     private void btnProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProActionPerformed
         EDITAR_PERFIL.usu3 = usu;
         EDITAR_PERFIL jf3 = new EDITAR_PERFIL();
         jf3.setVisible(true);
-
+        this.setVisible(false);
+        dispose();
     }//GEN-LAST:event_btnProActionPerformed
 
     private void btnValTipActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValTipActionPerformed
         LISTA_TIPIFICACION.usuTip = usu;
+        this.setVisible(false);
         new LISTA_TIPIFICACION().setVisible(true);
     }//GEN-LAST:event_btnValTipActionPerformed
 
     private void btnValRatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValRatActionPerformed
         LISTA_RATIFICACION.usuRat = usu;
+        this.setVisible(false);
         new LISTA_RATIFICACION().setVisible(true);
     }//GEN-LAST:event_btnValRatActionPerformed
 
     private void btnValDirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValDirActionPerformed
         LISTA_DIRECTOR.usuDir = usu;
+        this.setVisible(false);
         new LISTA_DIRECTOR().setVisible(true);
     }//GEN-LAST:event_btnValDirActionPerformed
 
     private void btnValDecActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValDecActionPerformed
         LISTA_DECANO.usuDec = usu;
+        this.setVisible(false);
         new LISTA_DECANO().setVisible(true);
     }//GEN-LAST:event_btnValDecActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        reporte();
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -450,7 +429,6 @@ public class MENU extends javax.swing.JFrame {
     private javax.swing.JButton btnValDir;
     private javax.swing.JButton btnValRat;
     private javax.swing.JButton btnValTip;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
