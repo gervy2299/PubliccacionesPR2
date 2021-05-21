@@ -20,7 +20,7 @@ public class LISTA_TIPIFICACION extends javax.swing.JFrame {
     DefaultTableModel model = new DefaultTableModel();
     Conexion co = new Conexion();
     Connection con = co.conexiondb();
-    public static String usu5;
+    public static String usuTip;
 
     /**
      * Creates new form JF8
@@ -35,7 +35,7 @@ public class LISTA_TIPIFICACION extends javax.swing.JFrame {
     public void datosGen() {
         String[] registros = new String[4];
         String docente = "";
-        String sql = "CALL p_usuario('" + usu5 + "');";
+        String sql = "CALL p_usuario('" + usuTip + "');";
         try {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -174,6 +174,11 @@ public class LISTA_TIPIFICACION extends javax.swing.JFrame {
         jLabel5.setText("COMISIOM-TIPIFICACION-DOCENTE");
 
         jButton1.setText("LOGOUT");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("jLabel4");
 
@@ -235,6 +240,11 @@ public class LISTA_TIPIFICACION extends javax.swing.JFrame {
         jScrollPane1.setViewportView(TablaTipi);
 
         jButton2.setText("ATRAS");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("VALIDAR");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -318,9 +328,21 @@ public class LISTA_TIPIFICACION extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
         pasarDato();
+        VALIDAR_TIPIFICACION.usuTip1 = usuTip;
         new VALIDAR_TIPIFICACION().setVisible(true);
-
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       new Login.LOGIN().setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        MENU.usu=usuTip;
+        new MENU().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

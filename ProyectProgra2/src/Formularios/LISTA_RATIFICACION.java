@@ -20,7 +20,7 @@ public class LISTA_RATIFICACION extends javax.swing.JFrame {
     DefaultTableModel model = new DefaultTableModel();
     Conexion co = new Conexion();
     Connection con = co.conexiondb();
-    public static String usu5;
+    public static String usuRat;
 
     /**
      * Creates new form JF11
@@ -35,7 +35,7 @@ public class LISTA_RATIFICACION extends javax.swing.JFrame {
     public void datosGen() {
         String[] registros = new String[4];
         String docente = "";
-        String sql = "CALL p_usuario('" + usu5 + "');";
+        String sql = "CALL p_usuario('" + usuRat + "');";
         try {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -136,6 +136,7 @@ public class LISTA_RATIFICACION extends javax.swing.JFrame {
         String fechaT = TablaRati.getValueAt(Fila, 5).toString();
         String escuelaT = TablaRati.getValueAt(Fila, 6).toString();
         String tipoT = TablaRati.getValueAt(Fila, 7).toString();
+        
         VALIDAR_RATIFICACION.titulo = tituloT;
         VALIDAR_RATIFICACION.tipo = tipoT;
         VALIDAR_RATIFICACION.escuela = escuelaT;
@@ -318,6 +319,7 @@ public class LISTA_RATIFICACION extends javax.swing.JFrame {
 
     private void btnValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValidarActionPerformed
         pasarDato();
+        VALIDAR_RATIFICACION.usuRat1 = usuRat;
         new VALIDAR_RATIFICACION().setVisible(true);
     }//GEN-LAST:event_btnValidarActionPerformed
 

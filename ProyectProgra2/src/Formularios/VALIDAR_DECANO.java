@@ -16,7 +16,7 @@ import proyectprogra2.Conexion;
 
 public class VALIDAR_DECANO extends javax.swing.JFrame {
 
-    public static String usu3;
+    public static String usuDec1;
     Conexion co = new Conexion();
     Connection con = co.conexiondb();
     public static String tipo;
@@ -48,8 +48,8 @@ public class VALIDAR_DECANO extends javax.swing.JFrame {
     public void datosGen() {
         String[] registros = new String[4];
         String docente = "";
-        String sql = "CALL p_usuario('" + usu3 + "');";
-        System.err.println("USU : " + usu3);
+        String sql = "CALL p_usuario('" + usuDec1 + "');";
+        System.err.println("USU : " + usuDec1);
         try {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);

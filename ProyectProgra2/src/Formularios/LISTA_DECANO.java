@@ -18,7 +18,7 @@ public class LISTA_DECANO extends javax.swing.JFrame {
     Conexion co = new Conexion();
     Connection con = co.conexiondb();
     
-    public String usu5;
+    public static String usuDec;
 
     public LISTA_DECANO() {
         initComponents();
@@ -36,7 +36,7 @@ public class LISTA_DECANO extends javax.swing.JFrame {
     public void datosGen() {
         String[] registros = new String[4];
         String docente = "";
-        String sql = "CALL p_usuario('" + usu5 + "');";
+        String sql = "CALL p_usuario('" + usuDec + "');";
         try {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -313,6 +313,7 @@ public class LISTA_DECANO extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         pasarDato();
+        VALIDAR_DECANO.usuDec1 = usuDec;
         new VALIDAR_DECANO().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 

@@ -23,7 +23,7 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
     public static String usu3;
     Conexion co = new Conexion();
     Connection con = co.conexiondb();
-    
+
     /**
      * Creates new form JF3
      */
@@ -31,6 +31,21 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
         initComponents();
         datosGen();
         cargarDatos();
+        ocultar(false);
+        this.setLocationRelativeTo(null);
+    }
+
+    public void ocultar(boolean estado) {
+        txtjfDni.setEnabled(estado);
+        txtNom.setEnabled(estado);
+        txtApePat.setEnabled(estado);
+        txtApeMat.setEnabled(estado);
+        txtjfFecNac.setEnabled(estado);
+        txtDir.setEnabled(estado);
+        txtjfTel.setEnabled(estado);
+        txtUsu.setEnabled(estado);
+        txtCon.setEnabled(estado);
+        txtCon1.setEnabled(estado);
     }
 
     public void datosGen() {
@@ -53,7 +68,7 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error al obtener datos" + e.getMessage(), "Mensaje", 0);
         }
     }
-    
+
     public void comboEstado() {
         try {
             PreparedStatement ps = null;
@@ -70,7 +85,7 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Error al cargar datos: \n" + e);
         }
     }
-    
+
     public void cargarDatos() {
         String[] registros = new String[10];
         String sql = "CALL p_docente('" + usu3 + "');";
@@ -100,12 +115,36 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
             txtCon.setText(registros[8]);
             txtCon1.setText(registros[8]);
             comboEstado();
-            cmbCar.setSelectedIndex(Integer.parseInt(registros[9])-1);
+            cmbCar.setSelectedIndex(Integer.parseInt(registros[9]) - 1);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al obtener datos" + e.getMessage(), "Mensaje", 0);
         }
     }
-    
+
+    public void modificarInfo() {
+        PreparedStatement ps = null;
+        try {
+            Conexion objC = new Conexion();
+            Connection conn = objC.conexiondb();
+            ps = conn.prepareStatement("UPDATE docentes SET DNI=?,nombres=?,apellido_pat=?,apellido_mat=?,"
+                    + "fecha_nacimiento=?,domicilio=?,telefono=?,usuario=?,contrasenia=?"
+                    + " WHERE usuario='" + usu3 + "';");
+            ps.setString(1, txtjfDni.getText());
+            ps.setString(2, txtNom.getText());
+            ps.setString(3, txtApePat.getText());
+            ps.setString(4, txtApeMat.getText());
+            ps.setString(5, txtjfFecNac.getText());
+            ps.setString(6, txtDir.getText());
+            ps.setString(7, txtjfTel.getText());
+            ps.setString(8, txtUsu.getText());
+            ps.setString(9, txtCon.getText());
+            ps.execute();
+            JOptionPane.showMessageDialog(rootPane, "Información Actualizada");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(rootPane, "Error al actualizar Información: \n" + e);
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -119,7 +158,6 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         lblNom = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         btnLog = new javax.swing.JButton();
         lblTipUsu = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -142,25 +180,30 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
         txtUsu = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnMenu = new javax.swing.JButton();
         cmbCar = new javax.swing.JComboBox<>();
         txtCon = new javax.swing.JTextField();
         txtCon1 = new javax.swing.JTextField();
-        lblAdv = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(55, 221, 193));
         jLabel1.setText("NOMBRE:");
 
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(55, 221, 193));
         jLabel2.setText("TIPO DE USUARIO:");
 
         lblNom.setText("jLabel3");
-
-        jLabel5.setText("DOCENTE");
 
         btnLog.setText("LOGOUT");
         btnLog.addActionListener(new java.awt.event.ActionListener() {
@@ -186,9 +229,7 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblNom, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                     .addComponent(lblTipUsu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(28, 28, 28)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 402, Short.MAX_VALUE)
                 .addComponent(btnLog, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48))
         );
@@ -200,9 +241,7 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblNom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel5)))
+                    .addComponent(lblNom))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -213,131 +252,139 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 0)));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 11, 830, 50));
+
+        jPanel2.setBackground(new java.awt.Color(244, 252, 250));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "EDITAR PERFIL", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(55, 221, 193))); // NOI18N
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setText("DNI:");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 25, -1, -1));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, -1, -1));
 
         jLabel7.setText("NOMBRES:");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 62, -1, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, -1, -1));
 
         jLabel8.setText("APELLIDO PATERNO:");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 97, -1, -1));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
 
         jLabel9.setText("APELLIDO MATERNO:");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 132, -1, -1));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
 
         jLabel10.setText("CARGO:");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(102, 223, -1, -1));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, -1, -1));
 
         try {
             txtjfDni.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("########")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel2.add(txtjfDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 22, 160, -1));
-        jPanel2.add(txtNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 59, 160, -1));
-        jPanel2.add(txtApePat, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 94, 160, -1));
-        jPanel2.add(txtApeMat, new org.netbeans.lib.awtextra.AbsoluteConstraints(163, 129, 160, -1));
+        jPanel2.add(txtjfDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 190, 30));
+        jPanel2.add(txtNom, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 190, 30));
+        jPanel2.add(txtApePat, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 190, 30));
+        jPanel2.add(txtApeMat, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 190, 30));
 
         jLabel11.setText("DIRECCION:");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(419, 20, -1, -1));
-        jPanel2.add(txtDir, new org.netbeans.lib.awtextra.AbsoluteConstraints(508, 20, 170, -1));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 70, -1, -1));
+        jPanel2.add(txtDir, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, 200, 30));
 
         jLabel13.setText("FECHA DE NACIMIENTO:");
-        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 170, -1, -1));
+        jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
         txtjfFecNac.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd"))));
-        jPanel2.add(txtjfFecNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(167, 167, 160, -1));
+        jPanel2.add(txtjfFecNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 190, 30));
 
         jLabel14.setText("TELEFONO:");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(424, 59, -1, -1));
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, -1, -1));
 
         try {
             txtjfTel.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#########")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        jPanel2.add(txtjfTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(508, 59, 170, -1));
+        jPanel2.add(txtjfTel, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 100, 200, 30));
 
         jLabel15.setText("USUARIO:");
-        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 96, -1, -1));
-        jPanel2.add(txtUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(508, 96, 170, -1));
+        jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, -1, -1));
+        jPanel2.add(txtUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 140, 200, 30));
 
         jLabel16.setText("CONTRASEÑA:");
-        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(408, 139, -1, -1));
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, -1, -1));
 
         jLabel17.setText("REPETIR CONTRASEÑA:");
-        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 179, -1, -1));
+        jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 230, -1, -1));
 
-        jButton2.setText("MODIFICAR");
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(259, 327, 111, 32));
-
-        jButton3.setText("GUARDAR");
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(403, 327, 110, 32));
-
-        jButton4.setText("MENU PRINCIPAL");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnModificar.setBackground(new java.awt.Color(55, 221, 193));
+        btnModificar.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        btnModificar.setText("MODIFICAR");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnModificarActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 328, 142, 30));
+        jPanel2.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 390, 170, 40));
+
+        jButton3.setBackground(new java.awt.Color(55, 221, 193));
+        jButton3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jButton3.setText("GUARDAR");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 390, 160, 40));
+
+        btnMenu.setBackground(new java.awt.Color(55, 221, 193));
+        btnMenu.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        btnMenu.setText("MENU PRINCIPAL");
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenuActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 200, 40));
 
         cmbCar.setEditable(true);
+        cmbCar.setEnabled(false);
         cmbCar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbCarActionPerformed(evt);
             }
         });
-        jPanel2.add(cmbCar, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 215, 280, -1));
-        jPanel2.add(txtCon, new org.netbeans.lib.awtextra.AbsoluteConstraints(508, 136, 170, -1));
-        jPanel2.add(txtCon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(508, 176, 170, -1));
+        jPanel2.add(cmbCar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 210, 30));
+        jPanel2.add(txtCon, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 180, 200, 30));
+        jPanel2.add(txtCon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, 200, 30));
 
-        lblAdv.setForeground(new java.awt.Color(204, 0, 0));
-        lblAdv.setText("*");
-        jPanel2.add(lblAdv, new org.netbeans.lib.awtextra.AbsoluteConstraints(436, 219, -1, -1));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 74, 830, 460));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        jLabel12.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(244, 252, 250), 300));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         MENU.usu = usu3;
-        MENU jf2 = new MENU();
-        jf2.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogActionPerformed
-        LOGIN lg=new LOGIN();
+        LOGIN lg = new LOGIN();
         lg.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnLogActionPerformed
 
     private void cmbCarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCarActionPerformed
-        lblAdv.setText("Al cambiar de rango, perderá sus privilegios ");
+        
     }//GEN-LAST:event_cmbCarActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        modificarInfo();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        ocultar(true);
+    }//GEN-LAST:event_btnModificarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -391,27 +438,26 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLog;
+    private javax.swing.JButton btnMenu;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JComboBox<String> cmbCar;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lblAdv;
     private javax.swing.JLabel lblNom;
     private javax.swing.JLabel lblTipUsu;
     private javax.swing.JTextField txtApeMat;

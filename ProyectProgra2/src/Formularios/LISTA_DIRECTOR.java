@@ -26,7 +26,7 @@ public class LISTA_DIRECTOR extends javax.swing.JFrame {
     Conexion co = new Conexion();
     Connection con = co.conexiondb();
     
-    public String usu5;
+    public static String usuDir;
     
     public LISTA_DIRECTOR() {
         initComponents();
@@ -42,7 +42,7 @@ public class LISTA_DIRECTOR extends javax.swing.JFrame {
     public void datosGen() {
         String[] registros = new String[4];
         String docente = "";
-        String sql = "CALL p_usuario('" + usu5 + "');";
+        String sql = "CALL p_usuario('" + usuDir + "');";
         try {
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -319,6 +319,7 @@ public class LISTA_DIRECTOR extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         pasarDato();
+        VALIDAR_DIRECTOR.usuDir1 = usuDir;
         new VALIDAR_DIRECTOR().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 

@@ -39,7 +39,7 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
         }
 
         //txtUsuario.setEnabled(false);
-        btnRegistrar.setEnabled(false);
+//        btnRegistrar.setEnabled(false);
         
         llamandoClases();
     }
@@ -94,6 +94,27 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
             ps.setString(8, txtUsuario.getText());
             ps.setString(9, txtContrasenia.getText());
             ps.setInt(10, 1);
+            ps.execute();
+            insertAutores();
+            limpiar();
+            this.setVisible(false);
+            new LOGIN().setVisible(true);
+
+        } catch (SQLException ex) {
+            /*Exception e*/
+            JOptionPane.showMessageDialog(null, "ERROR al registrar Docente ");
+            System.out.println(ex);
+        }
+    }
+    
+    public void insertAutores() {
+        PreparedStatement ps = null;
+        try {
+            Conexion objCon = new Conexion();
+            Connection conn = objCon.conexiondb();
+            ps = conn.prepareStatement("INSERT INTO autores(fk_DNI) "
+                    + "VALUES(?)");
+            ps.setInt(1, Integer.parseInt(txtDNI.getText()));
             ps.execute();
             JOptionPane.showMessageDialog(null, "Docente Registrado Exitosamente");
             limpiar();
@@ -166,9 +187,6 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(244, 252, 250));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DATOS PERSONALES:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(55, 221, 193))); // NOI18N
 
-        txtDNI.setBackground(new java.awt.Color(255, 255, 255));
-        txtDNI.setForeground(new java.awt.Color(0, 0, 0));
-        txtDNI.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat(""))));
         txtDNI.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtDNIKeyReleased(evt);
@@ -176,49 +194,24 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("DNI:");
 
-        txtNombres.setBackground(new java.awt.Color(255, 255, 255));
-        txtNombres.setForeground(new java.awt.Color(0, 0, 0));
-
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("NOMBRES:");
 
-        txtApPaterno.setBackground(new java.awt.Color(255, 255, 255));
-        txtApPaterno.setForeground(new java.awt.Color(0, 0, 0));
-
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("APELLIDO PATERNO:");
 
-        txtApMaterno.setBackground(new java.awt.Color(255, 255, 255));
-        txtApMaterno.setForeground(new java.awt.Color(0, 0, 0));
-
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("APELLIDO MATERNO:");
 
-        txtFechaNacimiento.setBackground(new java.awt.Color(255, 255, 255));
-        txtFechaNacimiento.setForeground(new java.awt.Color(0, 0, 0));
-
         jLabel11.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("FECHA DE NACIMIENTO:");
 
-        txtDireccion.setBackground(new java.awt.Color(255, 255, 255));
-        txtDireccion.setForeground(new java.awt.Color(0, 0, 0));
-
         jLabel10.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("DIRECCION:");
 
-        txtTelefono.setBackground(new java.awt.Color(255, 255, 255));
-        txtTelefono.setForeground(new java.awt.Color(0, 0, 0));
-
         jLabel9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("TELEFONO:");
 
         msj1.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
@@ -305,7 +298,7 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
         btnCancelar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelar.setText("CANCELAR");
-        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
@@ -316,7 +309,7 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
         btnRegistrar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
         btnRegistrar.setText("REGISTRARSE");
-        btnRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
@@ -327,31 +320,15 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CUENTA USUARIO:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(55, 221, 193))); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("REPETIR CONTRASEÑA:");
 
-        txtUsuario.setBackground(new java.awt.Color(255, 255, 255));
-        txtUsuario.setForeground(new java.awt.Color(0, 0, 0));
-
-        cbxRoles.setBackground(new java.awt.Color(255, 255, 255));
-        cbxRoles.setForeground(new java.awt.Color(0, 0, 0));
-
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("CARGO:");
 
-        txtContrasenia.setBackground(new java.awt.Color(255, 255, 255));
-        txtContrasenia.setForeground(new java.awt.Color(0, 0, 0));
-
-        txtRepeatContrasenia.setBackground(new java.awt.Color(255, 255, 255));
-        txtRepeatContrasenia.setForeground(new java.awt.Color(0, 0, 0));
-
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("USUARIO:");
 
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("CONTRASEÑA:");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -396,7 +373,7 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
         );
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Diseño/cerrar.png"))); // NOI18N
-        jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel12MouseClicked(evt);
@@ -418,7 +395,7 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(68, 68, 68)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(65, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -436,7 +413,7 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 348, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 349, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
