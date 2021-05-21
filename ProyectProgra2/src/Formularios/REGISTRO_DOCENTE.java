@@ -187,33 +187,54 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(244, 252, 250));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DATOS PERSONALES:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(55, 221, 193))); // NOI18N
 
+        txtDNI.setBackground(new java.awt.Color(244, 252, 250));
         txtDNI.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtDNIKeyReleased(evt);
             }
         });
 
+        jLabel1.setBackground(new java.awt.Color(244, 252, 250));
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel1.setText("DNI:");
 
+        txtNombres.setBackground(new java.awt.Color(244, 252, 250));
+
+        jLabel2.setBackground(new java.awt.Color(244, 252, 250));
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel2.setText("NOMBRES:");
 
+        txtApPaterno.setBackground(new java.awt.Color(244, 252, 250));
+
+        jLabel3.setBackground(new java.awt.Color(244, 252, 250));
         jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel3.setText("APELLIDO PATERNO:");
 
+        txtApMaterno.setBackground(new java.awt.Color(244, 252, 250));
+
+        jLabel4.setBackground(new java.awt.Color(244, 252, 250));
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel4.setText("APELLIDO MATERNO:");
 
+        txtFechaNacimiento.setBackground(new java.awt.Color(244, 252, 250));
+
+        jLabel11.setBackground(new java.awt.Color(244, 252, 250));
         jLabel11.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel11.setText("FECHA DE NACIMIENTO:");
 
+        txtDireccion.setBackground(new java.awt.Color(244, 252, 250));
+
+        jLabel10.setBackground(new java.awt.Color(244, 252, 250));
         jLabel10.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel10.setText("DIRECCION:");
 
+        txtTelefono.setBackground(new java.awt.Color(244, 252, 250));
+
+        jLabel9.setBackground(new java.awt.Color(244, 252, 250));
         jLabel9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel9.setText("TELEFONO:");
 
+        msj1.setBackground(new java.awt.Color(244, 252, 250));
         msj1.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
         msj1.setForeground(new java.awt.Color(244, 252, 250));
         msj1.setText("aaaaaaaaaaa");
@@ -319,15 +340,21 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
         jPanel4.setBackground(new java.awt.Color(244, 252, 250));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CUENTA USUARIO:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(55, 221, 193))); // NOI18N
 
+        jLabel7.setBackground(new java.awt.Color(244, 252, 250));
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel7.setText("REPETIR CONTRASEÑA:");
 
+        txtUsuario.setBackground(new java.awt.Color(244, 252, 250));
+
+        jLabel8.setBackground(new java.awt.Color(244, 252, 250));
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel8.setText("CARGO:");
 
+        jLabel5.setBackground(new java.awt.Color(244, 252, 250));
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel5.setText("USUARIO:");
 
+        jLabel6.setBackground(new java.awt.Color(244, 252, 250));
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel6.setText("CONTRASEÑA:");
 
@@ -372,6 +399,7 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
+        jLabel12.setBackground(new java.awt.Color(244, 252, 250));
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Diseño/cerrar.png"))); // NOI18N
         jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {

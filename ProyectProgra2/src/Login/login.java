@@ -166,8 +166,9 @@ public class LOGIN extends javax.swing.JFrame{
         jPanel2.setForeground(new java.awt.Color(244, 252, 250));
         jPanel2.setToolTipText("");
 
+        jLabel3.setBackground(new java.awt.Color(244, 252, 250));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Diseño/cerrar.png"))); // NOI18N
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
@@ -184,7 +185,7 @@ public class LOGIN extends javax.swing.JFrame{
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("REGISTRARSE");
         jButton1.setBorder(null);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -196,43 +197,41 @@ public class LOGIN extends javax.swing.JFrame{
         btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
         btnIngresar.setText("INGRESAR");
         btnIngresar.setBorder(null);
-        btnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIngresarActionPerformed(evt);
             }
         });
 
-        cbxRoles.setBackground(new java.awt.Color(255, 255, 255));
-        cbxRoles.setForeground(new java.awt.Color(0, 0, 0));
         cbxRoles.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
-        cbxRoles.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cbxRoles.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        txtUsuario.setBackground(new java.awt.Color(255, 255, 255));
         txtUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(222, 222, 222)));
 
-        txtContrasenia.setBackground(new java.awt.Color(255, 255, 255));
-        txtContrasenia.setForeground(new java.awt.Color(0, 0, 0));
         txtContrasenia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(222, 222, 222)));
 
+        jLabel2.setBackground(new java.awt.Color(244, 252, 250));
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("TIPO USUARIO:");
 
+        jLabel4.setBackground(new java.awt.Color(244, 252, 250));
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("USUARIO:");
 
+        jLabel5.setBackground(new java.awt.Color(244, 252, 250));
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("CONTRASEÑA:");
 
+        jLabel7.setBackground(new java.awt.Color(244, 252, 250));
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Diseño/UNASAM.png"))); // NOI18N
 
+        jLabel6.setBackground(new java.awt.Color(244, 252, 250));
         jLabel6.setFont(new java.awt.Font("Dubai Light", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(55, 221, 193));
         jLabel6.setText("Sistema de Publicaciones");
 
+        jLabel8.setBackground(new java.awt.Color(244, 252, 250));
         jLabel8.setFont(new java.awt.Font("Dubai Light", 1, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(55, 221, 193));
         jLabel8.setText("UNASAM");
