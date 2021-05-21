@@ -135,7 +135,7 @@ public class MENU extends javax.swing.JFrame {
             Conexion conn = new Conexion();
             Connection con = conn.conexiondb();
             JasperReport reporte = null;
-            String path = "src\\Reportes\\rPrueba.jasper";
+            String path = "src\\Reportes\\listaDocentes.jasper";
             reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
             JasperPrint jprint = JasperFillManager.fillReport(reporte, null,con);
             JasperViewer view = new JasperViewer(jprint,false);
@@ -396,6 +396,7 @@ public class MENU extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         reporte();
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
