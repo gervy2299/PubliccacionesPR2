@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3126fb4d-bebe-44f5-bb09-a779ff0197c1">
-	<property name="ireport.zoom" value="1.771561000000001"/>
-	<property name="ireport.x" value="14"/>
+	<property name="ireport.zoom" value="1.3310000000000006"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[select * from docentes where fk_idroles=1;]]>
@@ -40,7 +40,19 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="22" y="6" width="82" height="73" uuid="aaaedcad-1960-4d55-982e-35392a9f91c4"/>
+				<imageExpression><![CDATA["C:\\Users\\eltu_\\Downloads\\UNASAM.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="165" y="24" width="273" height="31" uuid="312a1026-0221-446a-820b-0d21323d2bdc"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[LISTA DOCENTES]]></text>
+			</staticText>
+		</band>
 	</title>
 	<pageHeader>
 		<band height="35" splitType="Stretch"/>
