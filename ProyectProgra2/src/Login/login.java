@@ -164,6 +164,7 @@ public class LOGIN extends javax.swing.JFrame{
 
         jPanel2.setBackground(new java.awt.Color(244, 252, 250));
         jPanel2.setForeground(new java.awt.Color(244, 252, 250));
+        jPanel2.setToolTipText("");
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Diseño/cerrar.png"))); // NOI18N
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
