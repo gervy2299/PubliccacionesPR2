@@ -7,6 +7,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import mdlaf.*;
 
+
 public class ProyectProgra2 {
 
     public static void main(String[] args) {
