@@ -205,7 +205,7 @@ public class LOGIN extends javax.swing.JFrame{
         });
 
         cbxRoles.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
-        cbxRoles.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        cbxRoles.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         txtUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(222, 222, 222)));
 
