@@ -15,6 +15,13 @@ import proyectprogra2.Conexion;
 import CLASES.clases;
 import java.awt.Color;
 import javax.swing.ImageIcon;
+import Atxy2k.CustomTextField.RestrictedTextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class REGISTRO_DOCENTE extends javax.swing.JFrame {
 
@@ -27,31 +34,49 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
      */
     public REGISTRO_DOCENTE() {
         initComponents();
+        RestrictedTextField restricted = new RestrictedTextField(txtDNI);
+        RestrictedTextField restricted2 = new RestrictedTextField(txtTelefono);
+        RestrictedTextField restricted3 = new RestrictedTextField(txtUsuario);
+        restricted.setLimit(8);
+        restricted2.setLimit(9);
+        restricted3.setLimit(6);
         this.setLayout(null);
         this.setLocationRelativeTo(null);
         cbxRoles.setEnabled(false);
-
+        cls.soloNumber(txtDNI);
+        cls.soloNumber(txtTelefono);
+        cls.mayusculaNumber(txtUsuario);
         cbxRoles.removeAllItems();
         ArrayList<String> lista = new ArrayList<String>();
         lista = lg.llenarComboBOxRoles();
         for (int i = 0; i < lista.size(); i++) {
             cbxRoles.addItem(lista.get(i));
         }
-
+        cls.enter(txtDNI, txtNombres);
+        cls.enter(txtUsuario,txtContrasenia);
+        cls.enter(txtContrasenia, txtRepeatContrasenia);
+        cls.mayusculaNumber(txtDireccion);
+        cls.generate(txtTelefono, txtUsuario, txtNombres, txtDNI, txtUsuario);
         //txtUsuario.setEnabled(false);
 //        btnRegistrar.setEnabled(false);
-        
+
         llamandoClases();
     }
-
+        public String fecha() {
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        Date fecha = txtFechaNacimiento.getDate();
+        String fecha2 = formato.format(fecha);
+        return String.valueOf(fecha2);
+       
+    }
     public void msjError() {
         if (txtDNI.getText().length() < 8 || txtDNI.getText().length() > 8) {
-            msj1.setForeground(new Color(255,0,0));
+            msj1.setForeground(new Color(255, 0, 0));
             msj1.setText("Ingrese 8 caracteres");
             msj1.setIcon(new ImageIcon("/Diseño/cerrar.png"));
         } else {
-            
-            msj1.setForeground(new Color(49,213,67));
+
+            msj1.setForeground(new Color(49, 213, 67));
             msj1.setText("Correcto");
         }
     }
@@ -67,7 +92,7 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
         txtNombres.setText("");
         txtApPaterno.setText("");
         txtApMaterno.setText("");
-        txtFechaNacimiento.setText("");
+        txtFechaNacimiento.removeAll();
         txtDireccion.setText("");
         txtTelefono.setText("");
         txtUsuario.setText("");
@@ -88,7 +113,7 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
             ps.setString(2, txtNombres.getText());
             ps.setString(3, txtApPaterno.getText());
             ps.setString(4, txtApMaterno.getText());
-            ps.setString(5, txtFechaNacimiento.getText());
+            ps.setString(5, fecha());
             ps.setString(6, txtDireccion.getText());
             ps.setInt(7, Integer.parseInt(txtTelefono.getText()));
             ps.setString(8, txtUsuario.getText());
@@ -106,7 +131,7 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
             System.out.println(ex);
         }
     }
-    
+
     public void insertAutores() {
         PreparedStatement ps = null;
         try {
@@ -140,7 +165,6 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        txtDNI = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
         txtNombres = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -148,13 +172,14 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtApMaterno = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtFechaNacimiento = new javax.swing.JFormattedTextField();
         jLabel11 = new javax.swing.JLabel();
         txtDireccion = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        txtTelefono = new javax.swing.JFormattedTextField();
         jLabel9 = new javax.swing.JLabel();
         msj1 = new javax.swing.JLabel();
+        txtDNI = new javax.swing.JTextField();
+        txtTelefono = new javax.swing.JTextField();
+        txtFechaNacimiento = new com.toedter.calendar.JDateChooser();
         jPanel2 = new javax.swing.JPanel();
         btnCancelar = new javax.swing.JButton();
         btnRegistrar = new javax.swing.JButton();
@@ -167,6 +192,7 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
         txtRepeatContrasenia = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        labererror = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -186,13 +212,6 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(244, 252, 250));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DATOS PERSONALES:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(55, 221, 193))); // NOI18N
-
-        txtDNI.setBackground(new java.awt.Color(244, 252, 250));
-        txtDNI.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtDNIKeyReleased(evt);
-            }
-        });
 
         jLabel1.setBackground(new java.awt.Color(244, 252, 250));
         jLabel1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -216,8 +235,6 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel4.setText("APELLIDO MATERNO:");
 
-        txtFechaNacimiento.setBackground(new java.awt.Color(244, 252, 250));
-
         jLabel11.setBackground(new java.awt.Color(244, 252, 250));
         jLabel11.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel11.setText("FECHA DE NACIMIENTO:");
@@ -228,8 +245,6 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel10.setText("DIRECCION:");
 
-        txtTelefono.setBackground(new java.awt.Color(244, 252, 250));
-
         jLabel9.setBackground(new java.awt.Color(244, 252, 250));
         jLabel9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel9.setText("TELEFONO:");
@@ -238,6 +253,24 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
         msj1.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
         msj1.setForeground(new java.awt.Color(244, 252, 250));
         msj1.setText("aaaaaaaaaaa");
+
+        txtDNI.setBackground(new java.awt.Color(244, 252, 250));
+        txtDNI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDNIActionPerformed(evt);
+            }
+        });
+        txtDNI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDNIKeyReleased(evt);
+            }
+        });
+
+        txtTelefono.setBackground(new java.awt.Color(244, 252, 250));
+
+        txtFechaNacimiento.setBackground(new java.awt.Color(244, 252, 250));
+        txtFechaNacimiento.setToolTipText("");
+        txtFechaNacimiento.setDateFormatString("yyyy-MM-dd");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -253,32 +286,38 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(txtApMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtApPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(57, 57, 57)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(24, 24, 24)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                                .addComponent(txtApMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtApPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(222, 222, 222)
                         .addComponent(msj1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 154, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addGap(271, 271, 271))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel10))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtDireccion)
+                                .addComponent(txtFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(21, 21, 21))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(txtDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -288,28 +327,34 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
-                        .addGap(25, 25, 25)
+                        .addGap(23, 23, 23)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtApPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)))
+                            .addComponent(jLabel3)
+                            .addComponent(txtApPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11))
+                        .addGap(41, 41, 41)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(55, 55, 55)
+                                .addComponent(jLabel11))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel10)
+                                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(28, 28, 28)
+                                .addComponent(txtFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(25, 25, 25)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel9))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtApMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33))
         );
+
+        txtTelefono.getAccessibleContext().setAccessibleName("");
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 1090, 290));
 
@@ -331,6 +376,7 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
         btnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
         btnRegistrar.setText("REGISTRARSE");
         btnRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnRegistrar.setEnabled(false);
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
@@ -345,10 +391,21 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
         jLabel7.setText("REPETIR CONTRASEÑA:");
 
         txtUsuario.setBackground(new java.awt.Color(244, 252, 250));
+        txtUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtUsuarioMouseClicked(evt);
+            }
+        });
 
         jLabel8.setBackground(new java.awt.Color(244, 252, 250));
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel8.setText("CARGO:");
+
+        txtRepeatContrasenia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtRepeatContraseniaKeyReleased(evt);
+            }
+        });
 
         jLabel5.setBackground(new java.awt.Color(244, 252, 250));
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -363,18 +420,23 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(268, 268, 268)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(txtRepeatContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbxRoles, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(268, 268, 268)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(txtRepeatContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbxRoles, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(440, 440, 440)
+                        .addComponent(labererror)))
                 .addContainerGap(367, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -396,7 +458,9 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtRepeatContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labererror)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel12.setBackground(new java.awt.Color(244, 252, 250));
@@ -441,7 +505,7 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 349, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 359, Short.MAX_VALUE)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -464,11 +528,6 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
         insertPersona();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
-    private void txtDNIKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDNIKeyReleased
-        // TODO add your handling code here:
-        msjError();
-    }//GEN-LAST:event_txtDNIKeyReleased
-
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
         // TODO add your handling code here:
         System.exit(0);
@@ -482,6 +541,32 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jLabel12MousePressed
+
+    private void txtDNIKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDNIKeyReleased
+        msjError();
+    }//GEN-LAST:event_txtDNIKeyReleased
+
+    private void txtDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDNIActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDNIActionPerformed
+
+    private void txtUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUsuarioMouseClicked
+        String Cadena = txtNombres.getText();
+        String Cadena1 = txtDNI.getText();
+        String sSubCadena = Cadena.substring(0,3);
+        String sSubCadena1 = Cadena1.substring(0,3);
+        txtUsuario.setText(sSubCadena+sSubCadena1);
+    }//GEN-LAST:event_txtUsuarioMouseClicked
+
+    private void txtRepeatContraseniaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRepeatContraseniaKeyReleased
+        if(txtRepeatContrasenia.getText().equals(txtContrasenia.getText())){
+            labererror.setText("correcto");
+            labererror.setForeground(new Color(49, 213, 67));
+        }else{
+            labererror.setText("las contraseñas no coinciden");
+            labererror.setForeground(new Color(255,0,0));
+        }
+    }//GEN-LAST:event_txtRepeatContraseniaKeyReleased
 
     /**
      * @param args the command line arguments
@@ -540,16 +625,17 @@ public class REGISTRO_DOCENTE extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel labererror;
     private javax.swing.JLabel msj1;
     private javax.swing.JTextField txtApMaterno;
     private javax.swing.JTextField txtApPaterno;
     private javax.swing.JPasswordField txtContrasenia;
-    private javax.swing.JFormattedTextField txtDNI;
+    private javax.swing.JTextField txtDNI;
     private javax.swing.JTextField txtDireccion;
-    private javax.swing.JFormattedTextField txtFechaNacimiento;
+    private com.toedter.calendar.JDateChooser txtFechaNacimiento;
     private javax.swing.JTextField txtNombres;
     private javax.swing.JPasswordField txtRepeatContrasenia;
-    private javax.swing.JFormattedTextField txtTelefono;
+    private javax.swing.JTextField txtTelefono;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
