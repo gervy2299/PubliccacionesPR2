@@ -47,6 +47,7 @@ public class VALIDAR_DIRECTOR extends javax.swing.JFrame {
         txtfecha.setEnabled(false);
         txtpaginas.setEnabled(false);
         txttitulo.setEnabled(false);
+                this.setLayout(null);
         this.setLocationRelativeTo(null);
     }
 

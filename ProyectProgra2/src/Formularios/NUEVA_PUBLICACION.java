@@ -12,9 +12,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import proyectprogra2.Conexion;
-
+import CLASES.clases;
 /**
  *
  * @author HP
@@ -34,7 +36,9 @@ public class NUEVA_PUBLICACION extends javax.swing.JFrame {
         datosGen();
         comboTipPub();
         comboEscuela();
+        this.setLayout(null);
         this.setLocationRelativeTo(null);
+//        cls.mayusculaNumber(txtNomPub);
     }
 
     public void datosGen() {
@@ -168,7 +172,7 @@ public class NUEVA_PUBLICACION extends javax.swing.JFrame {
                     + "VALUES (?,?,?,?,?,?,?,?)");
             ps.setString(1, txtNomPub.getText());
             ps.setString(2, txtCantPag.getText());
-            ps.setString(3, txtFec.getText());
+            ps.setString(3, fecha());
             ps.setString(4, txtCantCap.getText());
             //Llamar el metodo id del autor
             ps.setString(5, idAutor());
@@ -182,7 +186,13 @@ public class NUEVA_PUBLICACION extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Error al guardar Autor: \n" + e);
         }
     }
-
+  public String fecha() {
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        Date fecha = txtFec.getDate();
+        String fecha2 = formato.format(fecha);
+        return String.valueOf(fecha2);
+       
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -209,9 +219,8 @@ public class NUEVA_PUBLICACION extends javax.swing.JFrame {
         txtNomPub = new javax.swing.JTextField();
         txtCantPag = new javax.swing.JTextField();
         txtCantCap = new javax.swing.JTextField();
-        txtFec = new javax.swing.JFormattedTextField();
         cmbEsc = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
+        txtFec = new com.toedter.calendar.JDateChooser();
         btnMenu = new javax.swing.JButton();
         btnEnviar = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
@@ -234,10 +243,11 @@ public class NUEVA_PUBLICACION extends javax.swing.JFrame {
         lblNom.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         lblNom.setText("jLabel3");
 
-        btnExit.setBackground(new java.awt.Color(255, 117, 109));
+        btnExit.setBackground(new java.awt.Color(255, 0, 0));
         btnExit.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnExit.setForeground(new java.awt.Color(255, 255, 255));
         btnExit.setText("LOGOUT");
+        btnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
@@ -320,11 +330,8 @@ public class NUEVA_PUBLICACION extends javax.swing.JFrame {
 
         txtCantCap.setBackground(new java.awt.Color(244, 252, 250));
 
-        txtFec.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd"))));
-
-        jLabel3.setBackground(new java.awt.Color(244, 252, 250));
-        jLabel3.setForeground(new java.awt.Color(0, 153, 0));
-        jLabel3.setText("yyyy-MM-dd");
+        txtFec.setDateFormatString("yyyy-MM-dd");
+        txtFec.setDoubleBuffered(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -339,19 +346,18 @@ public class NUEVA_PUBLICACION extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(jLabel10))
                 .addGap(30, 30, 30)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(txtFec, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(cmbTipPub, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbEsc, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txtCantPag, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel11)
-                        .addGap(21, 21, 21)
-                        .addComponent(txtCantCap, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtNomPub))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(cmbTipPub, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbEsc, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(txtCantPag, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel11)
+                            .addGap(21, 21, 21)
+                            .addComponent(txtCantCap, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtNomPub))
+                    .addComponent(txtFec, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(114, 114, 114))
         );
         jPanel2Layout.setVerticalGroup(
@@ -377,11 +383,15 @@ public class NUEVA_PUBLICACION extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtCantCap, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel11)))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFec, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
-                .addComponent(jLabel3))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel9)
+                        .addGap(42, 42, 42))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtFec, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31))))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 850, 330));
@@ -390,6 +400,7 @@ public class NUEVA_PUBLICACION extends javax.swing.JFrame {
         btnMenu.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         btnMenu.setForeground(new java.awt.Color(255, 255, 255));
         btnMenu.setText("MENU PRINCIPAL");
+        btnMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenuActionPerformed(evt);
@@ -401,6 +412,7 @@ public class NUEVA_PUBLICACION extends javax.swing.JFrame {
         btnEnviar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         btnEnviar.setForeground(new java.awt.Color(255, 255, 255));
         btnEnviar.setText("ENVIAR");
+        btnEnviar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEnviar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEnviarActionPerformed(evt);
@@ -429,7 +441,7 @@ public class NUEVA_PUBLICACION extends javax.swing.JFrame {
         if (!txtNomPub.getText().equals("")) {
             if (!txtCantPag.getText().equals("")) {
                 if (!txtCantCap.getText().equals("")) {
-                    if (!txtFec.getText().equals("")) {
+                    if (!fecha().equals("")) {
                         NoModDat();
                         insertarPublicacion();
                     } else {
@@ -504,7 +516,6 @@ public class NUEVA_PUBLICACION extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -515,7 +526,7 @@ public class NUEVA_PUBLICACION extends javax.swing.JFrame {
     private javax.swing.JLabel lblTipUsu;
     private javax.swing.JTextField txtCantCap;
     private javax.swing.JTextField txtCantPag;
-    private javax.swing.JFormattedTextField txtFec;
+    private com.toedter.calendar.JDateChooser txtFec;
     private javax.swing.JTextField txtNomPub;
     // End of variables declaration//GEN-END:variables
 }

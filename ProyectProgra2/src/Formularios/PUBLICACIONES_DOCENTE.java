@@ -39,6 +39,7 @@ public class PUBLICACIONES_DOCENTE extends javax.swing.JFrame {
         llenarPubs();
         comboEstado();
         comboTipPub();
+        this.setLayout(null);
         this.setLocationRelativeTo(null);
     }
 
@@ -276,6 +277,7 @@ public class PUBLICACIONES_DOCENTE extends javax.swing.JFrame {
         btnExit.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnExit.setForeground(new java.awt.Color(255, 255, 255));
         btnExit.setText("LOGOUT");
+        btnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
@@ -379,6 +381,7 @@ public class PUBLICACIONES_DOCENTE extends javax.swing.JFrame {
         btnMenu.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnMenu.setForeground(new java.awt.Color(255, 255, 255));
         btnMenu.setText("MENU PRINCIPAL");
+        btnMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenuActionPerformed(evt);
@@ -389,6 +392,7 @@ public class PUBLICACIONES_DOCENTE extends javax.swing.JFrame {
         btnEliminar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setText("ELIMINAR");
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);

@@ -45,6 +45,7 @@ public class VALIDAR_TIPIFICACION extends javax.swing.JFrame {
         initComponents();
         datos();
         datosGen();
+        this.setLayout(null);
         this.setLocationRelativeTo(null);
     }
 

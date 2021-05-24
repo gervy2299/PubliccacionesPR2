@@ -45,6 +45,7 @@ public class MENU extends javax.swing.JFrame {
         initComponents();
         datosGen();
         tipoUsuario();
+        this.setLayout(null);
         this.setLocationRelativeTo(null);
     }
 
@@ -245,6 +246,7 @@ public class MENU extends javax.swing.JFrame {
         btnNewPub.setBackground(new java.awt.Color(255, 102, 102));
         btnNewPub.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnNewPub.setText("Nueva Publicación");
+        btnNewPub.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnNewPub.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNewPubActionPerformed(evt);
@@ -255,6 +257,7 @@ public class MENU extends javax.swing.JFrame {
         btnPub.setBackground(new java.awt.Color(153, 255, 153));
         btnPub.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnPub.setText("Publicaciones");
+        btnPub.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPub.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPubActionPerformed(evt);
@@ -265,6 +268,7 @@ public class MENU extends javax.swing.JFrame {
         btnInfArt.setBackground(new java.awt.Color(102, 102, 255));
         btnInfArt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnInfArt.setText("Inf. Artículos");
+        btnInfArt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnInfArt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInfArtActionPerformed(evt);
@@ -275,6 +279,7 @@ public class MENU extends javax.swing.JFrame {
         btnPro.setBackground(new java.awt.Color(255, 255, 102));
         btnPro.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnPro.setText("Perfil");
+        btnPro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProActionPerformed(evt);

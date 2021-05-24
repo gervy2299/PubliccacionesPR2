@@ -30,6 +30,8 @@ public class LISTA_TIPIFICACION extends javax.swing.JFrame {
         cabecera();
         llenarCategria();
         datosGen();
+        this.setLayout(null);
+        this.setLocationRelativeTo(null);
     }
 
     public void datosGen() {

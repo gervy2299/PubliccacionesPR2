@@ -30,6 +30,8 @@ public class LISTA_RATIFICACION extends javax.swing.JFrame {
         datosGen();
         cabecera();
         llenarCategria();
+        this.setLayout(null);
+        this.setLocationRelativeTo(null);
     }
 
     public void datosGen() {

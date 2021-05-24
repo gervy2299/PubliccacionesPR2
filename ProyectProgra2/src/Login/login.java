@@ -183,7 +183,7 @@ public class LOGIN extends javax.swing.JFrame{
 
         jLabel3.setBackground(new java.awt.Color(244, 252, 250));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Diseño/cerrar.png"))); // NOI18N
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
@@ -210,25 +210,21 @@ public class LOGIN extends javax.swing.JFrame{
         jPanel2.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 480, 350, 44));
 
         cbxRoles.setBackground(new java.awt.Color(244, 252, 250));
-        cbxRoles.setForeground(new java.awt.Color(244, 252, 250));
-        cbxRoles.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cbxRoles.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel2.add(cbxRoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 350, 30));
 
         jLabel2.setBackground(new java.awt.Color(244, 252, 250));
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("PERFIL:");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, -1, 30));
 
         jLabel4.setBackground(new java.awt.Color(244, 252, 250));
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("USUARIO:");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, -1, 30));
 
         jLabel5.setBackground(new java.awt.Color(244, 252, 250));
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("CONTRASEÑA:");
         jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, -1, 30));
 
@@ -262,7 +258,7 @@ public class LOGIN extends javax.swing.JFrame{
         registro.setBackground(new java.awt.Color(244, 252, 250));
         registro.setForeground(new java.awt.Color(55, 221, 193));
         registro.setText("Registrate");
-        registro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        registro.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         registro.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 registroMouseMoved(evt);

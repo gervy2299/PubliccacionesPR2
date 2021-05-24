@@ -43,6 +43,7 @@ public class VALIDAR_RATIFICACION extends javax.swing.JFrame {
         txtpag.setEnabled(false);
         txttitulo.setEnabled(false);
         tipoUsuario();
+                this.setLayout(null);
         this.setLocationRelativeTo(null);
     }
 

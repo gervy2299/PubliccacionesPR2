@@ -44,6 +44,8 @@ public class VALIDAR_DECANO extends javax.swing.JFrame {
         txtfecha.setEnabled(false);
         txtpaginas.setEnabled(false);
         txttitulo.setEnabled(false);
+        this.setLayout(null);
+        this.setLocationRelativeTo(null);
     }
     
     public void datosGen() {
