@@ -193,6 +193,7 @@ public class MENU extends javax.swing.JFrame {
         btnExit.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnExit.setForeground(new java.awt.Color(255, 255, 255));
         btnExit.setText("LOGOUT");
+        btnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
@@ -290,6 +291,7 @@ public class MENU extends javax.swing.JFrame {
         btnValTip.setBackground(new java.awt.Color(204, 102, 255));
         btnValTip.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnValTip.setText("Validar");
+        btnValTip.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnValTip.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnValTipActionPerformed(evt);
@@ -310,6 +312,7 @@ public class MENU extends javax.swing.JFrame {
         btnValDir.setBackground(new java.awt.Color(0, 204, 255));
         btnValDir.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnValDir.setText("Validar");
+        btnValDir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnValDir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnValDirActionPerformed(evt);
@@ -320,6 +323,7 @@ public class MENU extends javax.swing.JFrame {
         btnValDec.setBackground(new java.awt.Color(255, 153, 102));
         btnValDec.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnValDec.setText("Validar");
+        btnValDec.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnValDec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnValDecActionPerformed(evt);
