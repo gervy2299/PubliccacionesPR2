@@ -31,7 +31,6 @@ public class PUBLICACIONES_DOCENTE extends javax.swing.JFrame {
     /**
      * Creates new form JF5
      */
-    
     public PUBLICACIONES_DOCENTE() {
         initComponents();
         datosGen();
@@ -147,12 +146,12 @@ public class PUBLICACIONES_DOCENTE extends javax.swing.JFrame {
         }
         //busqueda por combo
         if (cmbEst.getSelectedIndex() != 0) {
-            where = "WHERE p.fkestado_publicacion LIKE'%" + campo + "%'";
+            where = "WHERE e.descripcion LIKE'%" + campo + "%'";
         } else {
             llenarPubs();
         }
         if (cmbTipBus.getSelectedIndex() != 0) {
-            where = "WHERE p.fkidtipo_publicacion LIKE'%" + campo + "%'";
+            where = "WHERE tp.descripcion LIKE'%" + campo + "%'";
         } else {
             llenarPubs();
         }
@@ -163,10 +162,13 @@ public class PUBLICACIONES_DOCENTE extends javax.swing.JFrame {
             ResultSet rs = null;
             Conexion objC = new Conexion();
             Connection conn = objC.conexiondb();
-            String sql = "Select p.titulo,p.fecha_publicacion,p.fkidtipo_publicacion,p.fk_idescuela,p.fkestado_publicacion\n"
+            String sql = "Select p.titulo,p.fecha_publicacion,tp.descripcion,es.nombre_escuela,e.descripcion\n"
                     + "from autores a\n"
                     + "INNER JOIN docentes d ON a.fk_DNI=d.DNI\n"
-                    + "INNER JOIN publicaciones p ON p.fk_idautores=a.idautores " + where + " AND d.usuario='" + usu5 + "';";
+                    + "INNER JOIN publicaciones p ON p.fk_idautores=a.idautores\n"
+                    + "inner join estado_publicacion e on p.fkestado_publicacion=e.idestado\n"
+                    + "inner join escuela es on p.fk_idescuela=es.idescuela\n"
+                    + "inner join tipo_publicacion tp on p.fkidtipo_publicacion=tp.idtipo_publicacion " + where + " AND d.usuario='" + usu5 + "';";
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
 
@@ -185,7 +187,7 @@ public class PUBLICACIONES_DOCENTE extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Error al buscar Articulo: \n" + e);
         }
     }
-    
+
     public String idPub() {
         String id = "";
         try {
@@ -194,7 +196,7 @@ public class PUBLICACIONES_DOCENTE extends javax.swing.JFrame {
             Conexion conn = new Conexion();
             Connection con = conn.conexiondb();
             int Fila = tbPubs.getSelectedRow();
-            String sql = "CALL p_idPub('" + usu5 + "','"+tbPubs.getValueAt(Fila, 0).toString()+"');";
+            String sql = "CALL p_idPub('" + usu5 + "','" + tbPubs.getValueAt(Fila, 0).toString() + "');";
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -205,17 +207,17 @@ public class PUBLICACIONES_DOCENTE extends javax.swing.JFrame {
         }
         return id;
     }
-    
+
     public void EliminarPub() {
         PreparedStatement ps = null;
         try {
             Conexion objC = new Conexion();
             Connection conn = objC.conexiondb();
             int Fila = tbPubs.getSelectedRow();
-            
+
             ps = conn.prepareStatement("DELETE FROM publicaciones WHERE idPublicacion=?");
             ps.setString(1, idPub());
-            System.err.println("ee : "+ps);
+            System.err.println("ee : " + ps);
             ps.execute();
             model.removeRow(Fila);
             JOptionPane.showMessageDialog(rootPane, "Publicacion Eliminada");
@@ -486,7 +488,7 @@ public class PUBLICACIONES_DOCENTE extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        LOGIN lg=new LOGIN();
+        LOGIN lg = new LOGIN();
         lg.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnExitActionPerformed

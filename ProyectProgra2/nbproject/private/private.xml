@@ -3,20 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/eltu_/OneDrive/Escritorio/PROGRAMACION%202%20-%20PROYECT/PubliccacionesPR2/ProyectProgra2/src/Formularios/ARTICULOS.java</file>
-            <file>file:/C:/Users/eltu_/OneDrive/Escritorio/PROGRAMACION%202%20-%20PROYECT/PubliccacionesPR2/ProyectProgra2/src/proyectprogra2/Conexion.java</file>
-            <file>file:/C:/Users/eltu_/OneDrive/Escritorio/PROGRAMACION%202%20-%20PROYECT/PubliccacionesPR2/ProyectProgra2/src/Login/login.java</file>
-            <file>file:/C:/Users/eltu_/OneDrive/Escritorio/PROGRAMACION%202%20-%20PROYECT/PubliccacionesPR2/ProyectProgra2/src/Formularios/VALIDAR_RATIFICACION.java</file>
-            <file>file:/C:/Users/eltu_/OneDrive/Escritorio/PROGRAMACION%202%20-%20PROYECT/PubliccacionesPR2/ProyectProgra2/src/Formularios/LISTA_RATIFICACION.java</file>
-=======
-            <file>file:/C:/Users/HP/Documents/Pyoyecto%20xd/PubliccacionesPR2/ProyectProgra2/src/Login/login.java</file>
-            <file>file:/C:/Users/HP/Documents/Pyoyecto%20xd/PubliccacionesPR2/ProyectProgra2/src/Formularios/VALIDAR_DIRECTOR.java</file>
-            <file>file:/C:/Users/HP/Documents/Pyoyecto%20xd/PubliccacionesPR2/ProyectProgra2/src/Formularios/MENU.java</file>
-            <file>file:/C:/Users/HP/Documents/Pyoyecto%20xd/PubliccacionesPR2/ProyectProgra2/src/Formularios/LISTA_DIRECTOR.java</file>
-            <file>file:/C:/Users/HP/Documents/Pyoyecto%20xd/PubliccacionesPR2/ProyectProgra2/src/Formularios/EDITAR_PERFIL.java</file>
-            <file>file:/C:/Users/HP/Documents/Pyoyecto%20xd/PubliccacionesPR2/ProyectProgra2/src/Formularios/VALIDAR_TIPIFICACION.java</file>
->>>>>>> 86bee596d9b1e808099f1efd1b2bc9b540306c7d
+            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/curos%202021/programacion%202/public2/PubliccacionesPR2/ProyectProgra2/src/Formularios/LISTA_TIPIFICACION.java</file>
+            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/curos%202021/programacion%202/public2/PubliccacionesPR2/ProyectProgra2/src/Formularios/VALIDAR_TIPIFICACION.java</file>
+            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/curos%202021/programacion%202/public2/PubliccacionesPR2/ProyectProgra2/src/Formularios/EDITAR_PERFIL.java</file>
+            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/curos%202021/programacion%202/public2/PubliccacionesPR2/ProyectProgra2/src/Formularios/VALIDAR_RATIFICACION.java</file>
+            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/curos%202021/programacion%202/public2/PubliccacionesPR2/ProyectProgra2/src/Formularios/LISTA_DECANO.java</file>
+            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/curos%202021/programacion%202/public2/PubliccacionesPR2/ProyectProgra2/src/Reportes/r_tipo.jrxml</file>
+            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/curos%202021/programacion%202/public2/PubliccacionesPR2/ProyectProgra2/src/Login/LOGIN.java</file>
+            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/curos%202021/programacion%202/public2/PubliccacionesPR2/ProyectProgra2/src/Formularios/PUBLICACIONES_DOCENTE.java</file>
+            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/curos%202021/programacion%202/public2/PubliccacionesPR2/ProyectProgra2/src/Reportes/r_publicaciones.jrxml</file>
+            <file>file:/C:/Users/USUARIO/OneDrive/Documentos/curos%202021/programacion%202/public2/PubliccacionesPR2/ProyectProgra2/src/Formularios/LISTA_RATIFICACION.java</file>
         </group>
     </open-files>
 </project-private>
