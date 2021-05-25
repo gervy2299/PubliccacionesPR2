@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -134,13 +136,15 @@ public class MENU extends javax.swing.JFrame {
             Conexion conn = new Conexion();
             Connection con = conn.conexiondb();
             JasperReport reporte = null;
-            String path = "src\\Reportes\\listaDocentes.jasper";
+            String path = "src\\Reportes\\r_estadoPublicacion.jasper";
+            Map parametro = new HashMap();
+            parametro.put("estado_publi","Por Validar");
             reporte = (JasperReport) JRLoader.loadObjectFromFile(path);
-            JasperPrint jprint = JasperFillManager.fillReport(reporte, null,con);
-            JasperViewer view = new JasperViewer(jprint,false);
+            JasperPrint jprint = JasperFillManager.fillReport(reporte, parametro, con);
+            JasperViewer view = new JasperViewer(jprint, false);
             view.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
             view.setVisible(true);
-            
         } catch (Exception e) {
         }
     }
@@ -168,6 +172,7 @@ public class MENU extends javax.swing.JFrame {
         btnValRat = new javax.swing.JButton();
         btnValDir = new javax.swing.JButton();
         btnValDec = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -193,7 +198,7 @@ public class MENU extends javax.swing.JFrame {
         btnExit.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnExit.setForeground(new java.awt.Color(255, 255, 255));
         btnExit.setText("LOGOUT");
-        btnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
@@ -247,7 +252,7 @@ public class MENU extends javax.swing.JFrame {
         btnNewPub.setBackground(new java.awt.Color(255, 102, 102));
         btnNewPub.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnNewPub.setText("Nueva Publicación");
-        btnNewPub.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNewPub.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnNewPub.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNewPubActionPerformed(evt);
@@ -258,7 +263,7 @@ public class MENU extends javax.swing.JFrame {
         btnPub.setBackground(new java.awt.Color(153, 255, 153));
         btnPub.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnPub.setText("Publicaciones");
-        btnPub.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPub.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnPub.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPubActionPerformed(evt);
@@ -269,7 +274,7 @@ public class MENU extends javax.swing.JFrame {
         btnInfArt.setBackground(new java.awt.Color(102, 102, 255));
         btnInfArt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnInfArt.setText("Inf. Artículos");
-        btnInfArt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnInfArt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnInfArt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInfArtActionPerformed(evt);
@@ -280,7 +285,7 @@ public class MENU extends javax.swing.JFrame {
         btnPro.setBackground(new java.awt.Color(255, 255, 102));
         btnPro.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnPro.setText("Perfil");
-        btnPro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPro.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnPro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProActionPerformed(evt);
@@ -291,7 +296,7 @@ public class MENU extends javax.swing.JFrame {
         btnValTip.setBackground(new java.awt.Color(204, 102, 255));
         btnValTip.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnValTip.setText("Validar");
-        btnValTip.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnValTip.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnValTip.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnValTipActionPerformed(evt);
@@ -312,7 +317,7 @@ public class MENU extends javax.swing.JFrame {
         btnValDir.setBackground(new java.awt.Color(0, 204, 255));
         btnValDir.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnValDir.setText("Validar");
-        btnValDir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnValDir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnValDir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnValDirActionPerformed(evt);
@@ -323,13 +328,21 @@ public class MENU extends javax.swing.JFrame {
         btnValDec.setBackground(new java.awt.Color(255, 153, 102));
         btnValDec.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         btnValDec.setText("Validar");
-        btnValDec.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnValDec.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnValDec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnValDecActionPerformed(evt);
             }
         });
         jPanel2.add(btnValDec, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 310, 80));
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 410, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 109, 1050, 470));
 
@@ -459,6 +472,7 @@ public class MENU extends javax.swing.JFrame {
     private javax.swing.JButton btnValDir;
     private javax.swing.JButton btnValRat;
     private javax.swing.JButton btnValTip;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

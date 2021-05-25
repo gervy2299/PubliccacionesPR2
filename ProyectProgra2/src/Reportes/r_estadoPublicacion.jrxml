@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="373087ef-9bbb-4807-8fd9-57e71036105f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="estado_publi" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select p.titulo Titulo, tp.descripcion Tipo_Publicacion ,p.cant_paginas Paginas, p.numero_capitulos Capitulos, a.fk_DNI DNI, p.fecha_publicacion Fecha, esc.nombre_escuela Escuela , ep.descripcion Estado_Publicacion
+from publicaciones p
+inner join tipo_publicacion tp on p.fkidtipo_publicacion = tp.idtipo_publicacion
+inner join autores a on p.fk_idautores = a.idautores
+inner join estado_publicacion ep on p.fkestado_publicacion = ep.idestado
+inner join escuela esc on p.fk_idescuela= esc.idescuela
+where ep.descripcion = $P{estado_publi};]]>
+	</queryString>
+	<field name="Titulo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Tipo_Publicacion" class="java.lang.String"/>
+	<field name="Paginas" class="java.lang.Integer"/>
+	<field name="Capitulos" class="java.lang.Integer"/>
+	<field name="DNI" class="java.lang.Integer"/>
+	<field name="Fecha" class="java.sql.Date"/>
+	<field name="Escuela" class="java.lang.String"/>
+	<field name="Estado_Publicacion" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="75" height="20" uuid="e53fa9b7-ee93-4af6-a2e4-1a0cf45d6c1a"/>
+				<text><![CDATA[Titulo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="75" y="2" width="75" height="20" uuid="a461c721-2344-4c1a-906b-0d8889df3ce2"/>
+				<text><![CDATA[Tipo_Publicacion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="2" width="75" height="20" uuid="c89ab3bd-0268-4448-bb30-ad2320536b43"/>
+				<text><![CDATA[Paginas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="225" y="2" width="75" height="20" uuid="28d44eef-f124-40b6-897a-76428365273c"/>
+				<text><![CDATA[Capitulos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="0" width="75" height="20" uuid="e185f044-165e-41c0-a5dd-e9c3dba3db49"/>
+				<text><![CDATA[DNI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="375" y="0" width="70" height="20" uuid="ecfdbe19-8e07-4b2c-b0c8-9f095c968511"/>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="445" y="2" width="69" height="20" uuid="e4898a7d-fd7a-40ab-8f44-0be618e0eec6"/>
+				<text><![CDATA[Escuela]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="514" y="2" width="41" height="20" uuid="8b13d660-4a4b-48b9-945c-326b482be6d6"/>
+				<text><![CDATA[Estado_Publicacion]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="15" width="75" height="20" uuid="d34b139e-c2c4-4b9e-9765-b91715ae6aec"/>
+				<textFieldExpression><![CDATA[$F{Titulo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="75" y="15" width="75" height="20" uuid="a8cf7ba2-c101-47df-9460-e0014fa5f660"/>
+				<textFieldExpression><![CDATA[$F{Tipo_Publicacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="150" y="15" width="75" height="20" uuid="086f53ce-2077-49a4-aadc-276e679db2c8"/>
+				<textFieldExpression><![CDATA[$F{Paginas}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="225" y="15" width="75" height="20" uuid="f45a0235-36e9-49a2-99ca-99c1000af4bd"/>
+				<textFieldExpression><![CDATA[$F{Capitulos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="15" width="75" height="20" uuid="37afc681-50f1-4425-a875-c394adf1bc00"/>
+				<textFieldExpression><![CDATA[$F{DNI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="375" y="15" width="70" height="20" uuid="f155190d-87ab-47f2-8585-f1bda06efa73"/>
+				<textFieldExpression><![CDATA[$F{Fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="445" y="15" width="69" height="20" uuid="a7ee6e44-0d30-4b8a-97c3-e68942e220d9"/>
+				<textFieldExpression><![CDATA[$F{Escuela}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="514" y="15" width="41" height="20" uuid="0e4cd632-dce1-4fd3-83f9-22c2ce4c5157"/>
+				<textFieldExpression><![CDATA[$F{Estado_Publicacion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
