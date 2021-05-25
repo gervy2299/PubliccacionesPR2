@@ -3,11 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/eltu_/OneDrive/Escritorio/PROGRAMACION%202%20-%20PROYECT/PubliccacionesPR2/ProyectProgra2/src/Formularios/ARTICULOS.java</file>
             <file>file:/C:/Users/eltu_/OneDrive/Escritorio/PROGRAMACION%202%20-%20PROYECT/PubliccacionesPR2/ProyectProgra2/src/proyectprogra2/Conexion.java</file>
             <file>file:/C:/Users/eltu_/OneDrive/Escritorio/PROGRAMACION%202%20-%20PROYECT/PubliccacionesPR2/ProyectProgra2/src/Login/login.java</file>
             <file>file:/C:/Users/eltu_/OneDrive/Escritorio/PROGRAMACION%202%20-%20PROYECT/PubliccacionesPR2/ProyectProgra2/src/Formularios/VALIDAR_RATIFICACION.java</file>
             <file>file:/C:/Users/eltu_/OneDrive/Escritorio/PROGRAMACION%202%20-%20PROYECT/PubliccacionesPR2/ProyectProgra2/src/Formularios/LISTA_RATIFICACION.java</file>
+=======
+            <file>file:/C:/Users/HP/Documents/Pyoyecto%20xd/PubliccacionesPR2/ProyectProgra2/src/Login/login.java</file>
+            <file>file:/C:/Users/HP/Documents/Pyoyecto%20xd/PubliccacionesPR2/ProyectProgra2/src/Formularios/VALIDAR_DIRECTOR.java</file>
+            <file>file:/C:/Users/HP/Documents/Pyoyecto%20xd/PubliccacionesPR2/ProyectProgra2/src/Formularios/MENU.java</file>
+            <file>file:/C:/Users/HP/Documents/Pyoyecto%20xd/PubliccacionesPR2/ProyectProgra2/src/Formularios/LISTA_DIRECTOR.java</file>
+            <file>file:/C:/Users/HP/Documents/Pyoyecto%20xd/PubliccacionesPR2/ProyectProgra2/src/Formularios/EDITAR_PERFIL.java</file>
+            <file>file:/C:/Users/HP/Documents/Pyoyecto%20xd/PubliccacionesPR2/ProyectProgra2/src/Formularios/VALIDAR_TIPIFICACION.java</file>
+>>>>>>> 86bee596d9b1e808099f1efd1b2bc9b540306c7d
         </group>
     </open-files>
 </project-private>

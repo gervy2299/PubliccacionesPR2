@@ -169,6 +169,7 @@ public class LISTA_RATIFICACION extends javax.swing.JFrame {
         btnValidar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         txtdni = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(244, 252, 250));
@@ -187,8 +188,10 @@ public class LISTA_RATIFICACION extends javax.swing.JFrame {
         jLabel2.setText("TIPO DE USUARIO:");
 
         jButton1.setBackground(new java.awt.Color(255, 0, 51));
+        jButton1.setBackground(new java.awt.Color(255, 0, 0));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("LOGOUT");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -243,6 +246,7 @@ public class LISTA_RATIFICACION extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(244, 252, 250));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 204)));
+        jPanel2.setToolTipText("");
 
         TablaRati.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -274,18 +278,15 @@ public class LISTA_RATIFICACION extends javax.swing.JFrame {
                 btnValidarActionPerformed(evt);
             }
         });
-
+        
         jLabel6.setBackground(new java.awt.Color(244, 252, 250));
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("DNI:");
 
         txtdni.setBackground(new java.awt.Color(244, 252, 250));
-        txtdni.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtdniKeyReleased(evt);
-            }
-        });
+
+        txtdni.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -301,6 +302,7 @@ public class LISTA_RATIFICACION extends javax.swing.JFrame {
                         .addGap(37, 37, 37)
                         .addComponent(btnValidar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
                         .addComponent(jLabel6)
                         .addGap(18, 18, 18)
                         .addComponent(txtdni, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -316,7 +318,7 @@ public class LISTA_RATIFICACION extends javax.swing.JFrame {
                     .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnValidar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -348,7 +350,7 @@ public class LISTA_RATIFICACION extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValidarActionPerformed
-        pasarDato();
+       pasarDato();
         VALIDAR_RATIFICACION.usuRat1 = usuRat;
         new VALIDAR_RATIFICACION().setVisible(true);
         dispose();
@@ -415,6 +417,7 @@ public class LISTA_RATIFICACION extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
