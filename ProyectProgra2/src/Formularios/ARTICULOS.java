@@ -38,6 +38,7 @@ public class ARTICULOS extends javax.swing.JFrame {
         datosGen();
         cabecera();
         llenarArti();
+        this.setLayout(null);
         this.setLocationRelativeTo(null);
     }
     
@@ -165,27 +166,36 @@ public class ARTICULOS extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(244, 252, 250));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel1.setForeground(new java.awt.Color(55, 221, 193));
         jLabel1.setText("NOMBRE:");
 
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel2.setForeground(new java.awt.Color(55, 221, 193));
         jLabel2.setText("TIPO DE USUARIO:");
 
+        lblNom.setBackground(new java.awt.Color(244, 252, 250));
+        lblNom.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         lblNom.setText("jLabel3");
 
-        btnLog.setBackground(new java.awt.Color(255, 117, 109));
+        btnLog.setBackground(new java.awt.Color(255, 0, 0));
+        btnLog.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnLog.setForeground(new java.awt.Color(255, 255, 255));
         btnLog.setText("LOGOUT");
+        btnLog.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnLog.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogActionPerformed(evt);
             }
         });
 
+        lblTipUsu.setBackground(new java.awt.Color(244, 252, 250));
+        lblTipUsu.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         lblTipUsu.setText("jLabel4");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -201,8 +211,8 @@ public class ARTICULOS extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblNom, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                     .addComponent(lblTipUsu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 480, Short.MAX_VALUE)
-                .addComponent(btnLog, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 460, Short.MAX_VALUE)
+                .addComponent(btnLog, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -211,7 +221,7 @@ public class ARTICULOS extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnLog, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnLog, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -224,15 +234,20 @@ public class ARTICULOS extends javax.swing.JFrame {
                         .addGap(15, 15, 15))))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 870, 60));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 870, 70));
 
-        jPanel2.setBackground(new java.awt.Color(211, 238, 255));
+        jPanel2.setBackground(new java.awt.Color(244, 252, 250));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "BUSQUEDA DE ARTÍCULOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(0, 0, 51))); // NOI18N
 
+        jLabel6.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel6.setText("N° ARTICULO:");
 
+        jLabel7.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel7.setText("NOMBRE DEL ARTICULO:");
 
+        txtnArt.setBackground(new java.awt.Color(244, 252, 250));
         txtnArt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtnArtKeyPressed(evt);
@@ -242,6 +257,7 @@ public class ARTICULOS extends javax.swing.JFrame {
             }
         });
 
+        txtArt.setBackground(new java.awt.Color(244, 252, 250));
         txtArt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtArtKeyReleased(evt);
@@ -250,7 +266,8 @@ public class ARTICULOS extends javax.swing.JFrame {
 
         jButton3.setBackground(new java.awt.Color(55, 221, 193));
         jButton3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jButton3.setText("MENU PRINCIPAL");
+        jButton3.setText("ATRAS");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -285,8 +302,8 @@ public class ARTICULOS extends javax.swing.JFrame {
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtArt, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtnArt, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtArt, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtnArt, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
@@ -298,11 +315,11 @@ public class ARTICULOS extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtnArt, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtnArt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtArt, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtArt, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -314,7 +331,7 @@ public class ARTICULOS extends javax.swing.JFrame {
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 109, 870, 430));
 
         jLabel12.setBackground(new java.awt.Color(244, 252, 250));
-        jLabel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(211, 238, 255), 300));
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Diseño/slider.png"))); // NOI18N
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 550));
 
         pack();
@@ -333,13 +350,11 @@ public class ARTICULOS extends javax.swing.JFrame {
     }//GEN-LAST:event_txtnArtKeyReleased
 
     private void btnLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogActionPerformed
-        LOGIN lg=new LOGIN();
-        lg.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnLogActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        this.dispose();
+        dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

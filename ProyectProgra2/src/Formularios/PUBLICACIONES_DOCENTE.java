@@ -31,7 +31,6 @@ public class PUBLICACIONES_DOCENTE extends javax.swing.JFrame {
     /**
      * Creates new form JF5
      */
-    
     public PUBLICACIONES_DOCENTE() {
         initComponents();
         datosGen();
@@ -39,6 +38,7 @@ public class PUBLICACIONES_DOCENTE extends javax.swing.JFrame {
         llenarPubs();
         comboEstado();
         comboTipPub();
+        this.setLayout(null);
         this.setLocationRelativeTo(null);
     }
 
@@ -85,7 +85,7 @@ public class PUBLICACIONES_DOCENTE extends javax.swing.JFrame {
             rs = ps.executeQuery();
             ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
             int cantidadColumnas = rsmd.getColumnCount();
-            int[] anchos = {100, 50, 80, 80, 80, 80};
+            int[] anchos = {200, 50, 80, 50, 50, 50};
             for (int i = 0; i < tbPubs.getColumnCount(); i++) {
                 tbPubs.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
             }
@@ -146,12 +146,12 @@ public class PUBLICACIONES_DOCENTE extends javax.swing.JFrame {
         }
         //busqueda por combo
         if (cmbEst.getSelectedIndex() != 0) {
-            where = "WHERE p.fkestado_publicacion LIKE'%" + campo + "%'";
+            where = "WHERE e.descripcion LIKE'%" + campo + "%'";
         } else {
             llenarPubs();
         }
         if (cmbTipBus.getSelectedIndex() != 0) {
-            where = "WHERE p.fkidtipo_publicacion LIKE'%" + campo + "%'";
+            where = "WHERE tp.descripcion LIKE'%" + campo + "%'";
         } else {
             llenarPubs();
         }
@@ -162,10 +162,13 @@ public class PUBLICACIONES_DOCENTE extends javax.swing.JFrame {
             ResultSet rs = null;
             Conexion objC = new Conexion();
             Connection conn = objC.conexiondb();
-            String sql = "Select p.titulo,p.fecha_publicacion,p.fkidtipo_publicacion,p.fk_idescuela,p.fkestado_publicacion\n"
+            String sql = "Select p.titulo,p.fecha_publicacion,tp.descripcion,es.nombre_escuela,e.descripcion\n"
                     + "from autores a\n"
                     + "INNER JOIN docentes d ON a.fk_DNI=d.DNI\n"
-                    + "INNER JOIN publicaciones p ON p.fk_idautores=a.idautores " + where + " AND d.usuario='" + usu5 + "';";
+                    + "INNER JOIN publicaciones p ON p.fk_idautores=a.idautores\n"
+                    + "inner join estado_publicacion e on p.fkestado_publicacion=e.idestado\n"
+                    + "inner join escuela es on p.fk_idescuela=es.idescuela\n"
+                    + "inner join tipo_publicacion tp on p.fkidtipo_publicacion=tp.idtipo_publicacion " + where + " AND d.usuario='" + usu5 + "';";
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
 
@@ -184,7 +187,7 @@ public class PUBLICACIONES_DOCENTE extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Error al buscar Articulo: \n" + e);
         }
     }
-    
+
     public String idPub() {
         String id = "";
         try {
@@ -193,7 +196,7 @@ public class PUBLICACIONES_DOCENTE extends javax.swing.JFrame {
             Conexion conn = new Conexion();
             Connection con = conn.conexiondb();
             int Fila = tbPubs.getSelectedRow();
-            String sql = "CALL p_idPub('" + usu5 + "','"+tbPubs.getValueAt(Fila, 0).toString()+"');";
+            String sql = "CALL p_idPub('" + usu5 + "','" + tbPubs.getValueAt(Fila, 0).toString() + "');";
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -204,17 +207,17 @@ public class PUBLICACIONES_DOCENTE extends javax.swing.JFrame {
         }
         return id;
     }
-    
+
     public void EliminarPub() {
         PreparedStatement ps = null;
         try {
             Conexion objC = new Conexion();
             Connection conn = objC.conexiondb();
             int Fila = tbPubs.getSelectedRow();
-            
+
             ps = conn.prepareStatement("DELETE FROM publicaciones WHERE idPublicacion=?");
             ps.setString(1, idPub());
-            System.err.println("ee : "+ps);
+            System.err.println("ee : " + ps);
             ps.execute();
             model.removeRow(Fila);
             JOptionPane.showMessageDialog(rootPane, "Publicacion Eliminada");
@@ -262,23 +265,28 @@ public class PUBLICACIONES_DOCENTE extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel1.setForeground(new java.awt.Color(55, 221, 193));
         jLabel1.setText("NOMBRE:");
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel2.setForeground(new java.awt.Color(55, 221, 193));
         jLabel2.setText("TIPO DE USUARIO:");
 
+        lblNom.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         lblNom.setText("jLabel3");
 
         btnExit.setBackground(new java.awt.Color(255, 117, 109));
+        btnExit.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnExit.setForeground(new java.awt.Color(255, 255, 255));
         btnExit.setText("LOGOUT");
+        btnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
             }
         });
 
+        lblTipUsu.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         lblTipUsu.setText("jLabel4");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -294,46 +302,47 @@ public class PUBLICACIONES_DOCENTE extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblNom, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                     .addComponent(lblTipUsu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 470, Short.MAX_VALUE)
-                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 576, Short.MAX_VALUE)
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(lblNom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
                                 .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)))
+                                .addGap(0, 2, Short.MAX_VALUE))
+                            .addComponent(lblNom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTipUsu)
                             .addComponent(jLabel2)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(btnExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 870, 70));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 1000, 70));
 
-        jPanel2.setBackground(new java.awt.Color(184, 236, 166));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PUBLICACIONES REALIZADAS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14))); // NOI18N
+        jPanel2.setBackground(new java.awt.Color(244, 252, 250));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PUBLICACIONES REALIZADAS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(0, 0, 51))); // NOI18N
 
+        jLabel6.setBackground(new java.awt.Color(244, 252, 250));
         jLabel6.setText("TITULO:");
 
+        jLabel7.setBackground(new java.awt.Color(244, 252, 250));
         jLabel7.setText("FECHA:");
 
+        jLabel8.setBackground(new java.awt.Color(244, 252, 250));
         jLabel8.setText("ESTADO:");
 
+        jLabel9.setBackground(new java.awt.Color(244, 252, 250));
         jLabel9.setText("TIPO DE PUBLICACION:");
 
+        txtNom.setBackground(new java.awt.Color(244, 252, 250));
         txtNom.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtNomMouseClicked(evt);
@@ -370,14 +379,22 @@ public class PUBLICACIONES_DOCENTE extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tbPubs);
 
+        btnMenu.setBackground(new java.awt.Color(55, 221, 193));
+        btnMenu.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnMenu.setForeground(new java.awt.Color(255, 255, 255));
         btnMenu.setText("MENU PRINCIPAL");
+        btnMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenuActionPerformed(evt);
             }
         });
 
+        btnEliminar.setBackground(new java.awt.Color(55, 221, 193));
+        btnEliminar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setText("ELIMINAR");
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
@@ -403,7 +420,7 @@ public class PUBLICACIONES_DOCENTE extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(90, 90, 90)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel7)
                     .addComponent(jLabel6))
@@ -417,19 +434,20 @@ public class PUBLICACIONES_DOCENTE extends javax.swing.JFrame {
                     .addComponent(jLabel8))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cmbEst, 0, 148, Short.MAX_VALUE)
-                    .addComponent(cmbTipBus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(141, 141, 141))
+                    .addComponent(cmbEst, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmbTipBus, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(89, 89, 89))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 10, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 828, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65)
-                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(294, 294, 294))
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(65, 65, 65)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(243, 243, 243))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 933, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -455,21 +473,22 @@ public class PUBLICACIONES_DOCENTE extends javax.swing.JFrame {
                 .addGap(24, 24, 24))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 96, 870, 450));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 96, 1000, 450));
 
         jLabel12.setBackground(new java.awt.Color(184, 236, 166));
-        jLabel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(184, 236, 166), 300));
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 570));
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Diseño/slider.png"))); // NOI18N
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 570));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
+        new MENU().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        LOGIN lg=new LOGIN();
+        LOGIN lg = new LOGIN();
         lg.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnExitActionPerformed

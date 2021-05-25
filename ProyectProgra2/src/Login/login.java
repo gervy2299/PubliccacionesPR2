@@ -1,6 +1,9 @@
 package Login;
 
+import CLASES.clases;
 import Formularios.*;
+import java.awt.Color;
+import java.awt.Label;
 import java.awt.event.*;
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,6 +14,7 @@ public class LOGIN extends javax.swing.JFrame{
     
     Conexion cn = new Conexion();
     sqlMetodos mtds = new sqlMetodos();
+    clases cl = new clases();
 
     public LOGIN() {
         initComponents();
@@ -26,6 +30,8 @@ public class LOGIN extends javax.swing.JFrame{
         }
         txtUsuario.requestFocus();
         enter(txtUsuario, txtContrasenia);
+        
+        cl.mayusculaNumber(txtUsuario);
     }   
 
     public static ArrayList<String> llenarComboBOxRoles() {
@@ -49,6 +55,7 @@ public class LOGIN extends javax.swing.JFrame{
         }
         return lista;
     }
+       
 
     public void enter(JTextField txt1, JTextField txt2) {
         txt1.addActionListener(new ActionListener() {
@@ -114,6 +121,12 @@ public class LOGIN extends javax.swing.JFrame{
         }
 
     }
+    public void setColores(JLabel lb){
+        lb.setForeground(Color.red);
+    }
+    public void resetColores(JLabel lb){
+        lb.setForeground(new Color(55,221,193));
+    }
     
 
     /**
@@ -129,17 +142,18 @@ public class LOGIN extends javax.swing.JFrame{
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         btnIngresar = new javax.swing.JButton();
         cbxRoles = new javax.swing.JComboBox<>();
-        txtUsuario = new javax.swing.JTextField();
-        txtContrasenia = new javax.swing.JPasswordField();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        txtUsuario = new javax.swing.JTextField();
+        txtContrasenia = new javax.swing.JPasswordField();
+        jLabel9 = new javax.swing.JLabel();
+        registro = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -164,7 +178,10 @@ public class LOGIN extends javax.swing.JFrame{
 
         jPanel2.setBackground(new java.awt.Color(244, 252, 250));
         jPanel2.setForeground(new java.awt.Color(244, 252, 250));
+        jPanel2.setToolTipText("");
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel3.setBackground(new java.awt.Color(244, 252, 250));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Diseño/cerrar.png"))); // NOI18N
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -177,18 +194,7 @@ public class LOGIN extends javax.swing.JFrame{
                 jLabel3KeyPressed(evt);
             }
         });
-
-        jButton1.setBackground(new java.awt.Color(55, 221, 193));
-        jButton1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("REGISTRARSE");
-        jButton1.setBorder(null);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, 30, 30));
 
         btnIngresar.setBackground(new java.awt.Color(55, 221, 193));
         btnIngresar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -201,104 +207,80 @@ public class LOGIN extends javax.swing.JFrame{
                 btnIngresarActionPerformed(evt);
             }
         });
+        jPanel2.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 480, 350, 44));
 
-        cbxRoles.setBackground(new java.awt.Color(255, 255, 255));
-        cbxRoles.setForeground(new java.awt.Color(0, 0, 0));
-        cbxRoles.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
-        cbxRoles.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cbxRoles.setBackground(new java.awt.Color(244, 252, 250));
+        cbxRoles.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel2.add(cbxRoles, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 350, 30));
 
-        txtUsuario.setBackground(new java.awt.Color(255, 255, 255));
-        txtUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(222, 222, 222)));
-
-        txtContrasenia.setBackground(new java.awt.Color(255, 255, 255));
-        txtContrasenia.setForeground(new java.awt.Color(0, 0, 0));
-        txtContrasenia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(222, 222, 222)));
-
+        jLabel2.setBackground(new java.awt.Color(244, 252, 250));
         jLabel2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("TIPO USUARIO:");
+        jLabel2.setText("PERFIL:");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, -1, 30));
 
+        jLabel4.setBackground(new java.awt.Color(244, 252, 250));
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("USUARIO:");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, -1, 30));
 
+        jLabel5.setBackground(new java.awt.Color(244, 252, 250));
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("CONTRASEÑA:");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, -1, 30));
 
+        jLabel7.setBackground(new java.awt.Color(244, 252, 250));
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Diseño/UNASAM.png"))); // NOI18N
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
+        jLabel6.setBackground(new java.awt.Color(244, 252, 250));
         jLabel6.setFont(new java.awt.Font("Dubai Light", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(55, 221, 193));
-        jLabel6.setText("Sistema de Publicaciones");
+        jLabel6.setText("SISTEMA DE PUBLICACIONES");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, -1, -1));
 
+        jLabel8.setBackground(new java.awt.Color(244, 252, 250));
         jLabel8.setFont(new java.awt.Font("Dubai Light", 1, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(55, 221, 193));
         jLabel8.setText("UNASAM");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, -1, -1));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(450, 450, 450)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel2))
-                        .addGap(45, 45, 45)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(txtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbxRoles, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel8))))
-                .addGap(10, 10, 10))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel7))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel8)))
-                .addGap(74, 74, 74)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(cbxRoles, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addComponent(txtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(62, 62, 62)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
+        txtUsuario.setBackground(new java.awt.Color(244, 252, 250));
+        txtUsuario.setForeground(new java.awt.Color(244, 252, 250));
+        jPanel2.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 340, 350, 30));
+
+        txtContrasenia.setBackground(new java.awt.Color(244, 252, 250));
+        jPanel2.add(txtContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 420, 350, 30));
+
+        jLabel9.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel9.setText("No tienes cuenta?");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 550, -1, -1));
+
+        registro.setBackground(new java.awt.Color(244, 252, 250));
+        registro.setForeground(new java.awt.Color(55, 221, 193));
+        registro.setText("Registrate");
+        registro.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        registro.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                registroMouseMoved(evt);
+            }
+        });
+        registro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                registroMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                registroMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                registroMouseExited(evt);
+            }
+        });
+        registro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                registroKeyPressed(evt);
+            }
+        });
+        jPanel2.add(registro, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 550, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 0, 490, 670));
 
@@ -309,11 +291,6 @@ public class LOGIN extends javax.swing.JFrame{
         notnull();
     }//GEN-LAST:event_btnIngresarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new REGISTRO_DOCENTE().setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jLabel3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel3KeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel3KeyPressed
@@ -322,6 +299,32 @@ public class LOGIN extends javax.swing.JFrame{
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void registroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_registroKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_registroKeyPressed
+
+    private void registroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registroMouseClicked
+        // TODO add your handling code here:
+        new REGISTRO_DOCENTE().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_registroMouseClicked
+
+    private void registroMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registroMouseMoved
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_registroMouseMoved
+
+    private void registroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registroMouseEntered
+        // TODO add your handling code here:
+        //aqui toca
+        setColores(registro);
+    }//GEN-LAST:event_registroMouseEntered
+
+    private void registroMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registroMouseExited
+        // TODO add your handling code here:
+        resetColores(registro);
+    }//GEN-LAST:event_registroMouseExited
 
     /**
      * @param args the command line arguments
@@ -362,7 +365,6 @@ public class LOGIN extends javax.swing.JFrame{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresar;
     private javax.swing.JComboBox<String> cbxRoles;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -371,8 +373,10 @@ public class LOGIN extends javax.swing.JFrame{
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel registro;
     private javax.swing.JPasswordField txtContrasenia;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables

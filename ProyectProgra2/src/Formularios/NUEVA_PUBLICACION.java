@@ -12,9 +12,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import proyectprogra2.Conexion;
-
+import CLASES.clases;
 /**
  *
  * @author HP
@@ -34,7 +36,9 @@ public class NUEVA_PUBLICACION extends javax.swing.JFrame {
         datosGen();
         comboTipPub();
         comboEscuela();
+        this.setLayout(null);
         this.setLocationRelativeTo(null);
+//        cls.mayusculaNumber(txtNomPub);
     }
 
     public void datosGen() {
@@ -168,7 +172,7 @@ public class NUEVA_PUBLICACION extends javax.swing.JFrame {
                     + "VALUES (?,?,?,?,?,?,?,?)");
             ps.setString(1, txtNomPub.getText());
             ps.setString(2, txtCantPag.getText());
-            ps.setString(3, txtFec.getText());
+            ps.setString(3, fecha());
             ps.setString(4, txtCantCap.getText());
             //Llamar el metodo id del autor
             ps.setString(5, idAutor());
@@ -182,7 +186,13 @@ public class NUEVA_PUBLICACION extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Error al guardar Autor: \n" + e);
         }
     }
-
+  public String fecha() {
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        Date fecha = txtFec.getDate();
+        String fecha2 = formato.format(fecha);
+        return String.valueOf(fecha2);
+       
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -209,9 +219,8 @@ public class NUEVA_PUBLICACION extends javax.swing.JFrame {
         txtNomPub = new javax.swing.JTextField();
         txtCantPag = new javax.swing.JTextField();
         txtCantCap = new javax.swing.JTextField();
-        txtFec = new javax.swing.JFormattedTextField();
         cmbEsc = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
+        txtFec = new com.toedter.calendar.JDateChooser();
         btnMenu = new javax.swing.JButton();
         btnEnviar = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
@@ -224,23 +233,28 @@ public class NUEVA_PUBLICACION extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(55, 221, 193));
         jLabel1.setText("NOMBRE:");
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(51, 0, 0));
+        jLabel2.setForeground(new java.awt.Color(55, 221, 193));
         jLabel2.setText("TIPO DE USUARIO:");
 
+        lblNom.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         lblNom.setText("jLabel3");
 
-        btnExit.setBackground(new java.awt.Color(255, 117, 109));
+        btnExit.setBackground(new java.awt.Color(255, 0, 0));
+        btnExit.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnExit.setForeground(new java.awt.Color(255, 255, 255));
         btnExit.setText("LOGOUT");
+        btnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
             }
         });
 
+        lblTipUsu.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         lblTipUsu.setText("jLabel4");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -256,95 +270,158 @@ public class NUEVA_PUBLICACION extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblNom, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                     .addComponent(lblTipUsu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 460, Short.MAX_VALUE)
-                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 433, Short.MAX_VALUE)
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(lblNom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTipUsu)
-                    .addComponent(jLabel2))
-                .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(lblNom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTipUsu)
+                            .addComponent(jLabel2)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 1, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 11, 850, 70));
 
-        jPanel2.setBackground(new java.awt.Color(254, 188, 200));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "NUEVA PUBLICACIÖN", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14))); // NOI18N
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.setBackground(new java.awt.Color(244, 252, 250));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "NUEVA PUBLICACIÓN", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14))); // NOI18N
 
+        jLabel6.setBackground(new java.awt.Color(244, 252, 250));
         jLabel6.setText("TIPO DE PUBLICACION:");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, -1, -1));
 
+        jLabel7.setBackground(new java.awt.Color(244, 252, 250));
         jLabel7.setText("NOMBRE DE LA PUBLICACION:");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, -1, -1));
 
+        jLabel8.setBackground(new java.awt.Color(244, 252, 250));
         jLabel8.setText("CANTIDAD DE PAGINAS:");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, -1, -1));
 
+        jLabel9.setBackground(new java.awt.Color(244, 252, 250));
         jLabel9.setText("FECHA DE PUBLICACION:");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, -1, -1));
 
+        jLabel10.setBackground(new java.awt.Color(244, 252, 250));
         jLabel10.setText("ESCUELA PROFESIONAL:");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 130, -1));
 
+        jLabel11.setBackground(new java.awt.Color(244, 252, 250));
         jLabel11.setText("CANTIDAD DE CAPITULOS:");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, -1, -1));
 
         cmbTipPub.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbTipPubActionPerformed(evt);
             }
         });
-        jPanel2.add(cmbTipPub, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 50, 240, 30));
-        jPanel2.add(txtNomPub, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 430, 30));
-        jPanel2.add(txtCantPag, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 130, 30));
-        jPanel2.add(txtCantCap, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 210, 130, 30));
 
-        txtFec.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd"))));
-        jPanel2.add(txtFec, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 130, 30));
+        txtNomPub.setBackground(new java.awt.Color(244, 252, 250));
 
-        jPanel2.add(cmbEsc, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 240, 30));
+        txtCantPag.setBackground(new java.awt.Color(244, 252, 250));
 
-        jLabel3.setForeground(new java.awt.Color(0, 153, 0));
-        jLabel3.setText("yyyy-MM-dd");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 290, -1, -1));
+        txtCantCap.setBackground(new java.awt.Color(244, 252, 250));
+
+        txtFec.setDateFormatString("yyyy-MM-dd");
+        txtFec.setDoubleBuffered(false);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(116, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(cmbTipPub, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbEsc, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(txtCantPag, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel11)
+                            .addGap(21, 21, 21)
+                            .addComponent(txtCantCap, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtNomPub))
+                    .addComponent(txtFec, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(114, 114, 114))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbTipPub, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbEsc, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNomPub, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtCantPag, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel8))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtCantCap, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel11)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel9)
+                        .addGap(42, 42, 42))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtFec, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31))))
+        );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 850, 330));
 
+        btnMenu.setBackground(new java.awt.Color(55, 221, 193));
+        btnMenu.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        btnMenu.setForeground(new java.awt.Color(255, 255, 255));
         btnMenu.setText("MENU PRINCIPAL");
+        btnMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenuActionPerformed(evt);
             }
         });
-        getContentPane().add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 450, 190, 40));
+        getContentPane().add(btnMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 450, 190, 40));
 
+        btnEnviar.setBackground(new java.awt.Color(55, 221, 193));
+        btnEnviar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        btnEnviar.setForeground(new java.awt.Color(255, 255, 255));
         btnEnviar.setText("ENVIAR");
+        btnEnviar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEnviar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEnviarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 450, 190, 40));
+        getContentPane().add(btnEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 450, 190, 40));
 
-        jLabel12.setBackground(new java.awt.Color(184, 236, 166));
-        jLabel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(254, 188, 200), 300));
+        jLabel12.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Diseño/slider.png"))); // NOI18N
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 520));
 
         pack();
@@ -352,6 +429,7 @@ public class NUEVA_PUBLICACION extends javax.swing.JFrame {
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         MENU.usu = usu4;
+        new MENU().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnMenuActionPerformed
 
@@ -363,7 +441,7 @@ public class NUEVA_PUBLICACION extends javax.swing.JFrame {
         if (!txtNomPub.getText().equals("")) {
             if (!txtCantPag.getText().equals("")) {
                 if (!txtCantCap.getText().equals("")) {
-                    if (!txtFec.getText().equals("")) {
+                    if (!fecha().equals("")) {
                         NoModDat();
                         insertarPublicacion();
                     } else {
@@ -381,8 +459,7 @@ public class NUEVA_PUBLICACION extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEnviarActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        LOGIN lg=new LOGIN();
-        lg.setVisible(true);
+        new LOGIN().setVisible(true);
         dispose();
     }//GEN-LAST:event_btnExitActionPerformed
 
@@ -439,7 +516,6 @@ public class NUEVA_PUBLICACION extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -450,7 +526,7 @@ public class NUEVA_PUBLICACION extends javax.swing.JFrame {
     private javax.swing.JLabel lblTipUsu;
     private javax.swing.JTextField txtCantCap;
     private javax.swing.JTextField txtCantPag;
-    private javax.swing.JFormattedTextField txtFec;
+    private com.toedter.calendar.JDateChooser txtFec;
     private javax.swing.JTextField txtNomPub;
     // End of variables declaration//GEN-END:variables
 }
