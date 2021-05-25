@@ -43,7 +43,7 @@ public class VALIDAR_RATIFICACION extends javax.swing.JFrame {
         txtpag.setEnabled(false);
         txttitulo.setEnabled(false);
         tipoUsuario();
-                this.setLayout(null);
+        this.setLayout(null);
         this.setLocationRelativeTo(null);
     }
 
@@ -82,6 +82,7 @@ public class VALIDAR_RATIFICACION extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Error al actualizar Estado: \n" + e);
         }
     }
+
     public void EstadoRechazado() {
         PreparedStatement ps = null;
         try {
@@ -91,10 +92,35 @@ public class VALIDAR_RATIFICACION extends javax.swing.JFrame {
             ps.setString(1, txttitulo.getText());
             ps.execute();
             JOptionPane.showMessageDialog(rootPane, "Estado Modificado");
-        } catch ( SQLException e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(rootPane, "Error al actualizar Estado: \n" + e);
         }
     }
+
+    public void inhabilitar() {
+        txttipo.setEnabled(false);
+        txtcap.setEnabled(false);
+        txtescuela.setEnabled(false);
+        txtfecha.setEnabled(false);
+        txtpag.setEnabled(false);
+        txttitulo.setEnabled(false);
+        articulo21.setEnabled(false);
+        articulo22.setEnabled(false);
+        articulo23.setEnabled(false);
+        articulo24.setEnabled(false);
+        articulo25.setEnabled(false);
+        articulo26.setEnabled(false);
+        articulo27.setEnabled(false);
+        articulo28.setEnabled(false);
+        articulo29.setEnabled(false);
+        articulo30.setEnabled(false);
+        articulo31.setEnabled(false);
+        articulo32.setEnabled(false);
+        articulo33.setEnabled(false);
+        jButton3.setEnabled(false);
+        btnAceptar.setEnabled(false);
+    }
+
     public void tipoUsuario() {
         switch (tipo) {
             case "LIBRO":
@@ -172,11 +198,12 @@ public class VALIDAR_RATIFICACION extends javax.swing.JFrame {
                 articulo32.setEnabled(true);
                 articulo33.setEnabled(true);
                 break;
-                
+
             default:
                 JOptionPane.showMessageDialog(rootPane, "Error en tipo de publicacion");
         }
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -237,7 +264,7 @@ public class VALIDAR_RATIFICACION extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(244, 252, 250));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -255,6 +282,7 @@ public class VALIDAR_RATIFICACION extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("LOGOUT");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -305,23 +333,47 @@ public class VALIDAR_RATIFICACION extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(244, 252, 250));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 51)), "PUBLICACIÓN", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(55, 221, 193))); // NOI18N
 
+        txttipo.setBackground(new java.awt.Color(244, 252, 250));
+
         jLabel10.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel10.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("TIPO:");
 
         jLabel6.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("N° CAPITULOS:");
 
+        txtcap.setBackground(new java.awt.Color(244, 252, 250));
+
         jLabel11.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel11.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("TITULO:");
 
         jLabel12.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel12.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("ESCUELA:");
 
         jLabel13.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel13.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("N° PAGINAS:");
 
         jLabel14.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel14.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("FECHA:");
+
+        txtpag.setBackground(new java.awt.Color(244, 252, 250));
+
+        txttitulo.setBackground(new java.awt.Color(244, 252, 250));
+
+        txtescuela.setBackground(new java.awt.Color(244, 252, 250));
+
+        txtfecha.setBackground(new java.awt.Color(244, 252, 250));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -336,9 +388,9 @@ public class VALIDAR_RATIFICACION extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtcap, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
-                        .addComponent(txtpag))
-                    .addComponent(txttipo, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtcap, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                        .addComponent(txtpag, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
+                    .addComponent(txttipo, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(67, 67, 67)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -346,10 +398,10 @@ public class VALIDAR_RATIFICACION extends javax.swing.JFrame {
                     .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txttitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtescuela, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(76, Short.MAX_VALUE))
+                    .addComponent(txtfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txttitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtescuela, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(189, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -362,7 +414,7 @@ public class VALIDAR_RATIFICACION extends javax.swing.JFrame {
                     .addComponent(jLabel10))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(txtcap, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtcap, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
                     .addComponent(jLabel12)
                     .addComponent(txtescuela))
@@ -371,7 +423,7 @@ public class VALIDAR_RATIFICACION extends javax.swing.JFrame {
                     .addComponent(txtpag)
                     .addComponent(jLabel13)
                     .addComponent(jLabel14)
-                    .addComponent(txtfecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtfecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(17, 17, 17))
         );
 
@@ -381,48 +433,75 @@ public class VALIDAR_RATIFICACION extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 51)), "VERIFICACION DE REQUERIMIENTOS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(55, 221, 193))); // NOI18N
 
         jLabel7.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("ARTICULO 21:");
 
         jLabel8.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel8.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("ARTICULO 22:");
 
         jLabel9.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("ARTICULO 23:");
 
         jLabel15.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel15.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("ARTICULO 24:");
 
         jLabel16.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel16.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("ARTICULO 25:");
 
         jLabel17.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel17.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setText("ARTICULO 26:");
 
         jLabel30.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel30.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel30.setForeground(new java.awt.Color(0, 0, 0));
         jLabel30.setText("ARTICULO 28:");
 
         jLabel31.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel31.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(0, 0, 0));
         jLabel31.setText("ARTICULO 29:");
 
         jLabel32.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel32.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(0, 0, 0));
         jLabel32.setText("ARTICULO 30:");
 
         jLabel33.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel33.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(0, 0, 0));
         jLabel33.setText("ARTICULO 31:");
 
         jLabel34.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel34.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(0, 0, 0));
         jLabel34.setText("ARTICULO 32:");
 
         jLabel35.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel35.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel35.setForeground(new java.awt.Color(0, 0, 0));
         jLabel35.setText("ARTICULO 33:");
 
         jLabel36.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel36.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(0, 0, 0));
         jLabel36.setText("ARTICULO 27:");
 
         jButton2.setBackground(new java.awt.Color(55, 221, 193));
         jButton2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("CANCELAR");
+        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -433,6 +512,7 @@ public class VALIDAR_RATIFICACION extends javax.swing.JFrame {
         jButton3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("RECHAZAR");
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -443,6 +523,7 @@ public class VALIDAR_RATIFICACION extends javax.swing.JFrame {
         btnAceptar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnAceptar.setForeground(new java.awt.Color(255, 255, 255));
         btnAceptar.setText("ACEPTAR");
+        btnAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarActionPerformed(evt);
@@ -453,6 +534,7 @@ public class VALIDAR_RATIFICACION extends javax.swing.JFrame {
         jButton5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setText("ARTICULOS");
+        jButton5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -506,7 +588,7 @@ public class VALIDAR_RATIFICACION extends javax.swing.JFrame {
                                     .addComponent(articulo22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(68, 68, 68)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(8, 8, 8)
@@ -544,7 +626,7 @@ public class VALIDAR_RATIFICACION extends javax.swing.JFrame {
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
                         .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -618,34 +700,39 @@ public class VALIDAR_RATIFICACION extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        ARTICULOS jf6 = new ARTICULOS();
-        ARTICULOS.usu6=usuRat1;
-        jf6.setVisible(true);
+        
+        ARTICULOS.usu6 = usuRat1;
+        new ARTICULOS().setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        if(articulo21.isSelected() && articulo22.isSelected() && articulo23.isSelected() && articulo24.isSelected() ){
-           JOptionPane.showMessageDialog(null,"Requerimientos cumplidos para libro!!");
+        if (articulo21.isSelected() && articulo22.isSelected() && articulo23.isSelected() && articulo24.isSelected()) {
+            JOptionPane.showMessageDialog(null, "Requerimientos cumplidos para libro!!");
             modificarEst();
-       }
-       if(articulo25.isSelected() && articulo26.isSelected() && articulo27.isSelected()){
-           JOptionPane.showMessageDialog(null,"Requerimientos cumplidos para manual!!");
+            inhabilitar();
+        }
+        if (articulo25.isSelected() && articulo26.isSelected() && articulo27.isSelected()) {
+            JOptionPane.showMessageDialog(null, "Requerimientos cumplidos para manual!!");
             modificarEst();
-       }
-       if(articulo28.isSelected() && articulo29.isSelected()){
-           JOptionPane.showMessageDialog(null,"Requerimientos cumplidos para ensayo!!");
+            inhabilitar();
+        }
+        if (articulo28.isSelected() && articulo29.isSelected()) {
+            JOptionPane.showMessageDialog(null, "Requerimientos cumplidos para ensayo!!");
             modificarEst();
-       }
-       if(articulo30.isSelected() && articulo31.isSelected()){
-           JOptionPane.showMessageDialog(null,"Requerimientos cumplidos para guias!!");
+            inhabilitar();
+        }
+        if (articulo30.isSelected() && articulo31.isSelected()) {
+            JOptionPane.showMessageDialog(null, "Requerimientos cumplidos para guias!!");
             modificarEst();
-       }
-       if(articulo32.isSelected() && articulo33.isSelected()){
-           JOptionPane.showMessageDialog(null,"Requerimientos cumplidos para folletos!!");
+            inhabilitar();
+        }
+        if (articulo32.isSelected() && articulo33.isSelected()) {
+            JOptionPane.showMessageDialog(null, "Requerimientos cumplidos para folletos!!");
             modificarEst();
-       }
-    
-    
+            inhabilitar();
+        }
+
+
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -653,13 +740,16 @@ public class VALIDAR_RATIFICACION extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        LISTA_RATIFICACION.usuRat = usuRat1;
+        new LISTA_RATIFICACION().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new Login.LOGIN().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
