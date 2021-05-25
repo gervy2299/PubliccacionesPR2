@@ -256,7 +256,7 @@ public class ARTICULOS extends javax.swing.JFrame {
 
         jButton3.setBackground(new java.awt.Color(55, 221, 193));
         jButton3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        jButton3.setText("MENU PRINCIPAL");
+        jButton3.setText("ATRAS");
         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -346,8 +346,7 @@ public class ARTICULOS extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLogActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        MENU.usu = usu6;
-        new MENU().setVisible(true);
+
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 

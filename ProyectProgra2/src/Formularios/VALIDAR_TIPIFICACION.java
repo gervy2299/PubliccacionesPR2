@@ -96,7 +96,7 @@ public class VALIDAR_TIPIFICACION extends javax.swing.JFrame {
             System.err.println("error : " + ps);
             ps.setString(1, txttitulo.getText());
             ps.execute();
-            JOptionPane.showMessageDialog(null, "Estado Modificado");
+            JOptionPane.showMessageDialog(null, "PASA A RATIFICACION");
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al actualizar Estado: \n" + e);
         }
@@ -112,7 +112,7 @@ public class VALIDAR_TIPIFICACION extends javax.swing.JFrame {
             System.err.println("error : " + ps);
             ps.setString(1, txttitulo.getText());
             ps.execute();
-            JOptionPane.showMessageDialog(null, "Estado Modificado");
+            JOptionPane.showMessageDialog(null, "PUBLICACION RECHAZADA");
             
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al actualizar Estado: \n" + e);
@@ -172,9 +172,9 @@ public class VALIDAR_TIPIFICACION extends javax.swing.JFrame {
         cbtañaletra = new javax.swing.JCheckBox();
         cbformato = new javax.swing.JCheckBox();
         cbcd = new javax.swing.JCheckBox();
-        jButton4 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        BTNACEPTAR = new javax.swing.JButton();
+        BTNRECHAZAR = new javax.swing.JButton();
+        BTNCANCELAR = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -413,41 +413,41 @@ public class VALIDAR_TIPIFICACION extends javax.swing.JFrame {
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 1040, 220));
 
-        jButton4.setBackground(new java.awt.Color(55, 221, 193));
-        jButton4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("ACEPTAR");
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        BTNACEPTAR.setBackground(new java.awt.Color(55, 221, 193));
+        BTNACEPTAR.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        BTNACEPTAR.setForeground(new java.awt.Color(255, 255, 255));
+        BTNACEPTAR.setText("ACEPTAR");
+        BTNACEPTAR.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BTNACEPTAR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                BTNACEPTARActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 590, 200, 44));
+        getContentPane().add(BTNACEPTAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 590, 200, 44));
 
-        jButton3.setBackground(new java.awt.Color(55, 221, 193));
-        jButton3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("RECHAZAR");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        BTNRECHAZAR.setBackground(new java.awt.Color(55, 221, 193));
+        BTNRECHAZAR.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        BTNRECHAZAR.setForeground(new java.awt.Color(255, 255, 255));
+        BTNRECHAZAR.setText("RECHAZAR");
+        BTNRECHAZAR.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BTNRECHAZAR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                BTNRECHAZARActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 590, 200, 44));
+        getContentPane().add(BTNRECHAZAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 590, 200, 44));
 
-        jButton2.setBackground(new java.awt.Color(55, 221, 193));
-        jButton2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("CANCELAR");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        BTNCANCELAR.setBackground(new java.awt.Color(55, 221, 193));
+        BTNCANCELAR.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        BTNCANCELAR.setForeground(new java.awt.Color(255, 255, 255));
+        BTNCANCELAR.setText("CANCELAR");
+        BTNCANCELAR.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BTNCANCELAR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                BTNCANCELARActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 590, 200, 44));
+        getContentPane().add(BTNCANCELAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 590, 200, 44));
 
         jLabel18.setBackground(new java.awt.Color(244, 252, 250));
         jLabel18.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(244, 252, 250), 350));
@@ -456,34 +456,34 @@ public class VALIDAR_TIPIFICACION extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void BTNACEPTARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNACEPTARActionPerformed
         String mensaje = "datos enviados a ratificacion";
         if (cbtamañopapel.isSelected() && cbtipoletra.isSelected() && cbtañaletra.isSelected() && cbcd.isSelected() && cbformato.isSelected()) {
-            JOptionPane.showMessageDialog(null, "Su publicacion paso a ratificación");
+//            JOptionPane.showMessageDialog(null, "Su publicacion paso a ratificación");
             mEstado();
-            
+            new LISTA_TIPIFICACION().setVisible(true);
             this.dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Seleccione todos los campos");
         }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_BTNACEPTARActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void BTNRECHAZARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNRECHAZARActionPerformed
         mEstadorechaza();
         new LISTA_TIPIFICACION().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_BTNRECHAZARActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void BTNCANCELARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNCANCELARActionPerformed
         LISTA_TIPIFICACION.usuTip=usuTip1;
         new LISTA_TIPIFICACION().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_BTNCANCELARActionPerformed
 
     /**
      * @param args the command line arguments
@@ -524,15 +524,15 @@ public class VALIDAR_TIPIFICACION extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BTNACEPTAR;
+    private javax.swing.JButton BTNCANCELAR;
+    private javax.swing.JButton BTNRECHAZAR;
     private javax.swing.JCheckBox cbcd;
     private javax.swing.JCheckBox cbformato;
     private javax.swing.JCheckBox cbtamañopapel;
     private javax.swing.JCheckBox cbtañaletra;
     private javax.swing.JCheckBox cbtipoletra;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

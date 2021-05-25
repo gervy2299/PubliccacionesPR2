@@ -381,42 +381,55 @@ public class VALIDAR_RATIFICACION extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 51)), "VERIFICACION DE REQUERIMIENTOS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(55, 221, 193))); // NOI18N
 
         jLabel7.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("ARTICULO 21:");
 
         jLabel8.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setText("ARTICULO 22:");
 
         jLabel9.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel9.setText("ARTICULO 23:");
 
         jLabel15.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel15.setText("ARTICULO 24:");
 
         jLabel16.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel16.setText("ARTICULO 25:");
 
         jLabel17.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel17.setText("ARTICULO 26:");
 
         jLabel30.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel30.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel30.setText("ARTICULO 28:");
 
         jLabel31.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel31.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel31.setText("ARTICULO 29:");
 
         jLabel32.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel32.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel32.setText("ARTICULO 30:");
 
         jLabel33.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel33.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel33.setText("ARTICULO 31:");
 
         jLabel34.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel34.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel34.setText("ARTICULO 32:");
 
         jLabel35.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel35.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel35.setText("ARTICULO 33:");
 
         jLabel36.setBackground(new java.awt.Color(244, 252, 250));
+        jLabel36.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel36.setText("ARTICULO 27:");
 
         jButton2.setBackground(new java.awt.Color(55, 221, 193));
@@ -506,7 +519,7 @@ public class VALIDAR_RATIFICACION extends javax.swing.JFrame {
                                     .addComponent(articulo22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(68, 68, 68)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(8, 8, 8)
@@ -544,7 +557,7 @@ public class VALIDAR_RATIFICACION extends javax.swing.JFrame {
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)
                         .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -590,17 +603,18 @@ public class VALIDAR_RATIFICACION extends javax.swing.JFrame {
                                             .addComponent(jLabel34))))
                                 .addGap(30, 30, 30)
                                 .addComponent(jLabel35))
-                            .addComponent(jLabel17)))
+                            .addComponent(jLabel17)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(51, 51, 51)
+                                .addComponent(articulo33))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(articulo30)
                         .addGap(27, 27, 27)
                         .addComponent(articulo31)
                         .addGap(30, 30, 30)
-                        .addComponent(articulo32)
-                        .addGap(23, 23, 23)
-                        .addComponent(articulo33)))
-                .addGap(43, 43, 43)
+                        .addComponent(articulo32)))
+                .addGap(36, 36, 36)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -653,10 +667,13 @@ public class VALIDAR_RATIFICACION extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        LISTA_RATIFICACION.usuRat = usuRat1;
+        new LISTA_RATIFICACION().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+      new Login.LOGIN().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
     
