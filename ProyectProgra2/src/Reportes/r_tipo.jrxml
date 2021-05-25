@@ -35,41 +35,41 @@ where tp.descripcion = $P{tipo_pub};]]>
 		<band height="35" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch">
+		<band height="26" splitType="Stretch">
 			<staticText>
-				<reportElement x="455" y="4" width="100" height="20" uuid="a393c998-aa80-429e-ba00-44ca86ae4324"/>
+				<reportElement x="446" y="0" width="109" height="20" uuid="a393c998-aa80-429e-ba00-44ca86ae4324"/>
 				<text><![CDATA[Estado_Publicacion]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="346" y="2" width="100" height="20" uuid="2f137067-80ab-4a41-a5af-148f151d1b6c"/>
+				<reportElement x="302" y="0" width="144" height="20" uuid="2f137067-80ab-4a41-a5af-148f151d1b6c"/>
 				<text><![CDATA[Escuela]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="19" y="2" width="100" height="20" uuid="879cef12-082d-45fb-a117-69ded4d96bc9"/>
+				<reportElement x="0" y="0" width="202" height="20" uuid="879cef12-082d-45fb-a117-69ded4d96bc9"/>
 				<text><![CDATA[Titulo]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="202" y="2" width="100" height="20" uuid="4a06eb8d-61bf-42ac-8cce-c0ec77cf6809"/>
+				<reportElement x="202" y="0" width="100" height="20" uuid="4a06eb8d-61bf-42ac-8cce-c0ec77cf6809"/>
 				<text><![CDATA[Tipo_Publicacion]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="23" splitType="Stretch">
 			<textField>
-				<reportElement x="455" y="73" width="100" height="20" uuid="38505704-d2d8-4cd9-b524-54cf8febab35"/>
+				<reportElement x="446" y="0" width="109" height="20" uuid="38505704-d2d8-4cd9-b524-54cf8febab35"/>
 				<textFieldExpression><![CDATA[$F{Estado_Publicacion}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="346" y="69" width="100" height="20" uuid="dfdf72a5-dafe-44ae-8b2e-582021a5293e"/>
+				<reportElement x="302" y="0" width="144" height="20" uuid="dfdf72a5-dafe-44ae-8b2e-582021a5293e"/>
 				<textFieldExpression><![CDATA[$F{Escuela}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="19" y="71" width="100" height="20" uuid="dd6f7aaf-ff16-445b-8d86-d05d2a03ad56"/>
+				<reportElement x="0" y="0" width="202" height="20" uuid="dd6f7aaf-ff16-445b-8d86-d05d2a03ad56"/>
 				<textFieldExpression><![CDATA[$F{Titulo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="202" y="82" width="100" height="20" uuid="14370b74-c597-4110-b3dd-f7509f8e2121"/>
+				<reportElement x="202" y="0" width="100" height="20" uuid="14370b74-c597-4110-b3dd-f7509f8e2121"/>
 				<textFieldExpression><![CDATA[$F{Tipo_Publicacion}]]></textFieldExpression>
 			</textField>
 		</band>

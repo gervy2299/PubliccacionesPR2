@@ -164,6 +164,7 @@ public class MENU extends javax.swing.JFrame implements Runnable{
                 btnValDir.setVisible(false);
                 //Activo
                 btnValDec.setVisible(true);
+                btnReportes.setVisible(true);
                 break;
 
             default:
@@ -213,6 +214,7 @@ public class MENU extends javax.swing.JFrame implements Runnable{
         btnValRat = new javax.swing.JButton();
         btnValDir = new javax.swing.JButton();
         btnValDec = new javax.swing.JButton();
+        btnReportes = new javax.swing.JButton();
         lblUnasan = new javax.swing.JLabel();
         lblHora = new javax.swing.JLabel();
         lblFecha = new javax.swing.JLabel();
@@ -324,7 +326,7 @@ public class MENU extends javax.swing.JFrame implements Runnable{
         btnInfArt.setForeground(new java.awt.Color(255, 255, 255));
         btnInfArt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8_news_32px_3.png"))); // NOI18N
         btnInfArt.setText("Inf. Artículos");
-        btnInfArt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnInfArt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnInfArt.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnInfArt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -393,7 +395,7 @@ public class MENU extends javax.swing.JFrame implements Runnable{
         btnValDec.setForeground(new java.awt.Color(255, 255, 255));
         btnValDec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8_check_all_32px.png"))); // NOI18N
         btnValDec.setText("Validar");
-        btnValDec.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnValDec.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnValDec.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnValDec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -401,6 +403,20 @@ public class MENU extends javax.swing.JFrame implements Runnable{
             }
         });
         jPanel2.add(btnValDec, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 280, 60));
+
+        btnReportes.setBackground(new java.awt.Color(51, 153, 255));
+        btnReportes.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnReportes.setForeground(new java.awt.Color(255, 255, 255));
+        btnReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8_news_32px_3.png"))); // NOI18N
+        btnReportes.setText("Reportes");
+        btnReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnReportes.setMaximumSize(new java.awt.Dimension(117, 41));
+        btnReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportesActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, 280, 60));
 
         lblUnasan.setBackground(new java.awt.Color(244, 252, 250));
         lblUnasan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Diseño/UNASAM.png"))); // NOI18N
@@ -486,6 +502,12 @@ public class MENU extends javax.swing.JFrame implements Runnable{
         new LISTA_DECANO().setVisible(true);
     }//GEN-LAST:event_btnValDecActionPerformed
 
+    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
+        DECANO_REPORTE.usuDec = usu;
+        this.setVisible(false);
+        new DECANO_REPORTE().setVisible(true);
+    }//GEN-LAST:event_btnReportesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -534,6 +556,7 @@ public class MENU extends javax.swing.JFrame implements Runnable{
     private javax.swing.JButton btnNewPub;
     private javax.swing.JButton btnPro;
     private javax.swing.JButton btnPub;
+    private javax.swing.JButton btnReportes;
     private javax.swing.JButton btnValDec;
     private javax.swing.JButton btnValDir;
     private javax.swing.JButton btnValRat;
