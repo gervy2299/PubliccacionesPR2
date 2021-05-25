@@ -220,7 +220,7 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(55, 221, 193));
         jLabel2.setText("TIPO DE USUARIO:");
 
-        lblNom.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblNom.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         lblNom.setText("jLabel3");
 
         btnLog.setBackground(new java.awt.Color(255, 0, 0));
@@ -233,7 +233,7 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
             }
         });
 
-        lblTipUsu.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblTipUsu.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         lblTipUsu.setText("jLabel4");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -242,27 +242,25 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(jLabel1))
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblTipUsu, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
-                    .addComponent(lblNom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 366, Short.MAX_VALUE)
-                .addComponent(btnLog, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNom, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTipUsu, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 368, Short.MAX_VALUE)
+                .addComponent(btnLog, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(2, 2, 2)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(lblNom))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(lblTipUsu))
@@ -278,18 +276,23 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(244, 252, 250));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "EDITAR PERFIL", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(55, 221, 193))); // NOI18N
 
+        jLabel6.setBackground(new java.awt.Color(244, 252, 250));
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setText("DNI:");
 
+        jLabel7.setBackground(new java.awt.Color(244, 252, 250));
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel7.setText("NOMBRES:");
 
+        jLabel8.setBackground(new java.awt.Color(244, 252, 250));
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel8.setText("APELLIDO PATERNO:");
 
+        jLabel9.setBackground(new java.awt.Color(244, 252, 250));
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel9.setText("APELLIDO MATERNO:");
 
+        jLabel10.setBackground(new java.awt.Color(244, 252, 250));
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel10.setText("CARGO:");
 
@@ -299,17 +302,29 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        txtNom.setBackground(new java.awt.Color(244, 252, 250));
+
+        txtApePat.setBackground(new java.awt.Color(244, 252, 250));
+
+        txtApeMat.setBackground(new java.awt.Color(244, 252, 250));
+
+        jLabel11.setBackground(new java.awt.Color(244, 252, 250));
         jLabel11.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel11.setText("DIRECCION:");
 
+        txtDir.setBackground(new java.awt.Color(244, 252, 250));
+
+        jLabel13.setBackground(new java.awt.Color(244, 252, 250));
         jLabel13.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel13.setText("FECHA DE NACIMIENTO:");
 
         txtjfFecNac.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd"))));
 
+        jLabel14.setBackground(new java.awt.Color(244, 252, 250));
         jLabel14.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel14.setText("TELEFONO:");
 
+        txtjfTel.setBackground(new java.awt.Color(244, 252, 250));
         try {
             txtjfTel.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("#########")));
         } catch (java.text.ParseException ex) {
@@ -321,12 +336,17 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
             }
         });
 
+        jLabel15.setBackground(new java.awt.Color(244, 252, 250));
         jLabel15.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel15.setText("USUARIO:");
 
+        txtUsu.setBackground(new java.awt.Color(244, 252, 250));
+
+        jLabel16.setBackground(new java.awt.Color(244, 252, 250));
         jLabel16.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel16.setText("CONTRASEÑA:");
 
+        jLabel17.setBackground(new java.awt.Color(244, 252, 250));
         jLabel17.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel17.setText("REPETIR CONTRASEÑA:");
 
@@ -368,6 +388,9 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
             }
         });
 
+        txtCon.setBackground(new java.awt.Color(244, 252, 250));
+
+        txtCon1.setBackground(new java.awt.Color(244, 252, 250));
         txtCon1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtCon1KeyReleased(evt);
@@ -490,8 +513,8 @@ public class EDITAR_PERFIL extends javax.swing.JFrame {
 
         jLabel12.setBackground(new java.awt.Color(244, 252, 250));
         jLabel12.setFont(new java.awt.Font("Dialog", 1, 11)); // NOI18N
-        jLabel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(244, 252, 250), 300));
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, 590));
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Diseño/slider.png"))); // NOI18N
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, 610));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

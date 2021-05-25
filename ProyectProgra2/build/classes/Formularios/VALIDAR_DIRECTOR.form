@@ -179,7 +179,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="10" y="97" width="981" height="450"/>
+          <AbsoluteConstraints x="10" y="97" width="980" height="440"/>
         </Constraint>
       </Constraints>
 
@@ -187,7 +187,7 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="74" max="32767" attributes="0"/>
+                  <EmptySpace pref="92" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -223,14 +223,9 @@
                       </Group>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txttitulo" alignment="0" min="-2" pref="253" max="-2" attributes="0"/>
-                              <Component id="txtfecha" min="-2" pref="253" max="-2" attributes="0"/>
-                              <Component id="txtescuela" min="-2" pref="253" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <Component id="txttitulo" alignment="0" min="-2" pref="253" max="-2" attributes="0"/>
+                      <Component id="txtfecha" min="-2" pref="253" max="-2" attributes="0"/>
+                      <Component id="txtescuela" min="-2" pref="253" max="-2" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                           <Component id="jButton11" min="-2" pref="200" max="-2" attributes="0"/>
@@ -278,7 +273,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="98" max="32767" attributes="0"/>
+                  <EmptySpace pref="88" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButton10" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
                       <Component id="jButton9" alignment="3" min="-2" pref="44" max="-2" attributes="0"/>
@@ -459,12 +454,8 @@
     </Container>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder thickness="200">
-              <Color PropertyName="color" blue="fa" green="fc" red="f4" type="rgb"/>
-            </LineBorder>
-          </Border>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Dise&#xf1;o/slider.png"/>
         </Property>
       </Properties>
       <Constraints>

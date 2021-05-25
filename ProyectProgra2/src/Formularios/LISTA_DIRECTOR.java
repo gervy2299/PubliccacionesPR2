@@ -7,6 +7,7 @@ package Formularios;
 
 import static Formularios.VALIDAR_TIPIFICACION.usuTip1;
 import Login.LOGIN;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,20 +28,19 @@ public class LISTA_DIRECTOR extends javax.swing.JFrame {
     DefaultTableModel model = new DefaultTableModel();
     Conexion co = new Conexion();
     Connection con = co.conexiondb();
-    
+
     public static String usuDir;
-    
+
     public LISTA_DIRECTOR() {
         initComponents();
         this.setLayout(null);
         this.setLocationRelativeTo(null);
-        
-        
+        jLabel5.setBackground(new Color(0, 0, 0, 0));
         datosGen();
         cabecera();
         llenarCategria();
     }
-    
+
     public void datosGen() {
         String[] registros = new String[4];
         String docente = "";
@@ -61,21 +61,21 @@ public class LISTA_DIRECTOR extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error al obtener datos" + e.getMessage(), "Mensaje", 0);
         }
     }
-    
+
     public void cabecera() {
         String[] tit = {"DNI", "Autor", "Titulo", "Paginas", "Capitulos", "Fecha", "Escuela", "tipo publicacion", "Estado"};
         model.setColumnIdentifiers(tit);
         tbListaDocente.setModel(model);
     }
-    
+
     public void limpiarTabla(JTable tb, DefaultTableModel md) {
         while (tb.getRowCount() > 0) {
             md.removeRow(0);
         }
     }
-    
+
     public void llenarCategria() {
-        try {            
+        try {
             PreparedStatement ps = null;
             ResultSet rs = null;
             Conexion conn = new Conexion();
@@ -100,7 +100,7 @@ public class LISTA_DIRECTOR extends javax.swing.JFrame {
             System.out.println(ex.toString());
         }
     }
-    
+
     public void buscarCat(String campo) {
         try {
             tbListaDocente.setModel(model);
@@ -114,12 +114,12 @@ public class LISTA_DIRECTOR extends javax.swing.JFrame {
 
             ResultSetMetaData rsMd = (ResultSetMetaData) rs.getMetaData();
             int cantidadColumnas = rsMd.getColumnCount();
-            
+
             limpiarTabla(tbListaDocente, model);
             while (rs.next()) {
-                Object[] filas= new Object[cantidadColumnas];
+                Object[] filas = new Object[cantidadColumnas];
                 for (int i = 0; i < cantidadColumnas; i++) {
-                    filas[i]=rs.getObject(i+1);
+                    filas[i] = rs.getObject(i + 1);
                 }
                 model.addRow(filas);
             }
@@ -127,7 +127,7 @@ public class LISTA_DIRECTOR extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Error al buscar Articulo: \n" + e);
         }
     }
-    
+
     public void pasarDato() {
 
         int Fila = tbListaDocente.getSelectedRow();
@@ -144,7 +144,7 @@ public class LISTA_DIRECTOR extends javax.swing.JFrame {
         VALIDAR_DIRECTOR.pagina = paginaT;
         VALIDAR_DIRECTOR.capitulo = capituloT;
     }
- 
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -179,6 +179,7 @@ public class LISTA_DIRECTOR extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(55, 221, 193));
         jLabel2.setText("TIPO DE USUARIO:");
 
+        jLabel3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel3.setText("jLabel3");
 
         jButton1.setBackground(new java.awt.Color(255, 102, 102));
@@ -191,6 +192,7 @@ public class LISTA_DIRECTOR extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel4.setText("jLabel4");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -205,22 +207,22 @@ public class LISTA_DIRECTOR extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 771, Short.MAX_VALUE)
-                        .addGap(88, 88, 88))
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 760, Short.MAX_VALUE)
+                        .addGap(133, 133, 133))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 749, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68))
+                .addGap(23, 23, 23))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(2, 2, 2)
+                .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel3))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel4))
@@ -231,7 +233,7 @@ public class LISTA_DIRECTOR extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 10, 1190, -1));
 
         jPanel2.setBackground(new java.awt.Color(244, 252, 250));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(244, 252, 250)));
@@ -278,38 +280,39 @@ public class LISTA_DIRECTOR extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(86, 86, 86)
+                        .addGap(52, 52, 52)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)))
+                        .addGap(63, 63, 63)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 28, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, 390));
 
         txtdni.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtdniKeyReleased(evt);
             }
         });
-        getContentPane().add(txtdni, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 120, 253, 30));
+        getContentPane().add(txtdni, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 253, 30));
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("DNI:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, -1));
 
-        jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(244, 252, 250), 200));
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1230, 660));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Diseño/slider.png"))); // NOI18N
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1230, 580));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -321,20 +324,26 @@ public class LISTA_DIRECTOR extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        pasarDato();
-        VALIDAR_DIRECTOR.usuDir1 = usuDir;
-        new VALIDAR_DIRECTOR().setVisible(true);
-         this.dispose();
+
+        int fila = tbListaDocente.getSelectedRow();
+        if (fila >= 0) {
+            pasarDato();
+            VALIDAR_DIRECTOR.usuDir1 = usuDir;
+            new VALIDAR_DIRECTOR().setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Selecionar fila", "Mensaje de advertencia", 1);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        MENU.usu=usuDir;
+        MENU.usu = usuDir;
         new MENU().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        LOGIN lg=new LOGIN();
+        LOGIN lg = new LOGIN();
         lg.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

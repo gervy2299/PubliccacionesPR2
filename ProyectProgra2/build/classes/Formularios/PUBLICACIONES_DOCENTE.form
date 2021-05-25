@@ -159,7 +159,7 @@
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder justification="2" title="PUBLICACIONES REALIZADAS">
               <Font PropertyName="font" name="Dialog" size="14" style="0"/>
-              <Color PropertyName="color" blue="c1" green="dd" red="37" type="rgb"/>
+              <Color PropertyName="color" blue="33" green="0" red="0" type="rgb"/>
             </TitledBorder>
           </Border>
         </Property>
@@ -395,12 +395,8 @@
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="a6" green="ec" red="b8" type="rgb"/>
         </Property>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
-            <LineBorder thickness="300">
-              <Color PropertyName="color" blue="fa" green="fc" red="f4" type="rgb"/>
-            </LineBorder>
-          </Border>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Dise&#xf1;o/slider.png"/>
         </Property>
       </Properties>
       <Constraints>

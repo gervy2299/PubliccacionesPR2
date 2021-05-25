@@ -5,6 +5,7 @@
  */
 package Formularios;
 
+import Login.LOGIN;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -251,7 +252,7 @@ public class VALIDAR_TIPIFICACION extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 1040, 70));
 
         jPanel2.setBackground(new java.awt.Color(244, 252, 250));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 51)), "PUBLICACIONES:", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(55, 221, 193))); // NOI18N
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 51)), "PUBLICACIONES:", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14))); // NOI18N
 
         jLabel10.setBackground(new java.awt.Color(244, 252, 250));
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -329,10 +330,10 @@ public class VALIDAR_TIPIFICACION extends javax.swing.JFrame {
                 .addGap(65, 65, 65))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 1040, 220));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 1040, 200));
 
         jPanel3.setBackground(new java.awt.Color(244, 252, 250));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 51)), "REQUERIMIENTOS:", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(55, 221, 193))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 51)), "REQUERIMIENTOS:", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(0, 0, 51))); // NOI18N
 
         jLabel31.setBackground(new java.awt.Color(244, 252, 250));
         jLabel31.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -408,10 +409,10 @@ public class VALIDAR_TIPIFICACION extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cbtañaletra, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel33))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 1040, 220));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 1040, 200));
 
         BTNACEPTAR.setBackground(new java.awt.Color(55, 221, 193));
         BTNACEPTAR.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -423,7 +424,7 @@ public class VALIDAR_TIPIFICACION extends javax.swing.JFrame {
                 BTNACEPTARActionPerformed(evt);
             }
         });
-        getContentPane().add(BTNACEPTAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 590, 200, 44));
+        getContentPane().add(BTNACEPTAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 540, 200, 44));
 
         BTNRECHAZAR.setBackground(new java.awt.Color(55, 221, 193));
         BTNRECHAZAR.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -435,7 +436,7 @@ public class VALIDAR_TIPIFICACION extends javax.swing.JFrame {
                 BTNRECHAZARActionPerformed(evt);
             }
         });
-        getContentPane().add(BTNRECHAZAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 590, 200, 44));
+        getContentPane().add(BTNRECHAZAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 540, 200, 44));
 
         BTNCANCELAR.setBackground(new java.awt.Color(55, 221, 193));
         BTNCANCELAR.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -447,11 +448,11 @@ public class VALIDAR_TIPIFICACION extends javax.swing.JFrame {
                 BTNCANCELARActionPerformed(evt);
             }
         });
-        getContentPane().add(BTNCANCELAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 590, 200, 44));
+        getContentPane().add(BTNCANCELAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 540, 200, 44));
 
         jLabel18.setBackground(new java.awt.Color(244, 252, 250));
-        jLabel18.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(244, 252, 250), 350));
-        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 650));
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Diseño/slider.png"))); // NOI18N
+        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -461,6 +462,7 @@ public class VALIDAR_TIPIFICACION extends javax.swing.JFrame {
         if (cbtamañopapel.isSelected() && cbtipoletra.isSelected() && cbtañaletra.isSelected() && cbcd.isSelected() && cbformato.isSelected()) {
 //            JOptionPane.showMessageDialog(null, "Su publicacion paso a ratificación");
             mEstado();
+            LISTA_TIPIFICACION.usuTip=usuTip1;
             new LISTA_TIPIFICACION().setVisible(true);
             this.dispose();
         } else {
@@ -470,12 +472,13 @@ public class VALIDAR_TIPIFICACION extends javax.swing.JFrame {
 
     private void BTNRECHAZARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNRECHAZARActionPerformed
         mEstadorechaza();
+        LISTA_TIPIFICACION.usuTip=usuTip1;
         new LISTA_TIPIFICACION().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BTNRECHAZARActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        new LOGIN().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

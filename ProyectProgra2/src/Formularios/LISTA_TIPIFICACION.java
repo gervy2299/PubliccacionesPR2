@@ -5,6 +5,7 @@
  */
 package Formularios;
 
+import java.awt.Color;
 import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -32,6 +33,7 @@ public class LISTA_TIPIFICACION extends javax.swing.JFrame {
         datosGen();
         this.setLayout(null);
         this.setLocationRelativeTo(null);
+        jLabel6.setBackground(new Color(0, 0, 0, 0));
     }
 
     public void datosGen() {
@@ -110,12 +112,12 @@ public class LISTA_TIPIFICACION extends javax.swing.JFrame {
 
             ResultSetMetaData rsMd = (ResultSetMetaData) rs.getMetaData();
             int cantidadColumnas = rsMd.getColumnCount();
-            
+
             limpiarTabla(TablaTipi, model);
             while (rs.next()) {
-                Object[] filas= new Object[cantidadColumnas];
+                Object[] filas = new Object[cantidadColumnas];
                 for (int i = 0; i < cantidadColumnas; i++) {
-                    filas[i]=rs.getObject(i+1);
+                    filas[i] = rs.getObject(i + 1);
                 }
                 model.addRow(filas);
             }
@@ -161,8 +163,8 @@ public class LISTA_TIPIFICACION extends javax.swing.JFrame {
         TablaTipi = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
         txtdni = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -211,7 +213,7 @@ public class LISTA_TIPIFICACION extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE)
                     .addComponent(jLabel7))
                 .addGap(114, 114, 114)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -234,7 +236,7 @@ public class LISTA_TIPIFICACION extends javax.swing.JFrame {
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 990, 80));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 11, 980, 80));
 
         jPanel2.setBackground(new java.awt.Color(244, 252, 250));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(244, 252, 250)));
@@ -254,7 +256,7 @@ public class LISTA_TIPIFICACION extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(TablaTipi);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 68, 950, 304));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 950, 250));
 
         jButton2.setBackground(new java.awt.Color(55, 221, 193));
         jButton2.setText("ATRAS");
@@ -264,7 +266,7 @@ public class LISTA_TIPIFICACION extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, 157, 50));
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 290, 157, 50));
 
         jButton3.setBackground(new java.awt.Color(55, 221, 193));
         jButton3.setText("VALIDAR");
@@ -274,11 +276,9 @@ public class LISTA_TIPIFICACION extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 390, 158, 50));
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 290, 158, 50));
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel6.setText("DNI:");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 980, 370));
 
         txtdni.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -290,11 +290,14 @@ public class LISTA_TIPIFICACION extends javax.swing.JFrame {
                 txtdniKeyReleased(evt);
             }
         });
-        jPanel2.add(txtdni, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 220, 30));
+        getContentPane().add(txtdni, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 220, 30));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 99, 980, 480));
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("DNI:");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, -1));
 
-        jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(244, 252, 250), 200));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Diseño/slider.png"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 580));
 
         pack();
@@ -306,19 +309,25 @@ public class LISTA_TIPIFICACION extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
-        pasarDato();
-        VALIDAR_TIPIFICACION.usuTip1 = usuTip;
-        new VALIDAR_TIPIFICACION().setVisible(true);
-        this.dispose();
+        int fila = TablaTipi.getSelectedRow();
+        if (fila >= 0) {
+            pasarDato();
+            VALIDAR_TIPIFICACION.usuTip1 = usuTip;
+            new VALIDAR_TIPIFICACION().setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Selecionar fila", "Mensaje de advertencia", 1);
+        }
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       new Login.LOGIN().setVisible(true);
-       this.dispose();
+        new Login.LOGIN().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        MENU.usu=usuTip;
+        MENU.usu = usuTip;
         new MENU().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed

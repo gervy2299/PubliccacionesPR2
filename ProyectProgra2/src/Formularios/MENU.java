@@ -6,10 +6,15 @@
 package Formularios;
 
 import Login.LOGIN;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
@@ -25,11 +30,15 @@ import proyectprogra2.Conexion;
  *
  * @author HP
  */
-public class MENU extends javax.swing.JFrame {
+public class MENU extends javax.swing.JFrame implements Runnable{
 
     Conexion co = new Conexion();
     Connection con = co.conexiondb();
     String tipUser = "";
+    
+    //define el tiempo
+    String hr, min, seg;
+    Thread hilo;
     //recibe el dato del Login
     public static String usu;
 
@@ -49,7 +58,39 @@ public class MENU extends javax.swing.JFrame {
         tipoUsuario();
         this.setLayout(null);
         this.setLocationRelativeTo(null);
+        lblUnasan.setBackground(new Color(0,0,0,0));
+        lblFecha.setBackground(new Color(0,0,0,0));
+        jPanel2.setBackground(new Color(244,252,250,170));
+        lblFecha.setText(fecha());
+        hilo = new Thread(this);
+        hilo.start();
     }
+    
+    
+    //para la hora y fecha
+    public static String fecha() {
+        Date fecha = new Date();
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/YYYY");
+        return formatoFecha.format(fecha);
+    }
+
+    public void hora() {
+        Calendar calendario = new GregorianCalendar();
+        Date hrActual = new Date();
+        calendario.setTime(hrActual);
+        hr = calendario.get(Calendar.HOUR_OF_DAY) > 9 ? "" + calendario.get(Calendar.HOUR_OF_DAY) : "0" + calendario.get(Calendar.HOUR_OF_DAY);
+        min = calendario.get(Calendar.MINUTE) > 9 ? "" + calendario.get(Calendar.MINUTE) : "0" + calendario.get(Calendar.MINUTE);
+        seg = calendario.get(Calendar.SECOND) > 9 ? "" + calendario.get(Calendar.SECOND) : "0" + calendario.get(Calendar.SECOND);
+    }
+
+    public void run() {
+        Thread current = Thread.currentThread();
+        while (current == hilo) {
+            hora();
+            lblHora.setText(hr + ":" + min + ":" + seg);
+        }
+    }
+    //fin de hora y fecha
 
     public void datosGen() {
         String[] registros = new String[4];
@@ -172,7 +213,9 @@ public class MENU extends javax.swing.JFrame {
         btnValRat = new javax.swing.JButton();
         btnValDir = new javax.swing.JButton();
         btnValDec = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        lblUnasan = new javax.swing.JLabel();
+        lblHora = new javax.swing.JLabel();
+        lblFecha = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -246,108 +289,139 @@ public class MENU extends javax.swing.JFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 1050, 70));
 
         jPanel2.setBackground(new java.awt.Color(244, 252, 250));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 51, 51)), "MENU PRINCIPAL", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14), new java.awt.Color(55, 221, 193))); // NOI18N
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnNewPub.setBackground(new java.awt.Color(255, 102, 102));
-        btnNewPub.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnNewPub.setBackground(new java.awt.Color(51, 153, 255));
+        btnNewPub.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnNewPub.setForeground(new java.awt.Color(255, 255, 255));
+        btnNewPub.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8_add_book_32px_3.png"))); // NOI18N
         btnNewPub.setText("Nueva Publicación");
         btnNewPub.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnNewPub.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnNewPub.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNewPubActionPerformed(evt);
             }
         });
-        jPanel2.add(btnNewPub, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 270, 80));
+        jPanel2.add(btnNewPub, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 280, 60));
 
-        btnPub.setBackground(new java.awt.Color(153, 255, 153));
-        btnPub.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnPub.setBackground(new java.awt.Color(51, 153, 255));
+        btnPub.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnPub.setForeground(new java.awt.Color(255, 255, 255));
+        btnPub.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8_spiral_bound_booklet_32px_3.png"))); // NOI18N
         btnPub.setText("Publicaciones");
         btnPub.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnPub.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnPub.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPubActionPerformed(evt);
             }
         });
-        jPanel2.add(btnPub, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 270, 70));
+        jPanel2.add(btnPub, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 280, 60));
 
-        btnInfArt.setBackground(new java.awt.Color(102, 102, 255));
-        btnInfArt.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnInfArt.setBackground(new java.awt.Color(51, 153, 255));
+        btnInfArt.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnInfArt.setForeground(new java.awt.Color(255, 255, 255));
+        btnInfArt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8_news_32px_3.png"))); // NOI18N
         btnInfArt.setText("Inf. Artículos");
         btnInfArt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnInfArt.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnInfArt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInfArtActionPerformed(evt);
             }
         });
-        jPanel2.add(btnInfArt, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 80, 280, 70));
+        jPanel2.add(btnInfArt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, 280, 60));
 
-        btnPro.setBackground(new java.awt.Color(255, 255, 102));
-        btnPro.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnPro.setBackground(new java.awt.Color(51, 153, 255));
+        btnPro.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnPro.setForeground(new java.awt.Color(255, 255, 255));
+        btnPro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8_edit_user_32px.png"))); // NOI18N
         btnPro.setText("Perfil");
         btnPro.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnPro.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnPro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProActionPerformed(evt);
             }
         });
-        jPanel2.add(btnPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 250, 280, 80));
+        jPanel2.add(btnPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 280, 60));
 
-        btnValTip.setBackground(new java.awt.Color(204, 102, 255));
-        btnValTip.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnValTip.setBackground(new java.awt.Color(51, 153, 255));
+        btnValTip.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnValTip.setForeground(new java.awt.Color(255, 255, 255));
+        btnValTip.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8_check_all_32px.png"))); // NOI18N
         btnValTip.setText("Validar");
         btnValTip.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnValTip.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnValTip.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnValTipActionPerformed(evt);
             }
         });
-        jPanel2.add(btnValTip, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 280, 80));
+        jPanel2.add(btnValTip, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 280, 60));
 
-        btnValRat.setBackground(new java.awt.Color(255, 102, 102));
-        btnValRat.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnValRat.setBackground(new java.awt.Color(51, 153, 255));
+        btnValRat.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnValRat.setForeground(new java.awt.Color(255, 255, 255));
+        btnValRat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8_check_all_32px.png"))); // NOI18N
         btnValRat.setText("Validar");
+        btnValRat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnValRat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnValRatActionPerformed(evt);
             }
         });
-        jPanel2.add(btnValRat, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 290, 80));
+        jPanel2.add(btnValRat, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 280, 60));
 
-        btnValDir.setBackground(new java.awt.Color(0, 204, 255));
-        btnValDir.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnValDir.setBackground(new java.awt.Color(51, 153, 255));
+        btnValDir.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnValDir.setForeground(new java.awt.Color(255, 255, 255));
+        btnValDir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8_check_all_32px.png"))); // NOI18N
         btnValDir.setText("Validar");
         btnValDir.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnValDir.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnValDir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnValDirActionPerformed(evt);
             }
         });
-        jPanel2.add(btnValDir, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 250, 300, 80));
+        jPanel2.add(btnValDir, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 280, 60));
 
-        btnValDec.setBackground(new java.awt.Color(255, 153, 102));
-        btnValDec.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btnValDec.setBackground(new java.awt.Color(51, 153, 255));
+        btnValDec.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnValDec.setForeground(new java.awt.Color(255, 255, 255));
+        btnValDec.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconos/icons8_check_all_32px.png"))); // NOI18N
         btnValDec.setText("Validar");
         btnValDec.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnValDec.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnValDec.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnValDecActionPerformed(evt);
             }
         });
-        jPanel2.add(btnValDec, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 310, 80));
+        jPanel2.add(btnValDec, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 280, 60));
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 410, -1, -1));
+        lblUnasan.setBackground(new java.awt.Color(244, 252, 250));
+        lblUnasan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Diseño/UNASAM.png"))); // NOI18N
+        jPanel2.add(lblUnasan, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 80, 110, 140));
+
+        lblHora.setBackground(new java.awt.Color(163, 204, 229));
+        lblHora.setFont(new java.awt.Font("Malgun Gothic", 1, 24)); // NOI18N
+        lblHora.setForeground(new java.awt.Color(0, 0, 102));
+        lblHora.setText("00:00:00");
+        jPanel2.add(lblHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 240, 100, 30));
+
+        lblFecha.setBackground(new java.awt.Color(244, 252, 250));
+        lblFecha.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblFecha.setForeground(new java.awt.Color(0, 0, 102));
+        lblFecha.setText("Fecha");
+        jPanel2.add(lblFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 280, 90, 20));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 109, 1050, 470));
 
         jLabel10.setBackground(new java.awt.Color(244, 252, 250));
-        jLabel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(244, 252, 250), 300));
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Diseño/slider.png"))); // NOI18N
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1090, 600));
 
         pack();
@@ -378,8 +452,6 @@ public class MENU extends javax.swing.JFrame {
         ARTICULOS.usu6 = usu;
         ARTICULOS jf6 = new ARTICULOS();
         jf6.setVisible(true);
-        this.setVisible(false);
-        dispose();
     }//GEN-LAST:event_btnInfArtActionPerformed
 
     private void btnProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProActionPerformed
@@ -413,12 +485,6 @@ public class MENU extends javax.swing.JFrame {
         this.setVisible(false);
         new LISTA_DECANO().setVisible(true);
     }//GEN-LAST:event_btnValDecActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        reporte();
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -472,13 +538,15 @@ public class MENU extends javax.swing.JFrame {
     private javax.swing.JButton btnValDir;
     private javax.swing.JButton btnValRat;
     private javax.swing.JButton btnValTip;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblFecha;
+    private javax.swing.JLabel lblHora;
     private javax.swing.JLabel lblNom;
     private javax.swing.JLabel lblTipUsu;
+    private javax.swing.JLabel lblUnasan;
     // End of variables declaration//GEN-END:variables
 }

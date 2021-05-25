@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="57625dd1-af0d-407f-8d60-fc0237ff2409">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select p.titulo TITULO, p.fecha_publicacion FECHA_PUBLICACION, d.DNI DNI, concat(d.nombres,' ',d.apellido_pat, ' ', d.apellido_mat) NOMBRES, d.telefono TELEFONO, eP.descripcion DESCRIPCION
+from publicaciones p 
+inner join autores a, docentes d, estado_publicacion ep 
+where p.fk_idautores = a.idautores and a.fk_DNI = d.DNI and p.fkestado_publicacion = ep.idestado
+group by p.idpublicacion;]]>
+	</queryString>
+	<field name="TITULO" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="FECHA_PUBLICACION" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DNI" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NOMBRES" class="java.lang.String"/>
+	<field name="TELEFONO" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="DESCRIPCION" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="136" y="32" width="273" height="31" uuid="36841e05-8401-441e-accf-8360ecec1696"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<text><![CDATA[REPORTE PUBLICACIONES]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="303" y="14" width="173" height="20" uuid="5ffbf6e1-01f1-4883-880d-ba5fc24f35d6"/>
+				<text><![CDATA[NOMBRES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="236" y="14" width="67" height="20" uuid="904af97b-b1c0-4582-9df6-5dc3b57a032a"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[DNI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="476" y="14" width="67" height="20" uuid="6aac2089-e2ce-4b06-a5b8-3b4ba859acf7"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[DESCRIPCION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="169" y="14" width="67" height="20" uuid="ed6bd0f1-ce2b-40be-bd6f-3c840d038c82"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[FECHA_PUBLICACION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="14" width="163" height="20" uuid="c916bac7-c8a3-47ff-a7f2-21629d428e40"/>
+				<text><![CDATA[TITULO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement x="6" y="6" width="537" height="1" uuid="c4f4bff8-584a-4216-9668-d8b5cb6aebcd"/>
+			</line>
+			<textField>
+				<reportElement x="476" y="7" width="67" height="13" uuid="7b4f3d13-4b61-46f4-94fc-0a0a34b98f36"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{DESCRIPCION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="303" y="7" width="173" height="13" uuid="bbe5d98e-3485-4b7a-9a24-50ead5c4f61e"/>
+				<textFieldExpression><![CDATA[$F{NOMBRES}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="6" y="6" width="163" height="13" uuid="4b920ef2-b4c5-48bd-a0ce-688030e39450"/>
+				<textFieldExpression><![CDATA[$F{TITULO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="169" y="7" width="67" height="13" uuid="f04e1744-d5a7-4511-b891-c412952306f0"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{FECHA_PUBLICACION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="236" y="8" width="67" height="13" uuid="70fe5e6e-35e7-46a9-b76d-e5dc628b152b"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{DNI}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<textField>
+				<reportElement x="405" y="8" width="80" height="20" uuid="9c5feeb3-1189-4a9b-8b47-1af417e66469"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="485" y="8" width="40" height="20" uuid="7421ac43-c3ac-4ed0-bad3-5c890a4a3fa0"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

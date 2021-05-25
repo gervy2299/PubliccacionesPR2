@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="537b9aef-6e53-4587-b738-8ff77ed8761f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from tipi_estado WHERE DNI="77722345"]]>
+	</queryString>
+	<field name="DNI" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NOMBRE" class="java.lang.String"/>
+	<field name="TITULO" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="PAGINAS" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="CAPITULO" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="FECHA" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ESCUELA" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="TIPO" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ESTADO" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="185" y="25" width="100" height="20" uuid="d2fc8080-5cbc-4649-8eb9-d00fc1538fcc"/>
+				<text><![CDATA[PRUEBA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="24" y="21" width="100" height="20" uuid="49b75be1-f698-4f6c-82ab-e539afffa7b6"/>
+				<text><![CDATA[PUBLICACION]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="24" y="36" width="100" height="20" uuid="23ddfc47-df92-4860-ae8b-2d7b021aa652"/>
+				<textFieldExpression><![CDATA[$F{NOMBRE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="24" y="16" width="417" height="20" uuid="37eefbc3-0f19-4823-909c-749f9ae159c8"/>
+				<textFieldExpression><![CDATA[$F{TITULO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="441" y="16" width="100" height="20" uuid="f5a0fcd3-c6e3-4564-aa20-dc85861b93b0"/>
+				<textFieldExpression><![CDATA[$F{PAGINAS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="441" y="36" width="100" height="20" uuid="fda3d2e4-0cbe-42a1-a34d-fda78acc6572"/>
+				<textFieldExpression><![CDATA[$F{FECHA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="124" y="36" width="100" height="20" uuid="804d0db9-5d74-4d36-82f2-80fc7c31e924"/>
+				<textFieldExpression><![CDATA[$F{DNI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="441" y="56" width="100" height="20" uuid="62acd614-af7c-4039-b665-77a5603fe97e"/>
+				<textFieldExpression><![CDATA[$F{CAPITULO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="24" y="56" width="200" height="20" uuid="d3afe671-7f5f-4bfb-9c38-27ea57be9cab"/>
+				<textFieldExpression><![CDATA[$F{ESCUELA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="24" y="76" width="200" height="20" uuid="3c79f4ef-9cdd-47d0-a827-5cc245ad80c2"/>
+				<textFieldExpression><![CDATA[$F{TIPO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="441" y="76" width="100" height="20" uuid="70a3a9f0-475e-4706-8239-62add63c29a0"/>
+				<textFieldExpression><![CDATA[$F{ESTADO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

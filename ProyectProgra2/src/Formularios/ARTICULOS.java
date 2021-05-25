@@ -181,14 +181,13 @@ public class ARTICULOS extends javax.swing.JFrame {
 
         lblNom.setBackground(new java.awt.Color(244, 252, 250));
         lblNom.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        lblNom.setForeground(new java.awt.Color(0, 0, 0));
         lblNom.setText("jLabel3");
 
         btnLog.setBackground(new java.awt.Color(255, 0, 0));
         btnLog.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnLog.setForeground(new java.awt.Color(255, 255, 255));
         btnLog.setText("LOGOUT");
-        btnLog.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLog.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnLog.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogActionPerformed(evt);
@@ -197,7 +196,6 @@ public class ARTICULOS extends javax.swing.JFrame {
 
         lblTipUsu.setBackground(new java.awt.Color(244, 252, 250));
         lblTipUsu.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        lblTipUsu.setForeground(new java.awt.Color(0, 0, 0));
         lblTipUsu.setText("jLabel4");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -243,12 +241,10 @@ public class ARTICULOS extends javax.swing.JFrame {
 
         jLabel6.setBackground(new java.awt.Color(244, 252, 250));
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("N° ARTICULO:");
 
         jLabel7.setBackground(new java.awt.Color(244, 252, 250));
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("NOMBRE DEL ARTICULO:");
 
         txtnArt.setBackground(new java.awt.Color(244, 252, 250));
@@ -271,7 +267,7 @@ public class ARTICULOS extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(55, 221, 193));
         jButton3.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jButton3.setText("ATRAS");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -335,7 +331,7 @@ public class ARTICULOS extends javax.swing.JFrame {
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 109, 870, 430));
 
         jLabel12.setBackground(new java.awt.Color(244, 252, 250));
-        jLabel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(211, 238, 255), 300));
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Diseño/slider.png"))); // NOI18N
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 550));
 
         pack();
@@ -354,8 +350,6 @@ public class ARTICULOS extends javax.swing.JFrame {
     }//GEN-LAST:event_txtnArtKeyReleased
 
     private void btnLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogActionPerformed
-        LOGIN lg=new LOGIN();
-        lg.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnLogActionPerformed
 

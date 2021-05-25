@@ -421,7 +421,7 @@ public class NUEVA_PUBLICACION extends javax.swing.JFrame {
         getContentPane().add(btnEnviar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 450, 190, 40));
 
         jLabel12.setBackground(new java.awt.Color(244, 252, 250));
-        jLabel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(244, 252, 250), 300));
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Diseño/slider.png"))); // NOI18N
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 520));
 
         pack();
